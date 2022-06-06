@@ -14,28 +14,28 @@ g = parser.parse_args()
 
 generations=[]
 scores=[]
-max_scores = []
+min_scores = []
 ave_scores = []
 plt.figure(figsize=(16,9))
 for z in range(0, g.Gen):
-    with open(str(z)+"_fitnessScores.csv") as f:
+    with open(str(z)+"_ChiScores.csv") as f:
         txt_read = csv.reader(f, delimiter = ',')
         for i, row in enumerate(txt_read):
           #  print(i)
             if i>1:
                 scores.append(float(row[0]))
-    max_scores.append(max(scores))
+    min_scores.append(min(scores))
     ave_scores.append(mean(scores))
 
     generations = [z for f in range(0, g.Npop)]
     #print( str(len(scores[0:g.Repro])) + "Repro") #sanity check
     plt.title('Non-Linear Bicone Evolution test')
-    plt.plot(generations[g.Cross:g.Npop+1], scores[g.Cross:g.Npop+1], '^', color = 'red', markersize = '3.0', alpha=.5)
-    plt.plot(generations[g.Repro:g.Cross], scores[g.Repro:g.Cross], '.', color = 'green', markersize = '3.0', alpha=.5)
-    plt.plot(generations[0:g.Repro], scores[0:g.Repro], '*', color = 'blue', markersize ='5.0')
-    plt.ylabel('Fitness Scores')
+    #plt.plot(generations[g.Cross:g.Npop+1], scores[g.Cross:g.Npop+1], '^', color = 'red', markersize = '3.0', alpha=.5)
+    #plt.plot(generations[g.Repro:g.Cross], scores[g.Repro:g.Cross], '.', color = 'green', markersize = '3.0', alpha=.5)
+    #plt.plot(generations[0:g.Repro], scores[0:g.Repro], '*', color = 'blue', markersize ='5.0')
+    plt.ylabel('Chi Scores')
     plt.xlabel('Generations')
-    #plt.axis([0,g.Gen, -0.05, 1.05])
+    plt.axis([0,g.Gen, -0.05, 1.05])
     plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
     plt.minorticks_on()
     plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
@@ -43,15 +43,15 @@ for z in range(0, g.Gen):
     scores.clear()
 
 generations = [f for f in range(0, g.Gen)]
-plt.plot(generations, max_scores, linestyle = '-', color = 'black', alpha = 0.5)
+plt.plot(generations, min_scores, linestyle = '-', color = 'black', alpha = 0.5)
 plt.plot(generations, ave_scores, linestyle = '--', color = 'black', alpha = 0.5)
-plt.savefig("fitness.png")
+plt.savefig("Chi.png")
 
 
 scores2=[]
-with open("fitnessScores.csv") as f2:
+with open("ChiScores.csv") as f2:
     txt_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(txt_read):
         if i>1:
             scores2.append(float(row[0]))
-print(max(scores2)) 
+print(min(scores2)) 

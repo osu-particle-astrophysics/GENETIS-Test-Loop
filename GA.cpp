@@ -16,6 +16,7 @@
 #include <math.h>
 #include <random>
 #include <iostream>
+#include <iomanip>
 #include <fstream>
 #include <sstream>
 #include <vector>
@@ -40,7 +41,7 @@ void dataRead(vector<vector<vector<float>>> &varInput, vector<float> &fitness);
 	freq_coeffs = number of frequencies we're running with (named coeffs since later we'll be using pulses with coefficients)
 	freqVector = all the frequency coefficients are stored in this vector
 */
-void dataWrite(int numChildren, vector<vector<vector<float>>> &varVector, int freq_coeffs, vector<double> freqVector);
+void dataWrite(int numChildren, vector<vector<vector<float>>> &varVector, int freq_coeffs, vector<double> freqVector, int reproduction_no, int crossover_no, vector<int> selected, string gen);
 
 // Debolt, Patton, Sipe: New modular functions 10/9/2020
 int new_tournement(vector<float> fitness, int pool_size);
@@ -53,16 +54,18 @@ int Rank(vector<float> fitness);
 
 int Elite(vector<float> fitness); 
 
-void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, float roul_percentage, float tour_percentage, float rank_percentage, int reproduction_no, int pool_size, int elite);
+void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, vector<int> P_loc, vector<int> & selected, float roul_percentage, float tour_percentage, float rank_percentage, int reproduction_no, int pool_size, int elite);
 // Calls the selection functions to choose a set amount of individuals to be passed into the next generation
 
-void crossover(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, float roul_percentage, float tour_percentage, float rank_percentage, int crossover_no, int pool_size, int reproduction_no);
+void crossover(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, vector<int> P_loc, vector<int> & selected, float roul_percentage, float tour_percentage, float rank_percentage, int crossover_no, int pool_size, int reproduction_no, float M_rate, float sigma);
 // Calls the selection functions to create parents and then generates two children per pair of parents that get passed into the next generation
 
-void mutation(vector<vector<vector<float> > > & varOutput, int reproduction_no, int crossover_no, float max_length, float max_radius, float max_sepration, float max_outer_radius, float max_A, float max_B);
+void mutation(vector<vector<vector<float> > > & varOutput, float M_rate, float sigma, int reproduction_no, int crossover_no);
+
+void immigration(vector<vector<vector<float> > > & varOutput, int reproduction_no, int crossover_no, float max_length, float max_radius, float max_sepration, float max_outer_radius, float max_A, float max_B);
 // Introduces new variables into the next generation
 
-void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & varInput);
+void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & varInput, vector<int> & P_loc);
 
 // Declare some global constants
 
@@ -94,22 +97,22 @@ const int DNA_GARBAGE_END = 9; // This global constant defines where in generati
 int NPOP; /* This global constant represents how many individuals there are per generation. It's value is determined by the user, in argv[2]. It cannot be cast as a constant, because the user's value of NPOP has to be defined inside int main. BE VERY CAREFUL NOT TO REDEFINE NPOP SOMEWHERE IN THE CODE! */
 
 // new variables 10/9/2020 subject to change
-float max_outer_radius = 7.5; // in cm
+float max_outer_radius = 7.5; // 7.5 in cm
 
 float max_radius = max_outer_radius;
 
-float min_length = 37.5; // in cm
+float min_length = 10.0; // in cm
 float max_length = 140;  // in cm
 
 float max_theta = atan(max_outer_radius/min_length);
 
 // just using the values from Leo/Eliot's script
-float min_A = -1; //-1.0;//-0.008;
-float max_A = 1; //1.0;//-0.002;
+float min_A = -1.0; //-1.0;//-0.008;
+float max_A = 1.0; //1.0;//-0.002;
 
 // how did they decide on these values?
-float min_B = -1; //-1;//-0.1; 
-float max_B = 1; //tan(max_theta); //1;//0.8; // They represent slopes (what are the axes?)
+float min_B = -1.0; //-1;//-0.1; 
+float max_B = 1.0; //tan(max_theta); //1;//0.8; // They represent slopes (what are the axes?)
 
 float max_seperation = 2.5;
 float min_seperation = 2.5;  
@@ -135,7 +138,11 @@ int main(int argc, char const *argv[])
 
 	// First, define NPOP using the user's input. The atoi function converts from string to int
 	NPOP = atoi(argv[2]);
+        
+        // Vector of parent locations
+        vector<int> P_loc (NPOP);	
 
+	// Input population vector
     	vector<vector<vector<float>>> varInput (NPOP,vector<vector<float> >(NSECTIONS,vector <float>(NVARS, 0.0f)));
 	
 	// Vector fitness literally just exists to tell us the fitness scores later
@@ -153,14 +160,15 @@ int main(int argc, char const *argv[])
 	// We'll just calculate and input our frequencies now - they aren't used anywhere else in the program.
 	
 	//Define opperator and selection numbers
-
+	string gen = string(argv[1]);
 	int reproduction_no = atoi(argv[3]);
-	//cout << reproduction_no << endl;
 	int crossover_no = atoi(argv[4]);
-	const float ROULETTE_PROPORTION =(atoi(argv[5]))/10.0;
-	const float TOURNEY_PROPORTION = (atoi(argv[6]))/10.0;
-	const float RANK_PROPORTION = (atoi(argv[7]))/10.0;
-	const int elite = (atoi(argv[8]));
+	const float M_rate = (atoi(argv[5]))/100.0;
+        const float sigma = (atoi(argv[6]))/100.0;
+	const float ROULETTE_PROPORTION =(atoi(argv[7]))/10.0;
+	const float TOURNEY_PROPORTION = (atoi(argv[8]))/10.0;
+	const float RANK_PROPORTION = (atoi(argv[9]))/10.0;
+	const int elite = (atoi(argv[10]));
 
 	while(crossover_no%2 !=0)
 	  {
@@ -182,7 +190,7 @@ int main(int argc, char const *argv[])
 	
 	cout << "Bicone algorithm initialized." << endl;
 	//cout << argc << " arguments" << endl;
-    	if(argc != 9)
+    	if(argc != 11)
 	  {cout << "Error: Usage. Specify start or cont, as well as NPOP (EX: start 10)." << endl << "Form: start/cont NPOP repro_no cross_no roul_no tour_no rank_no elite:1/0" << endl;} 
     	else
     	{
@@ -271,7 +279,8 @@ int main(int argc, char const *argv[])
 			
 	
 			// Next up we write to file generationDNA
-			dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
+			vector<int> selected;
+			dataWrite(NPOP, varOutput, freq_coeffs, freqVector, reproduction_no, crossover_no, selected, gen);
 			double meanTotal = 0.0;
 			for(int i=0; i<NPOP; i++)
 				{
@@ -285,14 +294,22 @@ int main(int argc, char const *argv[])
 		}
 		else if(string(argv[1]) == "cont")
 		{
+		          vector<int> selected;
 			  dataRead(varInput,fitness); // Read in the stuff from previous generation
 			  // cout << "Calling Sorting Method" << endl;
-			  insertionSort(fitness, varInput); 
-			  reproduction(varInput, varOutput, fitness, ROULETTE_PROPORTION, TOURNEY_PROPORTION, RANK_PROPORTION, reproduction_no, pool_size, elite);
-			  crossover(varInput, varOutput, fitness, ROULETTE_PROPORTION, TOURNEY_PROPORTION, RANK_PROPORTION, crossover_no, pool_size, reproduction_no);
-			  mutation(varOutput, reproduction_no, crossover_no, max_length, max_radius, max_seperation, max_outer_radius, max_A, max_B);
+			  insertionSort(fitness, varInput, P_loc);
+			  // for (int e=0; e < NPOP; e++){
+			  // cout << e << ", " << P_loc[e] << ", " << fitness[e] << endl;   // TESTING ONLY
+			  // }
+			  reproduction(varInput, varOutput, fitness, P_loc, selected, ROULETTE_PROPORTION, TOURNEY_PROPORTION, RANK_PROPORTION, reproduction_no, pool_size, elite);
+			  crossover(varInput, varOutput, fitness, P_loc, selected, ROULETTE_PROPORTION, TOURNEY_PROPORTION, RANK_PROPORTION, crossover_no, pool_size, reproduction_no, M_rate, sigma);
+			  immigration(varOutput, reproduction_no, crossover_no, max_length, max_radius, max_seperation, max_outer_radius, max_A, max_B);
+			  cout << selected.size() << endl;
+			  // for(int e=0; e < selected.size(); e++) {
+			  //   cout << selected[e] << endl;
+			  // }
 			  //cout << NSECTIONS << endl;
-			  dataWrite(NPOP, varOutput, freq_coeffs, freqVector);
+			  dataWrite(NPOP, varOutput, freq_coeffs, freqVector, reproduction_no, crossover_no, selected, gen);
 			  double meanTotal = 0.0;
 			  for(int i=0; i<NPOP; i++)
 			     {
@@ -309,7 +326,7 @@ int main(int argc, char const *argv[])
 	return (0);
 }
 	
-void dataWrite(int numChildren, vector<vector<vector<float> > >& varVector, int freq_coeffs, vector<double> freqVector)
+void dataWrite(int numChildren, vector<vector<vector<float> > >& varVector, int freq_coeffs, vector<double> freqVector,int reproduction_no, int crossover_no, vector<int> selected, string gen)
 {
   ofstream generationDNA;
   generationDNA.open("generationDNA.csv");
@@ -350,6 +367,43 @@ void dataWrite(int numChildren, vector<vector<vector<float> > >& varVector, int 
 	}
     }
   generationDNA.close();
+  
+  
+  // PARENT LOCATION FILE
+  if (gen == "cont")
+    {
+      ofstream Parents;
+      Parents.open("Parents.csv");
+      Parents << "Location of individuals used to make this generation:" << endl;
+      Parents << "\n" << endl;
+      Parents << "Current Gen, Parent 1, Parent 2, Operator" << endl;
+      int j=0;
+
+      for(int i=0; i<numChildren; i++)
+	{
+	  if( i<reproduction_no )
+	    {
+	      Parents << setw(2) << i+1 << ", " << setw(2) << selected[i]+1 << setw(2) << ", NA, Reproduction" << endl;
+	    }
+	  else if( i>=reproduction_no && i<crossover_no+reproduction_no )
+	    {
+	      if( j%2 == 0 )
+		{
+		  Parents << setw(2) << i+1 << ", " << setw(2) << selected[i]+1 << ", " << setw(2) << selected[i+1]+1 << ", Crossover" << endl;
+		}
+	      else if( j%2 != 0 )
+		{
+		  Parents << setw(2) << i+1 << ", " << setw(2) << selected[i-1]+1 << ", " << setw(2) << selected[i]+1 << ", Crossover" << endl;
+		}
+	      j=j+1;
+	    }
+	  else
+	    {
+	      Parents << setw(2) << i+1 << ", NA, NA, Immigration" << endl;
+	    }
+	}
+      Parents.close();
+    }
 }
 
 void dataRead(vector<vector<vector<float> > >& varInput, vector<float>& fitness)
@@ -502,7 +556,7 @@ int Elite(vector<float> fitness)
   return(0);
 }
 
-void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, float roul_percentage, float tour_percentage, float rank_percentage, int reproduction_no, int pool_size, int elite)
+void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, vector<int> P_loc, vector<int> & selected, float roul_percentage, float tour_percentage, float rank_percentage, int reproduction_no, int pool_size, int elite)
 {
   // cout << "reproduction flag" << endl;
   //NEED: Current gen; next generation; roul_perecentage, tour_percentage, reproduction_no, fitness, pool_size
@@ -517,7 +571,10 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
 	    {
 	      varOutput[0][i][j] = varInput[E_select][i][j];
 	    }
+	  
 	}
+
+      selected.push_back(P_loc[E_select]);
     }
 
   int roul_no = roul_percentage*reproduction_no;
@@ -538,7 +595,7 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
     {
       //      cout << "roullete flag"<< endl;
       //int r_select = new_roulette(fitness);
-      for(int i=elite; i<roul_no; i++)
+      for(int i=elite; i<roul_no + elite; i++)
 	{
 	  int r_select = new_roulette(fitness); //new_roulette
 	  for(int j=0; j<NSECTIONS; j++)
@@ -547,15 +604,16 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
 		{
 		  varOutput[i][j][k] = varInput[r_select][j][k];
 		}
+	    
 	    }
-
+	  selected.push_back(P_loc[r_select]);
 	}
     }
   if(tour_no > 0)
     {
       // cout << "tournament flag"<< endl;
       // int t_select = new_tournament(fitness, pool_size);
-      for(int x=roul_no; x<tour_no+roul_no; x++)
+      for(int x=roul_no+elite; x<tour_no+roul_no+elite; x++)
 	{
 	  int t_select = new_tournament(fitness, pool_size);
 	  for(int y=0; y<NSECTIONS; y++)
@@ -565,13 +623,14 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
 		  varOutput[x][y][z] = varInput[t_select][y][z];
 		}
 	    }
+	  selected.push_back(P_loc[t_select]);
 	}
       // cout << "reproduction finished" << endl;
     }
   if(rank_no > 0)
     {
       // cout << "rank flag" << endl;
-       for(int r=tour_no+roul_no; r<reproduction_no + elite; r++)
+       for(int r=tour_no+roul_no+elite; r<reproduction_no+elite; r++)
 	 {
 	   int k_select = Rank(fitness);
            for(int y=0; y<NSECTIONS; y++)
@@ -581,6 +640,7 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
                   varOutput[r][y][z] = varInput[k_select][y][z];
                 }
             }
+	   selected.push_back(P_loc[k_select]);
 	 }
     }
   if(elite == 1)
@@ -589,7 +649,7 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
     }
   cout << "Roulette Finished" << endl;
 }
-void crossover(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, float roul_percentage, float tour_percentage, float rank_percentage, int crossover_no, int pool_size, int reproduction_no)
+void crossover(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, vector<int> P_loc, vector<int> & selected, float roul_percentage, float tour_percentage, float rank_percentage, int crossover_no, int pool_size, int reproduction_no, float M_rate, float sigma)
 {
   //cout << "crossover flag" << endl;
   // crossover_no contains the total number of individuals that are to be generated using this opperator
@@ -629,6 +689,7 @@ for(int i=0; i<parents_loc.size(); i=i+2)
 	for(int k=0; k<NVARS; k++)
 	  {
 	    swap = choice(generator);
+
 	    if(swap < .5)
 	      {
 		varOutput[i+reproduction_no][j][k] = varInput[parents_loc[i]][j][k];
@@ -682,11 +743,61 @@ for(int i=0; i<parents_loc.size(); i=i+2)
               j= j-1; 
 	      }
       }
+    selected.push_back(P_loc[parents_loc[i]]);
+    selected.push_back(P_loc[parents_loc[1+i]]);
   }
+ mutation(varOutput, M_rate, sigma, reproduction_no, crossover_no);
  cout << "Crossover Finished" << endl;
 }
+
+void mutation(vector<vector<vector<float> > > & varOutput, float M_rate, float sigma, int reproduction_no, int crossover_no)
+{
+  uniform_real_distribution<float> select(0.0, 1.0);
+
+  for(int i=reproduction_no; i<crossover_no+reproduction_no; i++)
+    {
+      for(int j=0; j<NSECTIONS; j++)
+	{
+	  for(int k=0; k<NVARS; k++)
+	    {
+	      float s = select(generator);
+	      if(s <= M_rate)
+		{
+		  normal_distribution<float> mutate(varOutput[i][j][k], sigma*varOutput[i][j][k]);
+		  varOutput[i][j][k] = mutate(generator);
+		  int intersect = 0;
+		  while(intersect == 0)
+		    {
+		      float r = varOutput[i][j][0];
+		      float l = varOutput[i][j][1];
+		      float a = varOutput[i][j][2];
+		      float b = varOutput[i][j][3];
+		      float end_point = (a * l * l + b * l + r);
+		      float vertex = (r - (b * b)/(4 * a));
+	
+		      if(a == 0.0 && max_outer_radius > end_point && end_point >= 0.0)
+			{
+			  intersect = 1;
+			}
+		      else if(a != 0.0 && max_outer_radius > end_point && end_point >= 0.0 && max_outer_radius > vertex && vertex >= 0.0)
+			{
+			  intersect = 1;
+			}
+		      else
+			{
+			  intersect = 0;
+			  varOutput[i][j][k] = mutate(generator);
+			}
+		    }
+		}
+	    }
+	}
+    }
+
+  cout << "Mutation complete" << endl;
+}
 					      
-void mutation(vector<vector<vector<float> > > & varOutput, int reproduction_no, int crossover_no, float max_length, float max_radius, float max_seperation, float max_outer_radius, float max_A, float max_B)
+void immigration(vector<vector<vector<float> > > & varOutput, int reproduction_no, int crossover_no, float max_length, float max_radius, float max_seperation, float max_outer_radius, float max_A, float max_B)
 {
   //cout << "mutation flag" << endl;
   uniform_real_distribution<float> l_mut(min_length, max_length);
@@ -699,7 +810,7 @@ void mutation(vector<vector<vector<float> > > & varOutput, int reproduction_no, 
     {
       for(int j=0; j<NSECTIONS; j++)
 	{
-	  //mutation generators
+	  //immigration generators
 	  varOutput[i][j][0] = r_mut(generator);
 	  varOutput[i][j][1] = l_mut(generator);
 	  varOutput[i][j][2] = a_mut(generator);
@@ -729,16 +840,23 @@ void mutation(vector<vector<vector<float> > > & varOutput, int reproduction_no, 
 	  
 	}
     }
-  cout << "mutation finished" << endl;
+  cout << "Immigration finished" << endl;
 }
 
-void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & varInput)
+void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & varInput, vector<int> & P_loc)
 {
 	int i,j,x,y;
+	vector<int> O_loc;
+	for(int z = 0; z < fitness.size(); z++)
+	{
+	O_loc.push_back(z);
+	}
+
 	for(i = 0; i < fitness.size(); i++)
 	{
 	  //cout << "index: " << i << " of "<< fitness.size() << endl;
 		double temp = fitness[i];
+		int T = O_loc[i];
 		vector<vector<vector<float>>> location (1,vector<vector<float> >(NSECTIONS,vector <float>(NVARS, 0.0f)));
 		//cout << " location vector established " << endl;
 		for(int a = 0; a < NSECTIONS; a++)
@@ -753,6 +871,7 @@ void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & va
 		for(j = i; j > 0 && fitness[j-1] < temp; j--)
 		{
 			fitness[j] = fitness[j-1];
+			P_loc[j] = P_loc[j-1];
 			for(x = 0; x < NSECTIONS; x++)
 			{
 				for(y = 0; y < NVARS; y++)
@@ -762,6 +881,7 @@ void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & va
 			}
 		}
 		fitness[j]=temp;
+		P_loc[j] = T;
 		//cout << "fitness Scores re-allocated" << endl;
 		for(int a = 0; a < NSECTIONS; a++)
                 {

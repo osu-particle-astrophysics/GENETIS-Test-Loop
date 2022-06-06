@@ -72,14 +72,14 @@ f.close()
 fitness = []
 error = []
 for i in range(0, len(r1)):
-    R1_fit = math.exp(-(Radius1 - r1[i])**2)
-    R2_fit = math.exp(-(Radius2 - r2[i])**2)
-    L1_fit = math.exp(-(Length1 - l1[i])**2)
-    L2_fit = math.exp(-(Length2 - l2[i])**2)
-    T1_fit = math.exp(-(Theta1 - t1[i])**2)
-    T2_fit = math.exp(-(Theta2 - t2[i])**2)
-    b1_fit = math.exp(-(B_coeff1 - b1[i])**2)
-    b2_fit = math.exp(-(B_coeff2 - b2[i])**2) 
+    R1_fit = 1-abs(Radius1 - r1[i])
+    R2_fit = 1-abs(Radius2 - r2[i])
+    L1_fit = 1-abs(Length1 - l1[i])
+    L2_fit = 1-abs(Length2 - l2[i])
+    T1_fit = 1-abs(Theta1 - t1[i])
+    T2_fit = 1-abs(Theta2 - t2[i])
+    b1_fit = 1-abs(B_coeff1 - b1[i])
+    b2_fit = 1-abs(B_coeff2 - b2[i]) 
 
     fitness.append((R1_fit+R2_fit+L1_fit+L2_fit+T1_fit+T2_fit+b1_fit+b2_fit)/8) ## 1, +99
 

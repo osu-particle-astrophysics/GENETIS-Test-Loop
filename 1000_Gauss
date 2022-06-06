@@ -1,0 +1,54 @@
+Location of individuals used to make this generation:
+
+
+Current Gen, Parent 1, Parent 2, Operator
+ 1, 45, NA, Reproduction
+ 2, 31, NA, Reproduction
+ 3, 40, NA, Reproduction
+ 4, 36, NA, Reproduction
+ 5,  5,  1, Crossover
+ 6,  5,  1, Crossover
+ 7, 12,  7, Crossover
+ 8, 12,  7, Crossover
+ 9, 47,  7, Crossover
+10, 47,  7, Crossover
+11, 27, 50, Crossover
+12, 27, 50, Crossover
+13, 50,  1, Crossover
+14, 50,  1, Crossover
+15, 23, 33, Crossover
+16, 23, 33, Crossover
+17, 33,  8, Crossover
+18, 33,  8, Crossover
+19, 15, 50, Crossover
+20, 15, 50, Crossover
+21, 40, 25, Crossover
+22, 40, 25, Crossover
+23, 38, 30, Crossover
+24, 38, 30, Crossover
+25, 12,  9, Crossover
+26, 12,  9, Crossover
+27,  9, 17, Crossover
+28,  9, 17, Crossover
+29, 27, 48, Crossover
+30, 27, 48, Crossover
+31, 45, 40, Crossover
+32, 45, 40, Crossover
+33, 33, 38, Crossover
+34, 33, 38, Crossover
+35, 45, 17, Crossover
+36, 45, 17, Crossover
+37, 45, 18, Crossover
+38, 45, 18, Crossover
+39, 38,  8, Crossover
+40, 38,  8, Crossover
+41,  7, 23, Crossover
+42,  7, 23, Crossover
+43,  7, 34, Crossover
+44,  7, 34, Crossover
+45, 32,  8, Crossover
+46, 32,  8, Crossover
+47, 49, 15, Crossover
+48, 49, 15, Crossover
+49, 34,  9, Crossover
+50, 34,  9, Crossover

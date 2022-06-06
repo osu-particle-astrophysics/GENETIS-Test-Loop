@@ -72,16 +72,17 @@ f.close()
 fitness = []
 error = []
 for i in range(0, len(r1)):
-    R1_fit = math.exp(-(Radius1 - r1[i])**2)
-    R2_fit = math.exp(-(Radius2 - r2[i])**2)
-    L1_fit = math.exp(-(Length1 - l1[i])**2)
-    L2_fit = math.exp(-(Length2 - l2[i])**2)
-    T1_fit = math.exp(-(Theta1 - t1[i])**2)
-    T2_fit = math.exp(-(Theta2 - t2[i])**2)
-    b1_fit = math.exp(-(B_coeff1 - b1[i])**2)
-    b2_fit = math.exp(-(B_coeff2 - b2[i])**2) 
+    R1_fit = ((r1[i] - Radius1)**2)
+    R2_fit = ((r2[i] - Radius2)**2)
+    L1_fit = ((l1[i] - Length1)**2)
+    L2_fit = ((l2[i] - Length2)**2)
+    T1_fit = ((t1[i] - Theta1)**2)
+    T2_fit = ((t2[i] - Theta2)**2)
+    b1_fit = ((b1[i] - B_coeff1)**2)
+    b2_fit = ((b2[i] - B_coeff2)**2) 
 
-    fitness.append((R1_fit+R2_fit+L1_fit+L2_fit+T1_fit+T2_fit+b1_fit+b2_fit)/8) ## 1, +99
+    Sum = (R2_fit + L2_fit + T2_fit + b2_fit + R2_fit + L2_fit + T2_fit + b2_fit)
+    fitness.append(math.exp(-Sum)) ## 1, +99
 
 
 for i in range(0, len(fitness)): #introduce error
@@ -106,4 +107,4 @@ with open(str(g.Gen)+'_fitnessScores.csv', "w") as f3:
     f3.writelines(lines2)
 f3.close()
 
-            
+print("Max Fitness: " +str(max(fitness)))            

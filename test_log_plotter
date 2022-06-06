@@ -35,7 +35,7 @@ for z in range(0, g.Gen):
     plt.plot(generations[0:g.Repro], scores[0:g.Repro], '*', color = 'blue', markersize ='5.0')
     plt.ylabel('Fitness Scores')
     plt.xlabel('Generations')
-    #plt.axis([0,g.Gen, -0.05, 1.05])
+    plt.axis([0,g.Gen, -0.05, 1.05])
     plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
     plt.minorticks_on()
     plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)

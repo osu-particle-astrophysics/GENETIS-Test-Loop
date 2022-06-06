@@ -18,11 +18,11 @@ g++ -std=c++11 GA.cpp
 pop=100
 arguement=1
 generations=100
-repro=3
-cross=36
-roul_no=2
-tour_no=2
-rank_no=6
+repro=6
+cross=72
+roul_no=0
+tour_no=1
+rank_no=9
 zero=0
 elite=0
 M_rate=5
@@ -54,7 +54,7 @@ do
 					then
 					    echo ${f}'_'${g}'_'${h} 'Generation 0'
 					    ./a.out start $pop $repro $cross $f $g $roul_no $tour_no $rank_no $elite 
-					    python3 test_fitness_inv.py $i
+					    python3 test_fitness_alg.py $i
 					    python3 test_chi.py $i
 					    cp ${i}_fitnessScores.csv fitnessScores.csv
 					    cp ${i}_ChiScores.csv ChiScores.csv
@@ -64,17 +64,17 @@ do
 					    cp ${i}_ChiScores.csv ${e}_${f}_${g}_${h}_${i}_ChiScores.csv
 					    cp ${i}_generationDNA.csv ${e}_${f}_${g}_${h}_${i}_generationDNA.csv
 					    cp ${i}_Parents.csv ${e}_${f}_${g}_${h}_${i}_Parents.csv
-					    mv ${e}_${f}_${g}_${h}_${i}_generationDNA.csv Inverse
-					    mv ${e}_${f}_${g}_${h}_${i}_Parents.csv Inverse
-					    mv ${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Inverse
-					    mv ${e}_${f}_${g}_${h}_${i}_ChiScores.csv Inverse
+					    mv ${e}_${f}_${g}_${h}_${i}_generationDNA.csv Algebraic
+					    mv ${e}_${f}_${g}_${h}_${i}_Parents.csv Algebraic
+					    mv ${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Algebraic
+					    mv ${e}_${f}_${g}_${h}_${i}_ChiScores.csv Algebraic
 					fi
 
 					if [ $i -ne $zero ]
 					then
 					    echo ${f}'_'${g}'_'${h} 'Generation' $i
 					    ./a.out cont $pop $repro $cross $f $g $roul_no $tour_no $rank_no $elite
-					    python3 test_fitness_inv.py $i
+					    python3 test_fitness_alg.py $i
 					    python3 test_chi.py $i
 					    cp ${i}_fitnessScores.csv fitnessScores.csv
 					    cp ${i}_ChiScores.csv ChiScores.csv
@@ -85,10 +85,10 @@ do
 					    cp ${i}_ChiScores.csv ${e}_${f}_${g}_${h}_${i}_ChiScores.csv
 					    cp ${i}_generationDNA.csv ${e}_${f}_${g}_${h}_${i}_generationDNA.csv
 					    cp ${i}_Parents.csv ${e}_${f}_${g}_${h}_${i}_Parents.csv
-					    mv ${e}_${f}_${g}_${h}_${i}_generationDNA.csv Inverse
-					    mv ${e}_${f}_${g}_${h}_${i}_Parents.csv Inverse
-					    mv ${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Inverse
-					    mv ${e}_${f}_${g}_${h}_${i}_ChiScores.csv Inverse
+					    mv ${e}_${f}_${g}_${h}_${i}_generationDNA.csv Algebraic
+					    mv ${e}_${f}_${g}_${h}_${i}_Parents.csv Algebraic
+					    mv ${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Algebraic
+					    mv ${e}_${f}_${g}_${h}_${i}_ChiScores.csv Algebraic
 					fi
 					echo waiting... 
 					sleep 0.25
@@ -103,8 +103,8 @@ do
 				    python3 Chi_plotter.py $pop $generations $repro $cross
 				    cp fitness.png ${e}_${f}_${g}_${h}_fitness.png
 				    cp Chi.png ${e}_${f}_${g}_${h}_Chi.png
-				    mv ${e}_${f}_${g}_${h}_fitness.png Inverse
-				    mv ${e}_${f}_${g}_${h}_Chi.png Inverse
+				    mv ${e}_${f}_${g}_${h}_fitness.png Algebraic
+				    mv ${e}_${f}_${g}_${h}_Chi.png Algebraic
 				    for i in `seq 0 $generations`
 				    do
 					rm ${i}_fitnessScores.csv
