@@ -1,3 +1,4 @@
-*.csv
+generators.csv
+*/*.csv
 *.png
 *.txt
