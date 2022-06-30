@@ -15,7 +15,7 @@
 
 g++ -std=c++11 GA.cpp
 
-pop=100
+pop=50
 arguement=1
 generations=100
 repro=3
@@ -54,7 +54,7 @@ do
 					then
 					    echo ${f}'_'${g}'_'${h} 'Generation 0'
 					    ./a.out start $pop $repro $cross $f $g $roul_no $tour_no $rank_no $elite 
-					    python3 test_fitness_inv.py $i
+					    python3 test_fitness_chi.py $i
 					    python3 test_chi.py $i
 					    cp ${i}_fitnessScores.csv fitnessScores.csv
 					    cp ${i}_ChiScores.csv ChiScores.csv
@@ -74,7 +74,7 @@ do
 					then
 					    echo ${f}'_'${g}'_'${h} 'Generation' $i
 					    ./a.out cont $pop $repro $cross $f $g $roul_no $tour_no $rank_no $elite
-					    python3 test_fitness_inv.py $i
+					    python3 test_fitness_chi.py $i
 					    python3 test_chi.py $i
 					    cp ${i}_fitnessScores.csv fitnessScores.csv
 					    cp ${i}_ChiScores.csv ChiScores.csv

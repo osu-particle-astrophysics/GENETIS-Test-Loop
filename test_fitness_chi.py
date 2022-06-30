@@ -91,8 +91,8 @@ for i in range(0, len(fitness)): #introduce error
     if (fitness[i] == 0):
         error.append(0.0)
     else:
-        error.append(0.0)
-    fitness[i] = random.gauss(fitness[i], 0.0)
+        error.append(0.1*fitness[i])
+    fitness[i] = random.gauss(fitness[i], 0.1*fitness[i])
 
 with open('fitnessScores.csv', "r") as f2:
     lines = f2.readlines()

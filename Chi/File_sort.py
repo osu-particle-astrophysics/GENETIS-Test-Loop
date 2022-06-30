@@ -10,12 +10,12 @@ from statistics import mean
 import numpy as np
 
 count = 0
-for d in range(0,10,3): # 2,22,2
-    for e in range(32,51,6): #60,90,10
+for d in range(3,4,3): # 2,22,2
+    for e in range(36,37,6): #60,90,10
         de = d+e
         if (de < 50):
-            for f in range(0,11,5):
-                for g in range(1,6,1):
+            for f in range(5,6,5):
+                for g in range(1,2,1):
                     count = count+1
                     color = iter(cm.rainbow(np.linspace(0,1,11)))
                     for h in range(1,6):

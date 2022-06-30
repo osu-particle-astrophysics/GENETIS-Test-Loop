@@ -38,18 +38,18 @@ do
 	    r=$(( $a + $b + $c ))
 	    if [ $r -eq 10 ]
 	    then  
-		for d in {0..9..3} # Reproduction
+		for d in {3..3..3} # Reproduction
 		do
-		    for e in {32..50..6} # Crossover Make sure Reprodcution + Crossover < pop
+		    for e in {36..36..6} # Crossover Make sure Reprodcution + Crossover < pop
 		    do
 			de=$(( $d +$e ))
 			if [ $de -lt $pop ]
 			then
-			    for f in {0..10..5} # M_rate
+			    for f in {5..5..5} # M_rate
 			    do
-				for g in {1..5..1} # sigma
+				for g in {1..1..1} # sigma
 				do
-				    for h in {1..5..1} # test count
+				    for h in {1..1..1} # test count
 				    do
 					for i in `seq 0 ${generations}` #generation
 					do
@@ -63,14 +63,17 @@ do
 						cp ${i}_ChiScores.csv ChiScores.csv
 						cp generationDNA.csv ${i}_generationDNA.csv
 						cp Parents.csv ${i}_Parents.csv
-						cp ${i}_fitnessScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv
-						cp ${i}_ChiScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv
-						cp ${i}_generationDNA.csv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv
-						cp ${i}_Parents.csv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv Chi
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv Chi
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Chi
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv Chi
+						python Data_Write.py ${i}
+						mv ${i}_generationData.csv Test/${d}_${e}_${f}_${g}_${h}_${i}_generationData.csv
+						
+						#cp ${i}_fitnessScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv
+						#cp ${i}_ChiScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv
+						#cp ${i}_generationDNA.csv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv
+						#cp ${i}_Parents.csv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv Test
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv Test
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Test
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv Test
 					    fi
 
 					    if [ $i -ne $zero ]
@@ -83,15 +86,17 @@ do
 						cp ${i}_ChiScores.csv ChiScores.csv
 						cp generationDNA.csv ${i}_generationDNA.csv
 						cp Parents.csv ${i}_Parents.csv
-						#python3 fitness_check.py ${i}
-						cp ${i}_fitnessScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv
-						cp ${i}_ChiScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv
-						cp ${i}_generationDNA.csv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv
-						cp ${i}_Parents.csv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv Chi
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv Chi
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Chi
-						mv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv Chi
+						python3 fitness_check.py ${i}
+						python Data_Write.py ${i}
+						mv ${i}_generationData.csv Test/${d}_${e}_${f}_${g}_${h}_${i}_generationData.csv
+						
+						#cp ${i}_ChiScores.csv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv
+						#cp ${i}_generationDNA.csv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv
+						#cp ${i}_Parents.csv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_generationDNA.csv Test
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_Parents.csv Test
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_fitnessScores.csv Test
+						#mv ${d}_${e}_${f}_${g}_${h}_${i}_ChiScores.csv Test
 					    fi
 					    echo waiting... 
 					    #sleep 0.25
@@ -106,8 +111,8 @@ do
 					python3 Chi_plotter.py $pop $generations $repro $cross
 					cp fitness.png ${d}_${e}_${f}_${g}_${h}_fitness.png
 					cp Chi.png ${d}_${e}_${f}_${g}_${h}_Chi.png
-					mv ${d}_${e}_${f}_${g}_${h}_fitness.png Chi
-					mv ${d}_${e}_${f}_${g}_${h}_Chi.png Chi
+					mv ${d}_${e}_${f}_${g}_${h}_fitness.png Test
+					mv ${d}_${e}_${f}_${g}_${h}_Chi.png Test
 					for i in `seq 0 $generations`
 					do
 					    rm ${i}_fitnessScores.csv

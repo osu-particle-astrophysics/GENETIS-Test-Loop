@@ -71,7 +71,9 @@ void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & va
 
 //Debolt 10/7/2020:
 // adding global random number generator
-default_random_engine generator(time(NULL));
+int seed = time(NULL);
+
+default_random_engine generator(seed);
 
 double MINIMUM_FREQUENCY = 0.08333; // This global constant defines the minimum frequency of the range we're working in, in GHz; Initial value is what AraSim uses
 //MINIMUM_FREQUENCY = MINIMUM_FREQUENCY*MULTIPLIER_FACTOR
@@ -122,12 +124,14 @@ float min_seperation = 2.5;
 
 int main(int argc, char const *argv[])
 {
+
+  cout << seed << endl;
   // EDIT 8/8/20: we need to only instantiate the generator (and seed) once
   // needs to not be seeded Ryan and Kai 10/27/2020
   default_random_engine generator;
-  generator.seed(time(NULL));
+  generator.seed(seed);
 	// generator.seed(1); // for debugging
-  srand(time(NULL)); // Let's just seed our random number generator off the bat (moved up from below)
+  srand(seed); // Let's just seed our random number generator off the bat (moved up from below)
   //srand(1); // for debugging
   // I'm going to try recording all of the generator values from these runs to look for patterns
   // First, I need to make a file to write to
@@ -375,6 +379,7 @@ void dataWrite(int numChildren, vector<vector<vector<float> > >& varVector, int 
       ofstream Parents;
       Parents.open("Parents.csv");
       Parents << "Location of individuals used to make this generation:" << endl;
+      Parents << "Seed: " << seed << endl;
       Parents << "\n" << endl;
       Parents << "Current Gen, Parent 1, Parent 2, Operator" << endl;
       int j=0;
