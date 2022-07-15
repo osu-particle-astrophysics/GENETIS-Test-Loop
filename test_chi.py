@@ -86,13 +86,13 @@ for i in range(0, len(r1)):
     
     fitness.append(Chi)
 
-with open('ChiScores.csv', "r") as f2:
+with open('chiScores.csv', "r") as f2:
     lines = f2.readlines()
-    print(len(lines))
+#    print(len(lines))
 f2.close()
-print(len(lines))
+#print(len(lines))
 lines2 = []
-with open(str(g.Gen)+'_ChiScores.csv', "w") as f3:
+with open(str(g.Gen)+'_chiScores.csv', "w") as f3:
     for x in range(0, len(fitness)+2):
         if x <= 1:
             lines2.append(str(lines[x]))

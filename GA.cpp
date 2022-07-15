@@ -125,7 +125,7 @@ float min_seperation = 2.5;
 int main(int argc, char const *argv[])
 {
 
-  cout << seed << endl;
+  //  cout << seed << endl;
   // EDIT 8/8/20: we need to only instantiate the generator (and seed) once
   // needs to not be seeded Ryan and Kai 10/27/2020
   default_random_engine generator;
@@ -308,7 +308,7 @@ int main(int argc, char const *argv[])
 			  reproduction(varInput, varOutput, fitness, P_loc, selected, ROULETTE_PROPORTION, TOURNEY_PROPORTION, RANK_PROPORTION, reproduction_no, pool_size, elite);
 			  crossover(varInput, varOutput, fitness, P_loc, selected, ROULETTE_PROPORTION, TOURNEY_PROPORTION, RANK_PROPORTION, crossover_no, pool_size, reproduction_no, M_rate, sigma);
 			  immigration(varOutput, reproduction_no, crossover_no, max_length, max_radius, max_seperation, max_outer_radius, max_A, max_B);
-			  cout << selected.size() << endl;
+			  // cout << selected.size() << endl;
 			  // for(int e=0; e < selected.size(); e++) {
 			  //   cout << selected[e] << endl;
 			  // }
@@ -377,7 +377,7 @@ void dataWrite(int numChildren, vector<vector<vector<float> > >& varVector, int 
   if (gen == "cont")
     {
       ofstream Parents;
-      Parents.open("Parents.csv");
+      Parents.open("parents.csv");
       Parents << "Location of individuals used to make this generation:" << endl;
       Parents << "Seed: " << seed << endl;
       Parents << "\n" << endl;
@@ -652,7 +652,7 @@ void reproduction(vector<vector<vector<float> > > & varInput, vector<vector<vect
     {
       reproduction_no = reproduction_no+elite; 
     }
-  cout << "Roulette Finished" << endl;
+  //cout << "Roulette Finished" << endl;
 }
 void crossover(vector<vector<vector<float> > > & varInput, vector<vector<vector<float> > > & varOutput, vector<float> fitness, vector<int> P_loc, vector<int> & selected, float roul_percentage, float tour_percentage, float rank_percentage, int crossover_no, int pool_size, int reproduction_no, float M_rate, float sigma)
 {
@@ -752,7 +752,7 @@ for(int i=0; i<parents_loc.size(); i=i+2)
     selected.push_back(P_loc[parents_loc[1+i]]);
   }
  mutation(varOutput, M_rate, sigma, reproduction_no, crossover_no);
- cout << "Crossover Finished" << endl;
+ //cout << "Crossover Finished" << endl;
 }
 
 void mutation(vector<vector<vector<float> > > & varOutput, float M_rate, float sigma, int reproduction_no, int crossover_no)
@@ -799,7 +799,7 @@ void mutation(vector<vector<vector<float> > > & varOutput, float M_rate, float s
 	}
     }
 
-  cout << "Mutation complete" << endl;
+  //  cout << "Mutation complete" << endl;
 }
 					      
 void immigration(vector<vector<vector<float> > > & varOutput, int reproduction_no, int crossover_no, float max_length, float max_radius, float max_seperation, float max_outer_radius, float max_A, float max_B)
@@ -845,7 +845,7 @@ void immigration(vector<vector<vector<float> > > & varOutput, int reproduction_n
 	  
 	}
     }
-  cout << "Immigration finished" << endl;
+  //cout << "Immigration finished" << endl;
 }
 
 void insertionSort(vector<float> & fitness, vector<vector<vector<float> > > & varInput, vector<int> & P_loc)

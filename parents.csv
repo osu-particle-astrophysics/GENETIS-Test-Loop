@@ -1,0 +1,105 @@
+Location of individuals used to make this generation:
+Seed: 1657907573
+
+
+Current Gen, Parent 1, Parent 2, Operator
+ 1,  2, NA, Reproduction
+ 2, 12, NA, Reproduction
+ 3,  2, NA, Reproduction
+ 4, 19, NA, Reproduction
+ 5, 98, NA, Reproduction
+ 6, 13, NA, Reproduction
+ 7, 18, 32, Crossover
+ 8, 18, 32, Crossover
+ 9, 21, 19, Crossover
+10, 21, 19, Crossover
+11, 18, 39, Crossover
+12, 18, 39, Crossover
+13, 62, 27, Crossover
+14, 62, 27, Crossover
+15,  4,  5, Crossover
+16,  4,  5, Crossover
+17, 39, 57, Crossover
+18, 39, 57, Crossover
+19, 29, 29, Crossover
+20, 29, 29, Crossover
+21, 40,  2, Crossover
+22, 40,  2, Crossover
+23, 19, 13, Crossover
+24, 19, 13, Crossover
+25, 14,  6, Crossover
+26, 14,  6, Crossover
+27, 14, 40, Crossover
+28, 14, 40, Crossover
+29, 24, 49, Crossover
+30, 24, 49, Crossover
+31, 18, 28, Crossover
+32, 18, 28, Crossover
+33, 85, 42, Crossover
+34, 85, 42, Crossover
+35, 22,  5, Crossover
+36, 22,  5, Crossover
+37, 60, 41, Crossover
+38, 60, 41, Crossover
+39, 36, 43, Crossover
+40, 36, 43, Crossover
+41, 65, 31, Crossover
+42, 65, 31, Crossover
+43, 63, 52, Crossover
+44, 63, 52, Crossover
+45, 34, 40, Crossover
+46, 34, 40, Crossover
+47,  5, 31, Crossover
+48,  5, 31, Crossover
+49, 36, 28, Crossover
+50, 36, 28, Crossover
+51, 35, 46, Crossover
+52, 35, 46, Crossover
+53, 23, 70, Crossover
+54, 23, 70, Crossover
+55, 10, 61, Crossover
+56, 10, 61, Crossover
+57, 32, 76, Crossover
+58, 32, 76, Crossover
+59, 29, 43, Crossover
+60, 29, 43, Crossover
+61, 60, 56, Crossover
+62, 60, 56, Crossover
+63, 40, 61, Crossover
+64, 40, 61, Crossover
+65, 70, 13, Crossover
+66, 70, 13, Crossover
+67, 10, 21, Crossover
+68, 10, 21, Crossover
+69, 70, 39, Crossover
+70, 70, 39, Crossover
+71, NA, NA, Immigration
+72, NA, NA, Immigration
+73, NA, NA, Immigration
+74, NA, NA, Immigration
+75, NA, NA, Immigration
+76, NA, NA, Immigration
+77, NA, NA, Immigration
+78, NA, NA, Immigration
+79, NA, NA, Immigration
+80, NA, NA, Immigration
+81, NA, NA, Immigration
+82, NA, NA, Immigration
+83, NA, NA, Immigration
+84, NA, NA, Immigration
+85, NA, NA, Immigration
+86, NA, NA, Immigration
+87, NA, NA, Immigration
+88, NA, NA, Immigration
+89, NA, NA, Immigration
+90, NA, NA, Immigration
+91, NA, NA, Immigration
+92, NA, NA, Immigration
+93, NA, NA, Immigration
+94, NA, NA, Immigration
+95, NA, NA, Immigration
+96, NA, NA, Immigration
+97, NA, NA, Immigration
+98, NA, NA, Immigration
+99, NA, NA, Immigration
+100, NA, NA, Immigration

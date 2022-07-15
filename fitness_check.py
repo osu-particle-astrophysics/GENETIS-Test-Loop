@@ -97,7 +97,7 @@ for i in range(0, len(A)):
            WB = 1.0/(Err_B[j]**2.0)
            A[i] = ((WA*A[i] + WB*B[j])/(WA+WB))
            Err_A[i] = (1.0/((WA + WB)**(0.5)))
-print(matches, "Matches found")
+#print(matches, "Matches found")
 # write out to file 
 
 with open('fitnessScores.csv', "r") as f5:

@@ -72,24 +72,27 @@ f.close()
 fitness = []
 error = []
 for i in range(0, len(r1)):
-    R1_fit = math.exp(-(Radius1 - r1[i])**2)
-    R2_fit = math.exp(-(Radius2 - r2[i])**2)
-    L1_fit = math.exp(-(Length1 - l1[i])**2)
-    L2_fit = math.exp(-(Length2 - l2[i])**2)
-    T1_fit = math.exp(-(Theta1 - t1[i])**2)
-    T2_fit = math.exp(-(Theta2 - t2[i])**2)
-    b1_fit = math.exp(-(B_coeff1 - b1[i])**2)
-    b2_fit = math.exp(-(B_coeff2 - b2[i])**2) 
+    
+    R1_fit = abs(((r1[i]-Radius1)**2)/Radius1)
+    R2_fit = abs(((r2[i]-Radius2)**2)/Radius2)
+    L1_fit = abs(((l1[i]-Length1)**2)/Length1)
+    L2_fit = abs(((l2[i]-Length2)**2)/Length2)
+    T1_fit = abs(((t1[i]-Theta1)**2)/Theta1)
+    T2_fit = abs(((t2[i]-Theta2)**2)/Theta2)
+    b1_fit = abs(((b1[i]-B_coeff1)**2)/B_coeff1)
+    b2_fit = abs(((b2[i]-B_coeff2)**2)/B_coeff2) 
 
-    fitness.append((R1_fit+R2_fit+L1_fit+L2_fit+T1_fit+T2_fit+b1_fit+b2_fit)/8) ## 1, +99
+    Chi = R1_fit+R2_fit+L1_fit+L2_fit+T1_fit+T2_fit+b1_fit+b2_fit
+    
+    fitness.append(np.log10(1.0/(Chi))+1)
 
 
 for i in range(0, len(fitness)): #introduce error
     if (fitness[i] == 0):
         error.append(0.0)
     else:
-        error.append(0.0)
-    fitness[i] = random.gauss(fitness[i], 0.0)
+        error.append(0.1)
+    fitness[i] = random.gauss(fitness[i], 0.1)
 
 with open('fitnessScores.csv', "r") as f2:
     lines = f2.readlines()
@@ -106,4 +109,4 @@ with open(str(g.Gen)+'_fitnessScores.csv', "w") as f3:
     f3.writelines(lines2)
 f3.close()
 
-            
+print("Max Fitness: " +str(max(fitness)))            

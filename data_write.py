@@ -36,7 +36,7 @@ L2 = []
 
 ## read in parent file for seed, individuals, parents, and opperators
 
-with open(g.Gen+"_Parents.csv") as f1:
+with open(g.Gen+"_parents.csv") as f1:
     csv_read = csv.reader(f1, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i==1:
@@ -51,7 +51,7 @@ f1.close()
 
 ## Read in Chi score
 
-with open(g.Gen+'_ChiScores.csv') as f2:
+with open(g.Gen+'_chiScores.csv') as f2:
     csv_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i > 1:
@@ -78,8 +78,8 @@ with open(g.Gen+'_generationDNA.csv') as f4:
         if i > 8:
             radius.append(str(round(float(row[0]), 8)).rjust(10, ' '))
             length.append(str(round(float(row[1]), 8)).rjust(12, ' '))
-            Q.append(str(round(float(row[2]), 8)).rjust(10, ' '))
-            L.append(str(round(float(row[3]), 8)).rjust(10, ' '))
+            Q.append(str(round(float(row[2]), 8)).rjust(11, ' '))
+            L.append(str(round(float(row[3]), 8)).rjust(11, ' '))
 f4.close()
 
 

@@ -84,15 +84,15 @@ for i in range(0, len(r1)):
 
     Chi = R1_fit+R2_fit+L1_fit+L2_fit+T1_fit+T2_fit+b1_fit+b2_fit
     
-    fitness.append((1.0/(Chi)))
+    fitness.append(1/(Chi+1))
 
 
 for i in range(0, len(fitness)): #introduce error
     if (fitness[i] == 0):
         error.append(0.0)
     else:
-        error.append(0.0)
-    fitness[i] = random.gauss(fitness[i], 0.0)
+        error.append(0.1)
+    fitness[i] = random.gauss(fitness[i], 0.1)
 
 with open('fitnessScores.csv', "r") as f2:
     lines = f2.readlines()

@@ -101,4 +101,4 @@ with open(str(g.Gen)+'_ChiScores.csv', "w") as f3:
     f3.writelines(lines2)
 f3.close()
 
-            
+print("Min Chi^2: " + str(min(fitness)))            
