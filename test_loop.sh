@@ -17,7 +17,7 @@ g++ -std=c++11 GA.cpp
 
 pop=100
 arguement=1
-generations=10
+generations=50
 repro=3
 cross=36
 roul_no=2
@@ -38,75 +38,28 @@ do
 	    r=$(( $a + $b + $c ))
 	    if [ $r -eq 10 ]
 	    then  
-		for d in {6..6..6} # Reproduction
+		for d in {0..0..6} # Reproduction
 		do
-		    for e in {64..64..12} # Crossover Make sure Reprodcution + Crossover < pop
+		    for e in {100..100..6} # Crossover Make sure Reprodcution + Crossover < pop
 		    do
 			de=$(( $d +$e ))
 			if [ $de -le $pop ]
 			then
-			    for f in {10..10..5} # M_rate
+			    for f in {15..15..5} # M_rate
 			    do
 				if [ $f -ne 0 ]
 				then
-				    sigma=1
+				    sigma=5
 				fi
 				if [ $f -eq 0 ] 
 				then
 				    sigma=1
 				fi
-				for (( g=1; g <= $sigma; g++ )) # sigma
+				for (( g=5; g <= $sigma; g++ )) # sigma
 				do
 				    for h in {1..1..1} # test count
 				    do
-					for i in `seq 0 ${generations}` #generation
-					do
-					    if [ $i -eq $zero ] 
-					    then
-						echo ${d}'_'${e}'_'${f}'_'${g}'_'${h} 'Generation 0'
-						./a.out start $pop $d $e $f $g $roul_no $tour_no $rank_no $elite 
-						python3 test_fitness_chi.py $i # Call the fitness function desired (see Fitness Function Directory for alternate options) 
-						python3 test_chi.py $i
-						cp ${i}_fitnessScores.csv fitnessScores.csv
-						cp ${i}_chiScores.csv chiScores.csv
-						cp generationDNA.csv ${i}_generationDNA.csv
-						cp parents.csv ${i}_parents.csv
-						python data_write.py ${i}
-						mv ${i}_generationData.csv Run/${d}_${e}_${f}_${g}_${h}_${i}_generationData.csv
-					    fi
-
-					    if [ $i -ne $zero ]
-					    then
-						echo ${d}'_'${e}'_'${f}'_'${g}'_'${h} 'Generation' ${i}
-						./a.out cont $pop $d $e $f $g $roul_no $tour_no $rank_no $elite
-						python3 test_fitness_chi.py $i # call fitness function
-						python3 test_chi.py $i
-						cp ${i}_fitnessScores.csv fitnessScores.csv
-						cp ${i}_chiScores.csv chiScores.csv
-						cp generationDNA.csv ${i}_generationDNA.csv
-						cp parents.csv ${i}_parents.csv
-						python3 fitness_check.py ${i}
-						python data_write.py ${i}
-						mv ${i}_generationData.csv Run/${d}_${e}_${f}_${g}_${h}_${i}_generationData.csv
-					    fi
-					    echo waiting... 
-					    echo ...
-					    echo ...
-					    echo ...
-					done
-					python3 test_plotter.py $pop $generations $repro $cross  # Call desired Plotter (see Plotting functions for alternatives)
-					python3 chi_plotter.py $pop $generations $repro $cross
-					cp fitness.png ${d}_${e}_${f}_${g}_${h}_fitness.png
-					cp chi.png ${d}_${e}_${f}_${g}_${h}_chi.png
-					mv ${d}_${e}_${f}_${g}_${h}_fitness.png Run
-					mv ${d}_${e}_${f}_${g}_${h}_chi.png Run
-					for i in `seq 0 $generations`
-					do
-					    rm ${i}_fitnessScores.csv
-					    rm ${i}_chiScores.csv
-					    rm ${i}_parents.csv
-					    rm ${i}_generationDNA.csv
-					done
+					./test_run.sh ${pop} ${generations} ${d} ${e} ${f} ${g} ${a} ${b} ${c} ${elite} ${h}
 				    done
 				done
 			    done

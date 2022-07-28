@@ -1,0 +1,105 @@
+Location of individuals used to make this generation:
+Seed: 1658933209
+
+
+Current Gen, Parent 1, Parent 2, Operator
+ 1, 79, 10, Crossover
+ 2, 79, 10, Crossover
+ 3, 61, 84, Crossover
+ 4, 61, 84, Crossover
+ 5, 94, 85, Crossover
+ 6, 94, 85, Crossover
+ 7, 87, 17, Crossover
+ 8, 87, 17, Crossover
+ 9, 46, 71, Crossover
+10, 46, 71, Crossover
+11, 49, 91, Crossover
+12, 49, 91, Crossover
+13, 63, 97, Crossover
+14, 63, 97, Crossover
+15, 14, 44, Crossover
+16, 14, 44, Crossover
+17, 95, 57, Crossover
+18, 95, 57, Crossover
+19, 61, 54, Crossover
+20, 61, 54, Crossover
+21,  7, 38, Crossover
+22,  7, 38, Crossover
+23, 84, 66, Crossover
+24, 84, 66, Crossover
+25, 92, 19, Crossover
+26, 92, 19, Crossover
+27, 99, 44, Crossover
+28, 99, 44, Crossover
+29, 92, 93, Crossover
+30, 92, 93, Crossover
+31, 44, 47, Crossover
+32, 44, 47, Crossover
+33, 10, 49, Crossover
+34, 10, 49, Crossover
+35, 61, 49, Crossover
+36, 61, 49, Crossover
+37, 38, 14, Crossover
+38, 38, 14, Crossover
+39, 17, 46, Crossover
+40, 17, 46, Crossover
+41, 17,  7, Crossover
+42, 17,  7, Crossover
+43, 25, 68, Crossover
+44, 25, 68, Crossover
+45, 74, 49, Crossover
+46, 74, 49, Crossover
+47, 83, 73, Crossover
+48, 83, 73, Crossover
+49, 71, 85, Crossover
+50, 71, 85, Crossover
+51, 44, 93, Crossover
+52, 44, 93, Crossover
+53, 71, 57, Crossover
+54, 71, 57, Crossover
+55, 92,  7, Crossover
+56, 92,  7, Crossover
+57, 79, 92, Crossover
+58, 79, 92, Crossover
+59,  2, 97, Crossover
+60,  2, 97, Crossover
+61, 41, 49, Crossover
+62, 41, 49, Crossover
+63, 79, 49, Crossover
+64, 79, 49, Crossover
+65,  7, 39, Crossover
+66,  7, 39, Crossover
+67, 92, 17, Crossover
+68, 92, 17, Crossover
+69, 79, 84, Crossover
+70, 79, 84, Crossover
+71, 87, 63, Crossover
+72, 87, 63, Crossover
+73, 87, 97, Crossover
+74, 87, 97, Crossover
+75, 49, 49, Crossover
+76, 49, 49, Crossover
+77, 41, 41, Crossover
+78, 41, 41, Crossover
+79, 30, 73, Crossover
+80, 30, 73, Crossover
+81, 86, 100, Crossover
+82, 86, 100, Crossover
+83, 49,  4, Crossover
+84, 49,  4, Crossover
+85, 49, 99, Crossover
+86, 49, 99, Crossover
+87, 67,  2, Crossover
+88, 67,  2, Crossover
+89, 35, 92, Crossover
+90, 35, 92, Crossover
+91, 32, 44, Crossover
+92, 32, 44, Crossover
+93, 63,  2, Crossover
+94, 63,  2, Crossover
+95, 58, 100, Crossover
+96, 58, 100, Crossover
+97, 12, 45, Crossover
+98, 12, 45, Crossover
+99, 88, 44, Crossover
+100, 88, 44, Crossover
