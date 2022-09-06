@@ -234,7 +234,7 @@ int main(int argc, char const *argv[])
 						{
 							float l = distribution_length(generator);
 							generator_file << generator << endl;
-							while(l<37.5) // now we don't accept below 37.5 cm
+							while(l<10.0) // now we don't accept below 37.5 cm
 							{
 								l = distribution_length(generator);
 								generator_file << generator << endl;
@@ -327,6 +327,7 @@ int main(int argc, char const *argv[])
 		}
 	}
 	generator_file.close();
+	cout << "Bicone algorithm complete" << endl;
 	return (0);
 }
 	
@@ -771,7 +772,8 @@ void mutation(vector<vector<vector<float> > > & varOutput, float M_rate, float s
 		  normal_distribution<float> mutate(varOutput[i][j][k], sigma*varOutput[i][j][k]);
 		  varOutput[i][j][k] = mutate(generator);
 		  int intersect = 0;
-		  while(intersect == 0)
+		  int constrained = 0;
+		  while(intersect == 0 || constrained == 0)
 		    {
 		      float r = varOutput[i][j][0];
 		      float l = varOutput[i][j][1];
@@ -782,10 +784,28 @@ void mutation(vector<vector<vector<float> > > & varOutput, float M_rate, float s
 	
 		      if(a == 0.0 && max_outer_radius > end_point && end_point >= 0.0)
 			{
+			  if(r<0 || l<min_length || l>max_length || a<min_A || a>max_A || b<min_B || b>max_B)
+			    {
+			      constrained = 0;
+			      varOutput[i][j][k] = mutate(generator);
+			    }
+			  else
+			    {
+			      constrained = 1;
+			    }
 			  intersect = 1;
 			}
 		      else if(a != 0.0 && max_outer_radius > end_point && end_point >= 0.0 && max_outer_radius > vertex && vertex >= 0.0)
 			{
+			  if(r<0 || l<min_length || l>max_length || a<min_A || a>max_A || b<min_B || b>max_B)
+                            {
+                              constrained = 0;
+                              varOutput[i][j][k] = mutate(generator);
+                            }
+                          else
+                            {
+                              constrained = 1;
+                            }
 			  intersect = 1;
 			}
 		      else

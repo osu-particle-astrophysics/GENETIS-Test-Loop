@@ -28,6 +28,8 @@ elite=0
 M_rate=5
 sigma=1
 
+Count=0
+start=0
 
 for a in {2..2..2} # Roulette
 do
@@ -38,28 +40,42 @@ do
 	    r=$(( $a + $b + $c ))
 	    if [ $r -eq 10 ]
 	    then  
-		for d in {0..0..6} # Reproduction
+		for d in {0..12..4} # Reproduction
 		do
-		    for e in {100..100..6} # Crossover Make sure Reprodcution + Crossover < pop
+		    for e in {88..100..4} # Crossover Make sure Reprodcution + Crossover < pop
 		    do
 			de=$(( $d +$e ))
 			if [ $de -le $pop ]
 			then
-			    for f in {15..15..5} # M_rate
+			    for f in {15..25..5} # M_rate
 			    do
 				if [ $f -ne 0 ]
 				then
-				    sigma=5
+				    sigma=7
 				fi
 				if [ $f -eq 0 ] 
 				then
-				    sigma=1
+				    sigma=3
 				fi
-				for (( g=5; g <= $sigma; g++ )) # sigma
+				for (( g=3; g <= $sigma; g++ )) # sigma
 				do
-				    for h in {1..1..1} # test count
+				    for h in {1..10..1} # test count
 				    do
-					./test_run.sh ${pop} ${generations} ${d} ${e} ${f} ${g} ${a} ${b} ${c} ${elite} ${h}
+					sbatch test_run.sh ${pop} ${generations} ${d} ${e} ${f} ${g} ${a} ${b} ${c} ${elite} ${h}
+					Count=$((Count+1))
+					if [ $Count -ge 250 ]
+					then
+					    echo batch submitted
+					    nfiles=$(ls Plots/ | wc -l)
+					    while [[ $(((nfiles)%500)) -ne 0 || $nfiles -eq $start ]] 
+					    do
+						nfiles=$(ls Plots/ | wc -l)
+						echo $nfiles
+						sleep 10
+					    done
+					    start=$nfiles
+					    Count=0
+					fi
 				    done
 				done
 			    done
