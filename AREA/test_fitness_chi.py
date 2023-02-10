@@ -10,6 +10,7 @@ import math
 parser = argparse.ArgumentParser();
 parser.add_argument("Gen", type=int)
 parser.add_argument("NPop", type=int)
+parser.add_argument("Source", type=str)
 g=parser.parse_args()
 
 # Store some target Gain Patterns
@@ -23,14 +24,14 @@ target = [3.54491,0.297905,-0.535914,0.614219,0.179899,0.361058,-0.035016,-0.068
 observed = [[0]*len(target) for i in range(g.NPop+1)]
 
 # Read in values to the arrays
-with open("results_gen" + str(g.Gen) + ".csv") as f:
+with open(str(g.Source) + "/results_gen" + str(g.Gen) + ".csv") as f:
     csv_read = csv.reader(f, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i > 0:
             #sanity check row:
-            print(row[2])
+            #print(row[2])
             for j in range(len(target)):
-                observed[i][j] = float(row[j+2])           
+                observed[i-1][j] = float(row[j+3])           
 f.close()
 
 # Define lists to store scores
@@ -61,7 +62,7 @@ for i in range(0, len(fitness)):
         fitness[i] = tempFit
 
 # Write csv with data for the generation
-with open('gen' + str(g.Gen) + '_testLoopData.csv', "w") as f2:
+with open(str(g.Source) + '/gen' + str(g.Gen) + '_testLoopData.csv', "w") as f2:
     for x in range(0, len(fitness)+1):
         if x < 1:
             f2.write("chi2, fitness, error\n")
