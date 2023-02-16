@@ -1,0 +1,204 @@
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807222/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range

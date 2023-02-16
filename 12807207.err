@@ -1,0 +1,256 @@
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '1_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_1_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '2_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_2_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '3_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_3_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '4_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_4_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '5_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_5_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '6_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_6_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '7_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_7_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '8_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_8_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '9_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_9_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '10_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_10_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '11_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_11_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '12_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_12_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '13_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_13_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '14_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_14_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '15_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_15_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '16_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_16_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '17_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_17_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '18_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_18_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '19_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_19_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '20_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_20_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '21_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_21_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '22_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_22_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '23_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_23_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '24_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_24_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '25_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_25_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '26_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_26_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '27_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_27_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '28_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_28_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '29_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_29_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '30_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_30_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '31_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_31_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '32_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_32_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '33_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_33_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '34_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_34_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '35_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_35_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '36_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_36_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '37_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_37_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '38_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_38_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '39_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_39_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '40_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_40_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '41_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_41_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '42_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_42_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '43_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_43_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '44_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_44_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '45_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_45_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '46_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_46_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '47_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_47_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '48_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_48_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '49_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_49_generationData.csv': No such file or directory
+Traceback (most recent call last):
+  File "/tmp/slurmtmp.12807207/data_write.py", line 110, in <module>
+    f5.write( individual[i] +', '+ chi[i] +', '+ fitness[i] +', '+ error[i] +', '+ parent1[i] +', '+ parent2[i] +', '+ opperator[i] +', '+ \
+IndexError: list index out of range
+mv: cannot move '50_generationData.csv' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Run/3_94_20_7_2_2_6_1_50_generationData.csv': No such file or directory
+mv: cannot move 'fitness.png' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Plots/3_94_20_7_2_2_6_1_fitness.png': No such file or directory
+mv: cannot move 'chi.png' to '/users/PAS0654/ryantdebolt/test_loop_build_pueo/GENETIS-Test-Loop/Plots/3_94_20_7_2_2_6_1_chi.png': No such file or directory

@@ -1,105 +1,105 @@
 Location of individuals used to make this generation:
-Seed: 1658937425
+Seed: 1676582372
 
 
 Current Gen, Parent 1, Parent 2, Operator
- 1, 29,  1, Crossover
- 2, 29,  1, Crossover
- 3, 46, 13, Crossover
- 4, 46, 13, Crossover
- 5, 86, 14, Crossover
- 6, 86, 14, Crossover
- 7, 76,  7, Crossover
- 8, 76,  7, Crossover
- 9, 15, 86, Crossover
-10, 15, 86, Crossover
-11, 40, 53, Crossover
-12, 40, 53, Crossover
-13, 42, 17, Crossover
-14, 42, 17, Crossover
-15,  2, 77, Crossover
-16,  2, 77, Crossover
-17, 36, 83, Crossover
-18, 36, 83, Crossover
-19, 63, 73, Crossover
-20, 63, 73, Crossover
-21, 64, 80, Crossover
-22, 64, 80, Crossover
-23,  2, 58, Crossover
-24,  2, 58, Crossover
-25, 44, 55, Crossover
-26, 44, 55, Crossover
-27, 85, 15, Crossover
-28, 85, 15, Crossover
-29, 84, 34, Crossover
-30, 84, 34, Crossover
-31, 84, 56, Crossover
-32, 84, 56, Crossover
-33, 83, 63, Crossover
-34, 83, 63, Crossover
-35, 33, 15, Crossover
-36, 33, 15, Crossover
-37, 33, 95, Crossover
-38, 33, 95, Crossover
-39, 65, 58, Crossover
-40, 65, 58, Crossover
-41, 30, 36, Crossover
-42, 30, 36, Crossover
-43, 28, 95, Crossover
-44, 28, 95, Crossover
-45, 15, 30, Crossover
-46, 15, 30, Crossover
-47, 84, 38, Crossover
-48, 84, 38, Crossover
-49,  3, 20, Crossover
-50,  3, 20, Crossover
-51, 15, 51, Crossover
-52, 15, 51, Crossover
-53,  7, 33, Crossover
-54,  7, 33, Crossover
-55, 65, 54, Crossover
-56, 65, 54, Crossover
-57, 52,  5, Crossover
-58, 52,  5, Crossover
-59, 30, 76, Crossover
-60, 30, 76, Crossover
-61, 45,  1, Crossover
-62, 45,  1, Crossover
-63, 26, 78, Crossover
-64, 26, 78, Crossover
-65,  1,  7, Crossover
-66,  1,  7, Crossover
-67, 16, 52, Crossover
-68, 16, 52, Crossover
-69, 17, 72, Crossover
-70, 17, 72, Crossover
-71, 44, 84, Crossover
-72, 44, 84, Crossover
-73,  1, 92, Crossover
-74,  1, 92, Crossover
-75, 76, 51, Crossover
-76, 76, 51, Crossover
-77, 80, 66, Crossover
-78, 80, 66, Crossover
-79, 53, 80, Crossover
-80, 53, 80, Crossover
-81, 89,  3, Crossover
-82, 89,  3, Crossover
-83, 46, 43, Crossover
-84, 46, 43, Crossover
-85, 46, 93, Crossover
-86, 46, 93, Crossover
-87,  7, 86, Crossover
-88,  7, 86, Crossover
-89, 69, 53, Crossover
-90, 69, 53, Crossover
-91, 89, 67, Crossover
-92, 89, 67, Crossover
-93, 28, 87, Crossover
-94, 28, 87, Crossover
-95, 65, 43, Crossover
-96, 65, 43, Crossover
-97, 19,  6, Crossover
-98, 19,  6, Crossover
-99, 56, 89, Crossover
-100, 56, 89, Crossover
+ 1, 86, 78, Crossover
+ 2, 86, 78, Crossover
+ 3, 97, 61, Crossover
+ 4, 97, 61, Crossover
+ 5, 22, 12, Crossover
+ 6, 22, 12, Crossover
+ 7, 32, 13, Crossover
+ 8, 32, 13, Crossover
+ 9, 97, 25, Crossover
+10, 97, 25, Crossover
+11, 92, 41, Crossover
+12, 92, 41, Crossover
+13, 54, 33, Crossover
+14, 54, 33, Crossover
+15, 47, 44, Crossover
+16, 47, 44, Crossover
+17, 14, 15, Crossover
+18, 14, 15, Crossover
+19, 11, 64, Crossover
+20, 11, 64, Crossover
+21,  2, 32, Crossover
+22,  2, 32, Crossover
+23, 65, 54, Crossover
+24, 65, 54, Crossover
+25, 70, 41, Crossover
+26, 70, 41, Crossover
+27, 70,  2, Crossover
+28, 70,  2, Crossover
+29, 28, 23, Crossover
+30, 28, 23, Crossover
+31, 34, 54, Crossover
+32, 34, 54, Crossover
+33, 33, 33, Crossover
+34, 33, 33, Crossover
+35, 67, 23, Crossover
+36, 67, 23, Crossover
+37, 84, 69, Crossover
+38, 84, 69, Crossover
+39, 23, 73, Crossover
+40, 23, 73, Crossover
+41, 60, 33, Crossover
+42, 60, 33, Crossover
+43, 36, 11, Crossover
+44, 36, 11, Crossover
+45, 34, 45, Crossover
+46, 34, 45, Crossover
+47, 89, 71, Crossover
+48, 89, 71, Crossover
+49, 73, 54, Crossover
+50, 73, 54, Crossover
+51, 79, 81, Crossover
+52, 79, 81, Crossover
+53, 35, 47, Crossover
+54, 35, 47, Crossover
+55, 54, 13, Crossover
+56, 54, 13, Crossover
+57,  6, 86, Crossover
+58,  6, 86, Crossover
+59,  3, 61, Crossover
+60,  3, 61, Crossover
+61, 45, 14, Crossover
+62, 45, 14, Crossover
+63, 82, 44, Crossover
+64, 82, 44, Crossover
+65, 73, 54, Crossover
+66, 73, 54, Crossover
+67, 27, 61, Crossover
+68, 27, 61, Crossover
+69, 59, 35, Crossover
+70, 59, 35, Crossover
+71, 99, 25, Crossover
+72, 99, 25, Crossover
+73, 42, 34, Crossover
+74, 42, 34, Crossover
+75, 23, 67, Crossover
+76, 23, 67, Crossover
+77, 67, 61, Crossover
+78, 67, 61, Crossover
+79, 56, 87, Crossover
+80, 56, 87, Crossover
+81, 70, 62, Crossover
+82, 70, 62, Crossover
+83, 54, 65, Crossover
+84, 54, 65, Crossover
+85, 84, 41, Crossover
+86, 84, 41, Crossover
+87, 41, 69, Crossover
+88, 41, 69, Crossover
+89, 81, 73, Crossover
+90, 81, 73, Crossover
+91, 29, 77, Crossover
+92, 29, 77, Crossover
+93, 74, 73, Crossover
+94, 74, 73, Crossover
+95, 37, 48, Crossover
+96, 37, 48, Crossover
+97, 68, 41, Crossover
+98, 68, 41, Crossover
+99, 42, 66, Crossover
+100, 42, 66, Crossover
