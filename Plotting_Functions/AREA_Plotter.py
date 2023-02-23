@@ -17,6 +17,7 @@ scores=[]
 chi=[]
 max_scores = []
 ave_scores = []
+min_chi = []
 plt.figure(figsize=(16,9))
 for z in range(0, g.Gen):
     with open("gen"+str(z)+"_testLoopData.csv") as f:
