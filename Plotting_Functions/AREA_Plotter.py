@@ -8,7 +8,7 @@ from statistics import mean
 parser = argparse.ArgumentParser();
 parser.add_argument("Npop", type=int)
 parser.add_argument("Gen", type=int)
-#parser.add_argument("Repro", type=int)
+parser.add_argument("Runname", type=str)
 #parser.add_argument("Cross", type=int)
 g = parser.parse_args()
 
@@ -20,7 +20,7 @@ ave_scores = []
 min_chi = []
 plt.figure(figsize=(16,9))
 for z in range(0, g.Gen):
-    with open("gen"+str(z)+"_testLoopData.csv") as f:
+    with open(g.Runname + "/gen"+str(z)+"_testLoopData.csv") as f:
         txt_read = csv.reader(f, delimiter = ',')
         for i, row in enumerate(txt_read):
           #  print(i)
@@ -55,7 +55,7 @@ plt.savefig("fitness.png")
 
 scores2=[]
 chi2=[]
-with open("gen"+str(g.Gen)+"_testLoopData.csv") as f2:
+with open(g.Runname +"/gen"+str(g.Gen)+"_testLoopData.csv") as f2:
     txt_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(txt_read):
         if i>1:
