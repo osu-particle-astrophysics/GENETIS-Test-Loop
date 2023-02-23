@@ -24,7 +24,7 @@ for z in range(0, g.Gen):
         txt_read = csv.reader(f, delimiter = ',')
         for i, row in enumerate(txt_read):
           #  print(i)
-            if i>1:
+            if i>0:
                 scores.append(float(row[1]))
                 chi.append(float(row[0]))
     max_scores.append(max(scores))
