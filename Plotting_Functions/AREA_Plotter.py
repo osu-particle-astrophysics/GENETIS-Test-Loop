@@ -34,7 +34,7 @@ for z in range(0, g.Gen):
     generations = [z for f in range(0, g.Npop)]
     #print( str(len(scores[0:g.Repro])) + "Repro") #sanity check
     plt.title('Non-Linear Bicone Evolution test')
-    plt.plot(generations, scores, '.', color = 'red', markersize = '3.0', alpha=.5)
+    plt.plot(generations, scores, '.', color = 'red', markersize = '5.0', alpha=1)
     #plt.plot(generations[g.Repro:g.Cross], scores[g.Repro:g.Cross], '.', color = 'green', markersize = '3.0', alpha=.5)
     #plt.plot(generations[0:g.Repro], scores[0:g.Repro], '*', color = 'blue', markersize ='5.0')
     plt.ylabel('Fitness Scores')
