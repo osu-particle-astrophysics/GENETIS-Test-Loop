@@ -55,7 +55,7 @@ plt.savefig("fitness.png")
 
 scores2=[]
 chi2=[]
-with open("gen"+g.Gen+"_testLoopData.csv") as f2:
+with open("gen"+str(g.Gen)+"_testLoopData.csv") as f2:
     txt_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(txt_read):
         if i>1:
