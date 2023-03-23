@@ -36,7 +36,8 @@ results_gen = pd.DataFrame(columns=['gen', 'indiv', 'fitness', 'c0', 'c1', 'c2',
 print("Reading results from Gen " + str(gen) + " and compiling summary CSV...")
 #loop over each individual
 for indiv in range(individuals):
-    f_indiv_in = open(source + "/gen_{}".format(str(gen)) + "/child_{}.txt".format(str(indiv)), 'rt')
+    f_indiv_in = open(source  + "/child_{}.txt".format(str(indiv)), 'rt')
+    #f_indiv_in = open(source + "/gen_{}".format(str(gen)) + "/child_{}.txt".format(str(indiv)), 'rt')
     indiv_data = f_indiv_in.readlines()
     for i,line in enumerate(indiv_data):
         if "test Veff :" in line:

@@ -34,7 +34,8 @@ source=args.input[3]
 #get list of test loop fitness scores for each individual from csv
 #BRYAN NOTE: might need to change this filepath depending on where the csv is
 fs_list = []
-with open(str(source) + "/gen" + str(gen) + "_testLoopData.csv") as f:
+#with open(str(source) + "/gen" + str(gen) + "_testLoopData.csv") as f:
+with open(str(source) + "/gen" + str(gen) + "_Scores.csv") as f:
         csv_read = csv.reader(f, delimiter = ',')
         for i,row in enumerate(csv_read):
                 if i > 0:
@@ -50,7 +51,8 @@ if len(fs_list) != int(individuals):
 
 #Create new text with test loop fitness scores for each child_*.txt files
 for ind in range(0, individuals):
-        f_childIn = open(source + "/" + "gen_{}".format(gen) + "/child_{}.txt".format(ind), 'rt')
+        #f_childIn = open(source + "/" + "gen_{}".format(gen) + "/child_{}.txt".format(ind), 'rt')
+        f_childIn = open(source + "/child_{}.txt".format(ind), 'rt')
         childData = f_childIn.readlines()
         for i,line in enumerate(childData):
                 if "test Veff :" in line:
@@ -59,7 +61,8 @@ for ind in range(0, individuals):
         f_childIn.close()
         
         #write new child file with test loop fitness score inserted
-        f_childOut = open(source + "/" + "gen_{}".format(gen) + "/child_{}.txt".format(ind), 'wt')
+        #f_childOut = open(source + "/" + "gen_{}".format(gen) + "/child_{}.txt".format(ind), 'wt')
+        f_childOut = open(source + "/child_{}.txt".format(ind), 'wt')
         for line in childData:
                 if line.strip("\n") != " MHz":
                         f_childOut.write(line)
