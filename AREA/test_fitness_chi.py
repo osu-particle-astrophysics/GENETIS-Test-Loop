@@ -62,7 +62,7 @@ for i in range(0, len(fitness)):
         fitness[i] = tempFit
 
 # Write csv with data for the generation
-with open(str(g.Source) + '/gen' + str(g.Gen) + '_testLoopData.csv', "w") as f2:
+with open(str(g.Source) + '/gen' + str(g.Gen) + '_Scores.csv', "w") as f2:
     for x in range(0, len(fitness)+1):
         if x < 1:
             f2.write("chi2, fitness, error\n")
