@@ -1,4 +1,5 @@
-Results/
+ARA/Results/
+ARA/Run/
 generators.csv
 */*.csv
 *.png
