@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH -A PAS1960
-#SBATCH -t 72:00:00
+#SBATCH -t 00:20:00
 #SBATCH -N 1
 #SBATCH -n 8
 ##SBATCH -o ~
@@ -28,11 +28,16 @@ echo ${Run_Number}
 # Move things to TMPDIR
 cp GA/a.out $TMPDIR
 cp test_fitness_chi.py $TMPDIR
-cp AREA_plotter.py $TMPDIR
+cp AREA_Plotter.py $TMPDIR
 cp makeResultsCSV_singleGenSummary.py $TMPDIR
 cp getFS_testLoop.py $TMPDIR
 cd $TMPDIR
 mkdir txts
+
+echo ls: should see txts/ directory
+ls
+echo pwd: see where we are
+pwd
 
 #loop over generations
 for g in `seq 0 ${Generations}`
@@ -43,7 +48,10 @@ do
 	echo ${Roul_Cross}'_'${Roul_Mut}'_'${Tour_Cross}'_'${Tour_Mut} 'Generation 0'
 	./a.out -gp $Roul_Cross $Roul_Mut $Tour_Cross $Tour_Mut -p 0
 	echo 'GA ran for gen 0'
-
+	echo ls-ing txts/
+	ls txts/
+	echo ls-ing tempdir:
+	ls
     fi
 
     # Run GA for non-zero generations
@@ -52,22 +60,22 @@ do
 	echo ${Roul_Cross}'_'${Roul_Mut}'_'${Tour_Cross}'_'${Tour_Mut} 'Generation' ${g}
 	
 	#Call GA
-	./a.out -gp $Roul_Cross $Roul_Mut $Tour_Cross $Tour_Mut -p $population txts/child*
+	./a.out -gp $Roul_Cross $Roul_Mut $Tour_Cross $Tour_Mut -p $population ./child*
 	echo 'GA ran for gen' ${g}
 
     fi
 
     # Call script to get results from AREA GA output
-    python makeResultsCSV_singleGenSummary.py -i $g $population txts
+    python makeResultsCSV_singleGenSummary.py -i $g $population .
 
     # Call script to calculate test loop fitness
-    python test_fitness_chi.py $g $population txts
+    python test_fitness_chi.py $g $population .
     
     # Call script to write test loop fitness scores to individual's .txts
-    python getFS_testLoop.py -i $g $population 1 txts
+    python getFS_testLoop.py -i $g $population 1 .
 
     #save copies of files created into storage directory (change based on user)
-    cp txts/gen${g}_Scores.csv /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/Results/${Roul_Cross}'_'${Roul_Mut}'_'${Tour_Cross}'_'${Tour_Mut}'_'${Run_Number}_Scores.csv
+    cp gen${g}_Scores.csv /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/Results/${Roul_Cross}'_'${Roul_Mut}'_'${Tour_Cross}'_'${Tour_Mut}'_'${Run_Number}'_'${g}_Scores.csv
     
     #Show Status
     echo waiting...
@@ -78,6 +86,6 @@ done
 
 # Call plotting scripts
 # Save plots in plot directory with unique names
-python AREA_Plotter.py $population $Generations txts
+python3 AREA_Plotter.py $population $Generations .
 mv fitness.png /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/Plots/${Roul_Cross}'_'${Roul_Mut}'_'${Tour_Cross}'_'${Tour_Mut}'_'${Run_Number}_fitness.png
 

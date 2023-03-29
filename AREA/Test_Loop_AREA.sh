@@ -14,11 +14,15 @@
 # run cont for bicone GA
 # repeat for step 2-4 until desired amount of generations is complete
 
+#echo 1
+
 ## Compile the GA
-g++ -std=c++11 GA.cpp
+g++ -std=c++11 GA/ara_GA_noLinearDep_speedUpGainWritingTest_15March2023.cc
+
+#echo 2
 
 pop=100
-generations=50
+generations=2
 Count=0
 Start=0
 
@@ -31,11 +35,14 @@ do
 		do
 			for d in {25..25..1} # Tournament Mutation
 			do
-				if [ $a + $b + $c + $d -ne $pop ]
+			    let pop_check=$(( $a + $b + $c + $d ))
+				if [ $pop_check -eq $pop ]
     		then
 				  for t in {1..1..1} # test count
 				  do
+				      #echo 2.1
 						sbatch test_run_AREA.sh ${pop} ${generations} ${a} ${b} ${c} ${d} ${t}
+						echo job submitted
 						Count=$((Count+1))
 						if [ $Count -ge 250 ]
 						then
@@ -56,3 +63,5 @@ do
 		done
 	done
 done
+
+#echo 3
