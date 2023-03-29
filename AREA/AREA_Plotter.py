@@ -40,9 +40,9 @@ for z in range(0, g.Gen):
     plt.ylabel('Fitness Scores')
     plt.xlabel('Generations')
     plt.axis([0,g.Gen, -0.05, 1.05])
-    plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
+    plt.grid(visible=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
     plt.minorticks_on()
-    plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
+    plt.grid(visible=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
     generations.clear()
     scores.clear()
 
