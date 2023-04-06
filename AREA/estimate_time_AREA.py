@@ -20,5 +20,8 @@ r_sec = seconds - (minutes*60)
 hours = int(minutes/60)
 r_min = minutes - (hours*60)
 
+files = runCount*generations + runCount
+
 print("Jobs: "+str(runCount)+" in "+ str(batches)+" Batches") 
 print("Hours:  "+ str(hours) + " Min: "+ str(r_min)+ " Sec: "+ str(r_sec))
+print("Files: " +str(files))
