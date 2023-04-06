@@ -38,7 +38,7 @@ do
 			    let pop_check=$(( $a + $b + $c + $d ))
 				if [ $pop_check -eq $pop ]
     		then
-				  for t in {1..1..1} # test count
+				  for t in {1..10..1} # test count
 				  do
 				      #echo 2.1
 						sbatch test_run_AREA.sh ${pop} ${generations} ${a} ${b} ${c} ${d} ${t}
