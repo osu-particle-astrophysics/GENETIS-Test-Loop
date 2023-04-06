@@ -22,7 +22,7 @@ g++ -std=c++11 GA/ara_GA_noLinearDep_speedUpGainWritingTest_15March2023.cc
 #echo 2
 
 pop=100
-generations=2
+generations=50
 Count=0
 Start=0
 
