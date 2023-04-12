@@ -64,8 +64,8 @@ for a in range(0,101,10):
 
 							# fig, ax = plt.subplots() 
 							plt.figure(count, figsize=(16,9))
-							plt.plot(gen_num, lows, c=c, linestyle = 'dotted', label =('Run'+str(h)+'average'))
-							plt.plot(gen_num, highs, c=c, linestyle = 'solid', label = ('Run'+str(h)+'High'))
+							plt.plot(gen_num, lows, c=c, linestyle = 'dotted', label =('Run'+str(e)+'average'))
+							plt.plot(gen_num, highs, c=c, linestyle = 'solid', label = ('Run'+str(e)+'High'))
 							plt.axis([0,50, 0.00, 1.25])
 							plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
 							plt.minorticks_on()
