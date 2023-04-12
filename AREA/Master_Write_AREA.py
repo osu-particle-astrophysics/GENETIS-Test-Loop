@@ -40,40 +40,40 @@ for a in range(0,101,10):
 						gen_num = []
 						for x in range(0,51,1):
 							gen_num.append(x) #stores generation numbers
-							for gens in range(0,51):
-								runname= str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d) +'_'+ str(e) +'_'+ str(gens) 
-								fit = [] # store all the fitness scores of a single generation
-								chi = [] # store all the chi scores of a single generation
-								with open(str(runname) + '_Scores.csv') as F1:
-									txt_read = csv.reader(F1, delimiter = ",")
-									for i, row in enumerate(txt_read):
-										if i > 0:
-											fit.append(float(row[1]))
-											chi.append(float(row[0]))
-								averages.append(mean(fit))
-								highs.append(max(fit))
-								lows.append(min(chi))
+						for gens in range(0,51):
+							runname= str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d) +'_'+ str(e) +'_'+ str(gens) 
+							fit = [] # store all the fitness scores of a single generation
+							chi = [] # store all the chi scores of a single generation
+							with open(str(runname) + '_Scores.csv') as F1:
+								txt_read = csv.reader(F1, delimiter = ",")
+								for i, row in enumerate(txt_read):
+									if i > 0:
+										fit.append(float(row[1]))
+										chi.append(float(row[0]))
+							averages.append(mean(fit))
+							highs.append(max(fit))
+							lows.append(min(chi))
                     
-								## Now update temp_earliest
-								if(min(chi) <= bench_mark and gens < temp_earliest): # check if the min chi score is bellow threshold 
-									temp_earliest = gens
-								if(min(chi) <= bench_mark2 and gens < temp_earliest2):
-									temp_earliest2 = gens
-							temp_benchmark_gen.append(temp_earliest) 
-							temp_benchmark_gen2.append(temp_earliest2)
+							## Now update temp_earliest
+							if(min(chi) <= bench_mark and gens < temp_earliest): # check if the min chi score is bellow threshold 
+								temp_earliest = gens
+							if(min(chi) <= bench_mark2 and gens < temp_earliest2):
+								temp_earliest2 = gens
+						temp_benchmark_gen.append(temp_earliest) 
+						temp_benchmark_gen2.append(temp_earliest2)
 
-							# fig, ax = plt.subplots() 
-							plt.figure(count, figsize=(16,9))
-							plt.plot(gen_num, lows, c=c, linestyle = 'dotted', label =('Run'+str(e)+'average'))
-							plt.plot(gen_num, highs, c=c, linestyle = 'solid', label = ('Run'+str(e)+'High'))
-							plt.axis([0,50, 0.00, 1.25])
-							plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
-							plt.minorticks_on()
-							plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
-							plt.ylabel('Scores')
-							plt.xlabel('Generations')
-							plt.suptitle('Parameter:'+str(a)+'RC' +str(b)+'RM' +str(r)+'TC' +str(d)+'TM')
-							plt.savefig("plot" +  str(a) +'_' + str(b)+'_' + str(r)+'_' + str(d) +'.png')
+						# fig, ax = plt.subplots() 
+						plt.figure(count, figsize=(16,9))
+						plt.plot(gen_num, lows, c=c, linestyle = 'dotted', label =('Run'+str(e)+'average'))
+						plt.plot(gen_num, highs, c=c, linestyle = 'solid', label = ('Run'+str(e)+'High'))
+						plt.axis([0,50, 0.00, 1.25])
+						plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
+						plt.minorticks_on()
+						plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
+						plt.ylabel('Scores')
+						plt.xlabel('Generations')
+						plt.suptitle('Parameter:'+str(a)+'RC' +str(b)+'RM' +str(r)+'TC' +str(d)+'TM')
+						plt.savefig("plot" +  str(a) +'_' + str(b)+'_' + str(r)+'_' + str(d) +'.png')
 					plt.close()
 					print("plot "+ str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d) +" complete")
 					earliest_gen.append(min(temp_benchmark_gen))
