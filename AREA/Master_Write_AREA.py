@@ -54,11 +54,11 @@ for a in range(0,101,10):
 								highs.append(max(fit))
 								lows.append(min(chi))
                     
-									## Now update temp_earliest
-									if(min(chi) <= bench_mark and gens < temp_earliest): # check if the min chi score is bellow threshold 
-										temp_earliest = gens
-									if(min(chi) <= bench_mark2 and gens < temp_earliest2):
-										temp_earliest2 = gens
+								## Now update temp_earliest
+								if(min(chi) <= bench_mark and gens < temp_earliest): # check if the min chi score is bellow threshold 
+									temp_earliest = gens
+								if(min(chi) <= bench_mark2 and gens < temp_earliest2):
+									temp_earliest2 = gens
 							temp_benchmark_gen.append(temp_earliest) 
 							temp_benchmark_gen2.append(temp_earliest2)
 
