@@ -50,9 +50,9 @@ for a in range(0,101,10):
 										if i > 0:
 											fit.append(float(row[1]))
 											chi.append(float(row[0]))
-									averages.append(mean(fit))
-									highs.append(max(fit))
-									lows.append(min(chi))
+								averages.append(mean(fit))
+								highs.append(max(fit))
+								lows.append(min(chi))
                     
 									## Now update temp_earliest
 									if(min(chi) <= bench_mark and gens < temp_earliest): # check if the min chi score is bellow threshold 
