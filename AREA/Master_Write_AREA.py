@@ -30,7 +30,7 @@ for a in range(0,101,10):
 					temp_benchmark_gen = [] ## 
 					temp_benchmark_gen2 = []
 					run_name.append(str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d))
-					for e in range(0,11):
+					for e in range(1,11):
 						temp_earliest = 50 ## Need to find the earliest gen where BM passed for each run
 						temp_earliest2 = 50
 						c=next(color)
