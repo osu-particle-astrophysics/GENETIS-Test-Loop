@@ -22,14 +22,14 @@ bench_mark2 =0.1
 
 for a in range(0,101,10): 
 	for b in range(0,101,10): 
-		for c in range(0,101,10):
+		for r in range(0,101,10):
 			for d in range(0,101,10):
 				if (a+b+c+d == 100):
 					count = count+1
 					color = iter(cm.rainbow(np.linspace(0,1,11)))
 					temp_benchmark_gen = [] ## 
 					temp_benchmark_gen2 = []
-					run_name.append(str(a) +'_'+ str(b) +'_'+ str(c) +'_'+ str(d))
+					run_name.append(str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d))
 					for e in range(0,11):
 						temp_earliest = 50 ## Need to find the earliest gen where BM passed for each run
 						temp_earliest2 = 50
@@ -41,7 +41,7 @@ for a in range(0,101,10):
 						for x in range(0,51,1):
 							gen_num.append(x) #stores generation numbers
 							for gens in range(0,51):
-								runname= str(a) +'_'+ str(b) +'_'+ str(c) +'_'+ str(d) +'_'+ str(e) +'_'+ str(gens) 
+								runname= str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d) +'_'+ str(e) +'_'+ str(gens) 
 								fit = [] # store all the fitness scores of a single generation
 								chi = [] # store all the chi scores of a single generation
 								with open(str(runname) + '_Scores.csv') as F1:
@@ -72,10 +72,10 @@ for a in range(0,101,10):
 							plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
 							plt.ylabel('Scores')
 							plt.xlabel('Generations')
-							plt.suptitle('Parameter:'+str(a)+'RC' +str(b)+'RM' +str(c)+'TC' +str(d)+'TM')
-							plt.savefig("plot" +  str(a) +'_' + str(b)+'_' + str(c)+'_' + str(d) +'.png')
+							plt.suptitle('Parameter:'+str(a)+'RC' +str(b)+'RM' +str(r)+'TC' +str(d)+'TM')
+							plt.savefig("plot" +  str(a) +'_' + str(b)+'_' + str(r)+'_' + str(d) +'.png')
 					plt.close()
-					print("plot "+ str(a) +'_'+ str(b) +'_'+ str(c) +'_'+ str(d) +" complete")
+					print("plot "+ str(a) +'_'+ str(b) +'_'+ str(r) +'_'+ str(d) +" complete")
 					earliest_gen.append(min(temp_benchmark_gen))
 					average_gen.append(mean(temp_benchmark_gen))
 					average_gen2.append(mean(temp_benchmark_gen2))
