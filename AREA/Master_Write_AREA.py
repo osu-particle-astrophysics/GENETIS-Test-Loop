@@ -72,7 +72,7 @@ for a in range(0,101,10):
 							plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
 							plt.ylabel('Scores')
 							plt.xlabel('Generations')
-							 plt.suptitle('Parameter:'+str(a)+'RC' +str(b)+'RM' +str(c)+'TC' +str(d)+'TM')
+							plt.suptitle('Parameter:'+str(a)+'RC' +str(b)+'RM' +str(c)+'TC' +str(d)+'TM')
 							plt.savefig("plot" +  str(a) +'_' + str(b)+'_' + str(c)+'_' + str(d) +'.png')
 					plt.close()
 					print("plot "+ str(a) +'_'+ str(b) +'_'+ str(c) +'_'+ str(d) +" complete")
