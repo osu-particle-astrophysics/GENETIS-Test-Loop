@@ -24,7 +24,7 @@ for a in range(0,101,10):
 	for b in range(0,101,10): 
 		for c in range(0,101,10):
 			for d in range(0,101,10):
-				if (a+b+c+d = 100):
+				if (a+b+c+d == 100):
 					count = count+1
 					color = iter(cm.rainbow(np.linspace(0,1,11)))
 					temp_benchmark_gen = [] ## 
