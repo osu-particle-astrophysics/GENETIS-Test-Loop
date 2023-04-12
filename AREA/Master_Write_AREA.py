@@ -29,7 +29,7 @@ for a in range(0,101,10):
 					color = iter(cm.rainbow(np.linspace(0,1,11)))
 					temp_benchmark_gen = [] ## 
 					temp_benchmark_gen2 = []
-					run_name.append(str(d) +'_'+ str(e) +'_'+ str(f) +'_'+ str(g))
+					run_name.append(str(a) +'_'+ str(b) +'_'+ str(c) +'_'+ str(d))
 					for e in range(0,11):
 						temp_earliest = 50 ## Need to find the earliest gen where BM passed for each run
 						temp_earliest2 = 50
