@@ -9,7 +9,8 @@ import numpy as np
 
 ## Read in arguement
 parser = argparse.ArgumentParser();
-parser.add_argument("Gen", type=str)
+parser.add_argument("Design", type=str)
+parser.add_argument("Gen", type=int)
 g = parser.parse_args()
 
 ## Data lists and variables
@@ -36,7 +37,7 @@ L2 = []
 
 ## read in parent file for seed, individuals, parents, and opperators
 
-with open(g.Gen+"_parents.csv") as f1:
+with open("parents.csv") as f1:
     csv_read = csv.reader(f1, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i==1:
@@ -51,7 +52,7 @@ f1.close()
 
 ## Read in Chi score
 
-with open(g.Gen+'_chiScores.csv') as f2:
+with open('chiScores.csv') as f2:
     csv_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i > 1:
@@ -61,7 +62,7 @@ f2.close()
 
 ## Read in fitness score and error
 
-with open(g.Gen+'_fitnessScores.csv') as f3:
+with open('fitnessScores.csv') as f3:
     csv_read = csv.reader(f3, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i > 1:
@@ -72,7 +73,7 @@ f3.close()
 
 ## Read in DNA
 
-with open(g.Gen+'_generationDNA.csv') as f4:
+with open('generationDNA.csv') as f4:
     csv_read = csv.reader(f4, delimiter = ',')
     for i, row in enumerate(csv_read):
         if i > 8:
@@ -98,7 +99,7 @@ for i in range(0, len(radius), 2):
 
 ## Write Data into file
 
-with open(g.Gen+'_generationData.csv', "w") as f5:
+with open('generationData.csv', "w") as f5:
     # Write out the header
     f5.write("Generation Data for generation " +g.Gen+ '\n')
     f5.write(seed+ '\n')
