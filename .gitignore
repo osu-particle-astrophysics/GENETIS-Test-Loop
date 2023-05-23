@@ -4,3 +4,5 @@ generators.csv
 */*.csv
 *.png
 *.txt
+*.err
+*.out
