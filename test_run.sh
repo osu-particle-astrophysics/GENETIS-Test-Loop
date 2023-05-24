@@ -49,7 +49,7 @@ do
 
     fi
 
-    # Run GA for non-zero generations
+    #Run GA for non-zero generations
     if [ $g -ne 0 ]
     then
 	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
@@ -60,17 +60,16 @@ do
 
     fi
 
-    # Call script to calculate test loop fitness
+    #Call script to calculate test loop fitness
     python test_fitness.py $Design $g $population 
     
-    # Check to see if there are duplicate antennas
+    #Check to see if there are duplicate antennas
     python fitness_check.py $g
     
-    # Combine all datafiles into one file
+    #Combine all datafiles into one file
     python data_write.py ${Design} $g
     
     # Move Combined file to permanent directory
-    # need to adjust nameing convention
     mv generationData.csv /users/PAS0654/ryantdebolt/test_loop_build_directory/Run/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}'_'${g}_generationData.csv
     
     #Show Status
@@ -80,10 +79,10 @@ do
     echo waiting...
 done
 
-# Call plotting scripts
-# Save plots in plot directory with unique names
+#Call plotting scripts
+#Save plots in plot directory with unique names
 python test_plotter.py $population $Generations 
 
-# move plot to the permanent directory
+#move plot to the permanent directory
 mv fitness.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
 
