@@ -26,7 +26,7 @@ Reproduction=${7}
 Crossover=${8}
 MutationRate=${9}
 Sigma=${10}
-echo ${Run_Number}
+Test=${11}
 
 # Move things to TMPDIR
 cp GA/SourceFiles/GA.exe $TMPDIR
