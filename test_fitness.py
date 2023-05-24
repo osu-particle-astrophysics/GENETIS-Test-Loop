@@ -5,7 +5,6 @@ import argparse
 import random
 import math
 
-
 # Parse arguments
 parser = argparse.ArgumentParser();
 parser.add_argument("Design", type=str)
@@ -13,51 +12,32 @@ parser.add_argument("Gen", type=int)
 parser.add_argument("NPop", type=int)
 g=parser.parse_args()
 
-# Store some target Gain Patterns
-# Gain Pattern 1 (gen0, child0)
-#3.54491,0.297905,-0.535914,0.614219,0.179899,0.361058,-0.035016,-0.0683897,-0.280901,-0.516088,0.0234517,0.484627,0.453672
-
 # Define target gain pattern based on design
 if (g.Design == "ARA"):
-  target = [0.968807,14.1263,-0.053024,0.8256,4.83102,10.4062,0.027465,-0.396757]
+  target = [[0.968807,14.1263,-0.053024,0.8256] , [4.83102,10.4062,0.027465,-0.396757]]
+  sections = 2
+  genes = 4
   
 else if (g.Design == "AREA"):
-  target = [3.54491,0.297905,-0.535914,0.614219,0.179899,0.361058,-0.035016,-0.0683897,-0.280901,-0.516088,0.0234517,0.484627,0.453672}
+  target = [[3.54491,-0.0317852,-0.00413922,-0.0166417,-0.0334298,0.0129763,-0.0294556,0.00505468,-0.0356591,-0.0360021,0.026303,0.032135,-0.00430533,-2.28384], [-4.31513,1.52493,2.47681,-4.8304,3.92823,-4.21634,2.46806,0.274596,3.44827,-4.5354,-3.64286,2.02234,0.930429,-4.57881]]
+  sections = 2
+  genes = 14
 
 else if (g.Design == "PUEO"):
-  target = [33.2056,38.6897,23.6239,14.6074,30.1627,32.4097,1.70987]
+  target = [[33.2056,38.6897,23.6239,14.6074,30.1627,32.4097,1.70987]]
+  sections = 1
+  genes = 7
   
 # Define list to hold each antennas observed gain pattern
-observed = [[0]*len(target) for i in range(g.NPop+1)]
+observed = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
 
-# Read in values to the arrays
-with open("genrationDNA.csv") as f:
-    csv_read = csv.reader(f, delimiter = ',')
-    for i, row in enumerate(csv_read):
-        if i > 8:
-            if(design == "ARA"):
-              if( i%2 != 0):
-                for j in range(len(target/2)):
-                  observed[i-8][j] = float(row[j])
-              if(i%2 == 0):
-                for j in range(len(target/2), len(target)):
-                  observed[i-8][j] = float(row[j])
-            else:
-              for j in range(len(target)):
-                observed[i-8][j] = float(row[j])           
-f.close()
+# Populate the observed list from csv
+ReadData(genes, observed)
 
 # Define lists to store scores
 fitness = []
 error = []
 chi2 = []
-
-# Solve for Chi-squared scores
-for i in range(0, g.NPop):
-    tempChi2 = 0
-    for j in range(len(target)):
-        tempChi2 = tempChi2 + abs(((observed[i][j]-target[j])**2)/target[j])
-    chi2.append(tempChi2)
 
 # Translate Chi-Squared into fitness score
 fitness = [(1/(x+1)) for x in chi2]
@@ -105,3 +85,24 @@ f3.close
 
 print("Max fitness: " + str(max(fitness)))
 print("Min Chi-squared: " + str(min(chi2)))
+
+
+# Functions
+
+def ReadData(genes, observed):
+  # Read in data from generationDNA.csv and put it into the observed list
+  with open('generationDNA.csv') as dna:
+    csv_read = csv.reader(dna, delimiter = ',')
+    for i, row in enumerate(csv_read):
+      if( i > 8):
+        
+          
+def ChiSquared(target, observed, sections, genes):
+  # Solve for Chi-squared scores
+  for i in range(0, g.NPop):
+    tempChi2 = 0
+    for j in range(sections):
+       for k in range(genes):
+        tempChi2 = tempChi2 + abs(((observed[i][j]-target[j])**2)/target[j])
+    chi2.append(tempChi2)
+  
