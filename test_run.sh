@@ -24,7 +24,7 @@ Roulette=${5}
 Tournament=${6}
 Reproduction=${7}
 Crossover=${8}
-Mutation_Rate=${9}
+MutationRate=${9}
 Sigma=${10}
 echo ${Run_Number}
 
@@ -42,10 +42,10 @@ do
     if [ $g -eq 0 ]
     then
 	
-	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${Mutation_Rate}'_'${Sigma} 'Generation 0'
+	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation 0'
 	
 	#Call GA
-	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${Mutation_Rate} ${Sigma}
+	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
 	echo 'GA ran for gen 0'
 
     fi
@@ -53,10 +53,10 @@ do
     # Run GA for non-zero generations
     if [ $g -ne 0 ]
     then
-	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${Mutation_Rate}'_'${Sigma} 'Generation' ${g}
+	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
 	
 	#Call GA
-	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${Mutation_Rate} ${Sigma}
+	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
 	echo 'GA ran for gen' ${g}
 
     fi
