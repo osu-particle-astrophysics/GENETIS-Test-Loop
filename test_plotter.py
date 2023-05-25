@@ -19,6 +19,7 @@ fitness_scores = []
 max_fitness = []
 ave_fitness = []
 chi_scores = []
+max_chi = []
 min_chi = []
 ave_chi = []
 
@@ -45,7 +46,7 @@ for z in range(0, g.Gen+1):
     plt.plot(generations, fitness_scores, '.', color = 'black', markersize = '3.0', alpha=.5)
     plt.ylabel('Fitness Scores')
     plt.xlabel('Generations')
-    plt.axis([0,g.Gen+1, 0, 1+.5*max(max_fitness)])
+    plt.axis([0,g.Gen, 0, 1+.5*max(max_fitness)])
     plt.grid(visible=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
     plt.minorticks_on()
     plt.grid(visible=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
@@ -72,6 +73,7 @@ for z in range(0, g.Gen+1):
                 
     # Calculate mins, maxes, and averages
     min_chi.append(min(chi_scores))
+    max_chi.append(min(chi_scores))
     ave_chi.append(mean(chi_scores))
     
     #populate generation vector for plotting
@@ -82,7 +84,7 @@ for z in range(0, g.Gen+1):
     plt.plot(generations, chi_scores, '.', color = 'black', markersize = '3.0', alpha=.5)
     plt.ylabel('Chi-Squared')
     plt.xlabel('Generations')
-    #plt.axis([0,g.Gen, -0.05, 1.05])
+    plt.axis([0,g.Gen, 0, 1+.5*max(max_chi)])
     plt.grid(visible=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
     plt.minorticks_on()
     plt.grid(visible=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
