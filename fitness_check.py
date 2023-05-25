@@ -68,7 +68,7 @@ filename = "fitnessScores.csv"
 readFitness(current_fitness, current_error, filename)
 
 ## Gather fitness scores and error from previous Gen
-filename = str(g.Gen) + "fitnessScores.csv"
+filename = str(g.Gen-1) + "_fitnessScores.csv"
 readFitness(previous_fitness, previous_error, filename)
 
 ## Read in values from current Gen DNA
@@ -76,7 +76,7 @@ filename = "generationDNA.csv"
 readData(sections, genes, current_dna, filename)
 
 ## Read in values from previous gen DNA
-filename = str(g.Gen) + "generationDNA.csv"
+filename = str(g.Gen-1) + "_generationDNA.csv"
 readData(sections, genes, previous_dna, filename)
 
 ## combine fitness scores of identical individuals in the previous generation
