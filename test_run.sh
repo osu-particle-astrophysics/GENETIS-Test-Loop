@@ -64,10 +64,10 @@ do
     python test_fitness.py $Design $g $Population 
     
     #Check to see if there are duplicate antennas
-    python fitness_check.py $Design $g
+    python fitness_check.py $Design $g $Population
     
     #Combine all datafiles into one file
-    python data_write.py $Design $g
+    python data_write.py $Design $g $Population
     
     # Copy Combined file to permanent directory
     cp generationData.csv /users/PAS0654/ryantdebolt/test_loop_build_directory/Run/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}'_'${g}_generationData.csv
