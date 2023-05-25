@@ -93,6 +93,7 @@ with open('generationData.csv', "w") as f5:
     f5.write("Individual, Chi, Fitness, Error, Parent 1, Parent 2, Opperator,")
     for x in range(sections*genes):
         f5.write(" Gene " +str(x)+ ",")
+    f5.write('\n')
     
     # Write data
     for i in range(len(individual)):
