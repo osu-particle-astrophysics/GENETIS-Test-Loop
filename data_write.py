@@ -88,7 +88,7 @@ with open('generationDNA.csv') as f4:
             if( (i-8)%sections != 0 ):
                 j=(i-8)%sections
             for k in range(genes):
-                observed[individual][j][k] = float(row[k])
+                dna[individual][j][k] = float(row[k])
             if ( j == (i-8)%sections):
                 individual = individual + 1
 
