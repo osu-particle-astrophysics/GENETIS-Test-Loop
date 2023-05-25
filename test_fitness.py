@@ -63,7 +63,7 @@ def writeFitness(fitness, error):
 def writeChi(chi2):
     with open('chiScores.csv', "r") as fc:
         lines = fc.readlines()
-    fs.close()
+    fc.close()
             
     lines3=[]            
     with open('chiScores.csv', "w") as f2:
