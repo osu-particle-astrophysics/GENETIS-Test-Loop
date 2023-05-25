@@ -11,7 +11,7 @@ import numpy as np
 parser = argparse.ArgumentParser();
 parser.add_argument("Design", type=str)
 parser.add_argument("Gen", type=int)
-parser.add_argument("Pop", type=int)
+parser.add_argument("NPop", type=int)
 g = parser.parse_args()
 
 ## Data lists and variables
@@ -42,7 +42,7 @@ dna = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
 
 ## read in parent file for seed, individuals, parents, and opperators
 if (g.Gen==0):
-    for i in range(g.Pop):
+    for i in range(g.NPop):
         individual.append(i+1)
         parent1.append("NA")
         parent2.append("NA")
