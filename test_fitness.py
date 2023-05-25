@@ -5,60 +5,6 @@ import argparse
 import random
 import math
 
-# Parse arguments
-parser = argparse.ArgumentParser();
-parser.add_argument("Design", type=str)
-parser.add_argument("Gen", type=int)
-parser.add_argument("NPop", type=int)
-g=parser.parse_args()
-
-# Define target gain pattern based on design
-if (g.Design == "ARA"):
-    target = [[0.968807,14.1263,-0.053024,0.8256] , [4.83102,10.4062,0.027465,-0.396757]]
-    sections = 2
-    genes = 4
-  
-elif (g.Design == "AREA"):
-    target = [[3.54491,-0.0317852,-0.00413922,-0.0166417,-0.0334298,0.0129763,-0.0294556,0.00505468,-0.0356591,-0.0360021,0.026303,0.032135,-0.00430533,-2.28384], [-4.31513,1.52493,2.47681,-4.8304,3.92823,-4.21634,2.46806,0.274596,3.44827,-4.5354,-3.64286,2.02234,0.930429,-4.57881]]
-    sections = 2
-    genes = 14
-
-elif (g.Design == "PUEO"):
-    target = [[33.2056,38.6897,23.6239,14.6074,30.1627,32.4097,1.70987]]
-    sections = 1
-    genes = 7
-  
-# Define list to hold each antennas observed gain pattern
-observed = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
-
-# Populate the observed list from csv
-readData(sections, genes, observed)
-
-# Define lists to store scores
-fitness = []
-error = []
-chi2 = []
-
-# Calculate ChiSquared Scores
-chiSquared(target, observed, sections, genes, chi2)
-
-# Translate Chi-Squared into fitness score
-fitness = [(1/(x+1)) for x in chi2]
-
-# Introduce error to fitness score
-calcError(fitness, error)
-
-# Write csv's with data for the generation
-writeFitness(fitness, error)            
-writeChi(chi2)
-
-print("Max fitness: " + str(max(fitness)))
-print("Min Chi-squared: " + str(min(chi2)))
-
-# END
-
-##########################################################################
-
 # Functions
 
 def readData(sections, genes, observed):
@@ -128,3 +74,55 @@ def writeChi(chi2):
                 lines3.append(str(chi2[x-2]) + '\n')
         f2.writelines(lines3)
     f2.close
+
+# Parse arguments
+parser = argparse.ArgumentParser();
+parser.add_argument("Design", type=str)
+parser.add_argument("Gen", type=int)
+parser.add_argument("NPop", type=int)
+g=parser.parse_args()
+
+# Define target gain pattern based on design
+if (g.Design == "ARA"):
+    target = [[0.968807,14.1263,-0.053024,0.8256] , [4.83102,10.4062,0.027465,-0.396757]]
+    sections = 2
+    genes = 4
+  
+elif (g.Design == "AREA"):
+    target = [[3.54491,-0.0317852,-0.00413922,-0.0166417,-0.0334298,0.0129763,-0.0294556,0.00505468,-0.0356591,-0.0360021,0.026303,0.032135,-0.00430533,-2.28384], [-4.31513,1.52493,2.47681,-4.8304,3.92823,-4.21634,2.46806,0.274596,3.44827,-4.5354,-3.64286,2.02234,0.930429,-4.57881]]
+    sections = 2
+    genes = 14
+
+elif (g.Design == "PUEO"):
+    target = [[33.2056,38.6897,23.6239,14.6074,30.1627,32.4097,1.70987]]
+    sections = 1
+    genes = 7
+  
+# Define list to hold each antennas observed gain pattern
+observed = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
+
+# Populate the observed list from csv
+readData(sections, genes, observed)
+
+# Define lists to store scores
+fitness = []
+error = []
+chi2 = []
+
+# Calculate ChiSquared Scores
+chiSquared(target, observed, sections, genes, chi2)
+
+# Translate Chi-Squared into fitness score
+fitness = [(1/(x+1)) for x in chi2]
+
+# Introduce error to fitness score
+calcError(fitness, error)
+
+# Write csv's with data for the generation
+writeFitness(fitness, error)            
+writeChi(chi2)
+
+print("Max fitness: " + str(max(fitness)))
+print("Min Chi-squared: " + str(min(chi2)))
+
+# END
