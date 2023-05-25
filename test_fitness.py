@@ -22,6 +22,8 @@ def readData(sections, genes, observed):
                     observed[individual][j][k] = float(row[k])
                 if ( j == (i-8)%sections):
                     individual = individual + 1
+    dna.close()
+    print(individual)
             
 def chiSquared(target, observed, sections, genes, chi2):
     # Solve for Chi-squared scores
