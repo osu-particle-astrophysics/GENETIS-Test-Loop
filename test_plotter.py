@@ -53,7 +53,7 @@ for z in range(0, g.Gen+1):
     fitness_scores.clear()
 
 # plot max and Ave lines
-generations = [f for f in range(0, g.Gen)]
+generations = [f for f in range(0, g.Gen+1)]
 plt.plot(generations, max_fitness, linestyle = '-', color = 'blue', alpha = 0.5)
 plt.plot(generations, ave_fitness, linestyle = '--', color = 'red', alpha = 0.5)
 plt.savefig("fitness.png")
@@ -61,7 +61,7 @@ plt.savefig("fitness.png")
 
 # Plot each individuals chi-squared value for each generation
 plt.figure(figsize=(16,9))
-for z in range(0, g.Gen):
+for z in range(0, g.Gen+1):
     
     # Read in all scores for current gen
     with open(str(z)+"_generationData.csv") as f:
@@ -90,7 +90,7 @@ for z in range(0, g.Gen):
     chi_scores.clear()
     
 # plot min and Ave lines
-generations = [f for f in range(0, g.Gen)]
+generations = [f for f in range(0, g.Gen+1)]
 plt.plot(generations, min_chi, linestyle = '-', color = 'blue', alpha = 0.5)
 plt.plot(generations, ave_chi, linestyle = '--', color = 'red', alpha = 0.5)
 plt.savefig("chisquared.png")
