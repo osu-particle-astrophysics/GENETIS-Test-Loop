@@ -25,26 +25,22 @@ for g in `seq 0 ${Generations}`
 do
     if [ $g -eq 0 ]
     then
-	
-	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation 0'
-	
-	# Call GA
-	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
-	echo 'GA ran for gen 0'
-
+        echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation 0'
+        
+	    # Call GA
+        ./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+        echo 'GA ran for gen 0'
     fi
-
+    
     # Run GA for non-zero generations
     if [ $g -ne 0 ]
     then
-	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
-	
-	#Call GA
-	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
-	echo 'GA ran for gen' ${g}
-
+        echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
+	    #Call GA
+        ./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+        echo 'GA ran for gen' ${g}
     fi
-
+    
     # Call script to calculate test loop fitness
     python test_fitness.py $Design $g $Population 
     
@@ -61,7 +57,6 @@ do
     cp generationData.csv ${g}_generationData.csv
     cp fitnessScores.csv ${g}_fitnessScores.csv
     cp generationDNA.csv ${g}_generationDNA.csv
-    
     
     # Show Status
     echo waiting...
