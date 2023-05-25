@@ -21,7 +21,7 @@ def readData(sections, genes, observed):
                 print(i, individual, j)
                 for k in range(genes):
                     observed[individual][j][k] = float(row[k])
-                if ( j == (i-8)%sections):
+                if ( j == (i-8)%sections and (i-8)%sections !=0):
                     individual = individual + 1
     dna.close()
             
