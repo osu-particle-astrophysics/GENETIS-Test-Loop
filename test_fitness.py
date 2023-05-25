@@ -11,9 +11,9 @@ def readData(sections, genes, observed):
     # Read in data from generationDNA.csv and put it into the observed list
     with open('generationDNA.csv') as dna:
         csv_read = csv.reader(dna, delimiter = ',')
+        individual = 0
         for i, row in enumerate(csv_read):
             if( i > 8):
-                individual = 0
                 if( (i-8)%sections == 0 ):
                     j=0
                 elif( (i-8)%sections != 0 ):
