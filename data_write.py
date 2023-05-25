@@ -91,8 +91,7 @@ with open('generationDNA.csv') as f4:
                 dna[individual_no][j][k] = float(row[k])
             if ( j == (i-9)%sections and (i-9)%sections != 0):
                 individual_no = individual_no + 1
-                
-print(dna)
+f4.close()
 
 ## Write Data into file
 with open('generationData.csv', "w") as f5:
