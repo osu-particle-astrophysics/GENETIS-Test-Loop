@@ -4,53 +4,58 @@
 ## created on 10/23/2020
 ## Created for: GENETIS Research group at Ohio State University
 
+# set directories/paths
+PlotsPath='Plots'
+RunPath='Run'
+GAPath='GA/SourceFiles'
+
 # Compile the GA in its directory
-g++ -std=c++11 GA/SourceFiles/New_GA.cpp -o GA/SourceFiles/GA.exe
+g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 
 # Set Constants
-Population=50
-Generations=50
-Design="ARA"
+design="ARA"
+generations=50
+population=50
 
 # Initialize job submission variables
-Count=0
+count=0
 start=0
 
 # Loop over variables: define them in their ranges in their loops
-for Rank in {30..30..2} 
+for rank in {30..30..2} 
 do
-    for Roulette in {10..10..2} 
+    for roulette in {10..10..2} 
     do
-        for Tournament in {10..10..2} 
+        for tournament in {10..10..2} 
         do
-            Selection=$(( $Rank + $Roulette + $Tournament ))
-            if [ $Selection -eq $Population ]
+            selection=$(( $rank + $roulette + $rournament ))
+            if [ $selection -eq $population ]
             then  
-                for Reproduction in {2..2..2} 
+                for reproduction in {2..2..2} 
                 do
-                    for Crossover in {46..46..4} 
+                    for crossover in {46..46..4} 
                     do
-                        for MutationRate in {25..25..5}
+                        for mutation_rate in {25..25..5}
                         do
-                            for Sigma in {7..7..1} 
+                            for sigma in {7..7..1} 
                             do
-                                for Test in {1..1..1}
+                                for test in {1..1..1}
                                 do
                                     # Submit run
-                                    sbatch test_run.sh ${Design} ${Generations} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma} ${Test}
-                                    Count=$((Count+1))
-                                    if [ $Count -ge 250 ]
+                                    sbatch test_run.sh ${design} ${generations} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma} ${test}
+                                    count=$((count+1))
+                                    if [ $count -ge 250 ]
                                     then
                                         echo batch submitted
-                                        nfiles=$(ls Plots/ | wc -l)
+                                        nfiles=$(ls $PlotsPath/ | wc -l)
                                         while [[ $(((nfiles)%500)) -ne 0 || $nfiles -eq $start ]] 
                                         do
-                                            nfiles=$(ls Plots/ | wc -l)
+                                            nfiles=$(ls $PlotsPath/ | wc -l)
                                             echo $nfiles
                                             sleep 10
                                         done
                                         start=$nfiles
-                                        Count=0
+                                        count=0
                                     fi
                                 done
                             done
