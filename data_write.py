@@ -91,6 +91,8 @@ with open('generationDNA.csv') as f4:
                 dna[individual_no][j][k] = float(row[k])
             if ( j == (i-9)%sections and (i-9)%sections != 0):
                 individual_no = individual_no + 1
+                
+print(dna)
 
 ## Write Data into file
 with open('generationData.csv', "w") as f5:
@@ -98,9 +100,9 @@ with open('generationData.csv', "w") as f5:
     f5.write("Generation Data for generation " +str(g.Gen)+ '\n')
     f5.write(seed+ '\n')
     f5.write('\n')
-    f5.write("Individual, Chi, Fitness, Error, Parent 1, Parent 2, Opperator,")
+    f5.write("Individual, Chi, Fitness, Error, Parent 1, Parent 2, Opperator")
     for x in range(sections*genes):
-        f5.write(" Gene " +str(x)+ ",")
+        f5.write(", Gene " +str(x+1))
     f5.write('\n')
     
     # Write data
