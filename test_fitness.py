@@ -13,7 +13,7 @@ def readData(sections, genes, observed):
         csv_read = csv.reader(dna, delimiter = ',')
         individual = 0
         for i, row in enumerate(csv_read):
-            if( i > 9):
+            if( i > 8):
                 if( (i-9)%sections == 0 ):
                     j=0
                 elif( (i-9)%sections != 0 ):
