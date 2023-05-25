@@ -101,7 +101,7 @@ chi_scores2=[]
 with open("generationData.csv") as f2:
     txt_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(txt_read):
-        if i>1:
+        if i>3:
             chi_scores2.append(float(row[1]))
             fitness_scores2.append(float(row[2]))
 print("Max Fitness Score: " + str(max(fitness_scores2))) 
