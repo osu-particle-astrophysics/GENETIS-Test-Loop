@@ -5,8 +5,7 @@ import argparse
 import numpy as np
 
 # Functions
-
-def readFitness(fitness, error, filename):
+def read_fitness(fitness, error, filename):
     # Read in fitness scores
     with open(filename) as f1:
         txt_read = csv.reader(f1, delimiter = ',')
@@ -16,7 +15,7 @@ def readFitness(fitness, error, filename):
                 error.append(float(row[1]))
     f1.close()
 
-def readData(sections, genes, dna, filename):
+def read_data(sections, genes, dna, filename):
     # Read in data from generationDNA.csv and put it into the observed list
     with open(filename) as data:
         csv_read = csv.reader(data, delimiter = ',')
@@ -35,9 +34,9 @@ def readData(sections, genes, dna, filename):
 
 # Read in arguments
 parser = argparse.ArgumentParser();
-parser.add_argument("Design", type=str)
-parser.add_argument("Gen", type=int)
-parser.add_argument("NPop", type=int)
+parser.add_argument("design", type=str)
+parser.add_argument("generation", type=int)
+parser.add_argument("population", type=int)
 g = parser.parse_args()
 
 # fitness related arrays
@@ -47,37 +46,37 @@ current_error = []
 previous_error = [] 
 
 # Set constants based on design
-if (g.Design == "ARA"):
+if (g.design == "ARA"):
     sections = 2
     genes = 4
   
-elif (g.Design == "AREA"):
+elif (g.design == "AREA"):
     sections = 2
     genes = 14
 
-elif (g.Design == "PUEO"):
+elif (g.design == "PUEO"):
     sections = 1
     genes = 7
 
 # Initialize DNA vectors
-current_dna = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
-previous_dna = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]    
+current_dna = [[[0]*genes for i in range(sections)] for j in range(g.population+1)]
+previous_dna = [[[0]*genes for i in range(sections)] for j in range(g.population+1)]    
 
 # Gather fitness scores and error from current Gen
 filename = "fitnessScores.csv"
-readFitness(current_fitness, current_error, filename)
+read_fitness(current_fitness, current_error, filename)
 
 ## Gather fitness scores and error from previous Gen
-filename = str(g.Gen-1) + "_fitnessScores.csv"
-readFitness(previous_fitness, previous_error, filename)
+filename = str(g.generation-1) + "_fitnessScores.csv"
+read_fitness(previous_fitness, previous_error, filename)
 
 ## Read in values from current Gen DNA
 filename = "generationDNA.csv"
-readData(sections, genes, current_dna, filename)
+read_data(sections, genes, current_dna, filename)
 
 ## Read in values from previous gen DNA
-filename = str(g.Gen-1) + "_generationDNA.csv"
-readData(sections, genes, previous_dna, filename)
+filename = str(g.generation-1) + "_generationDNA.csv"
+read_data(sections, genes, previous_dna, filename)
 
 ## combine fitness scores of identical individuals in the previous generation
 matches = 0
