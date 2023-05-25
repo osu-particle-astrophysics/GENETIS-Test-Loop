@@ -14,21 +14,29 @@
 ## Created May 2023
 #############################
 
+# set directories/paths
+PlotsPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Plots'
+RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
+GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
+
 # Input arguments for this script are:
-Design=${1}
-Generations=${2}
-Population=${3}
-Rank=${4}
-Roulette=${5}
-Tournament=${6}
-Reproduction=${7}
-Crossover=${8}
-MutationRate=${9}
-Sigma=${10}
-Test=${11}
+design=${1}
+generations=${2}
+population=${3}
+rank=${4}
+roulette=${5}
+tournament=${6}
+reproduction=${7}
+crossover=${8}
+mutation_rate=${9}
+sigma=${10}
+test=${11}
+
+# establish run name
+runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_rate}'_'${sigma}'_'${test}
 
 # Move things to TMPDIR
-cp GA/SourceFiles/GA.exe $TMPDIR
+cp $GAPath/GA.exe $TMPDIR
 cp data_write.py $TMPDIR
 cp test_fitness.py $TMPDIR
 cp test_plotter.py $TMPDIR
@@ -41,10 +49,10 @@ do
     if [ $g -eq 0 ]
     then
 	
-	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation 0'
+	echo ${runname} 'Generation 0'
 	
 	#Call GA
-	./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
 	echo 'GA ran for gen 0'
 
     fi
@@ -52,25 +60,25 @@ do
     #Run GA for non-zero generations
     if [ $g -ne 0 ]
     then
-	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
+	echo ${runname} 'Generation' ${g}
 	
 	#Call GA
-	./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
 	echo 'GA ran for gen' ${g}
 
     fi
 
     #Call script to calculate test loop fitness
-    python test_fitness.py $Design $g $Population 
+    python test_fitness.py $design $g $population 
     
     #Check to see if there are duplicate antennas
-    python fitness_check.py $Design $g $Population
+    python fitness_check.py $design $g $population
     
     #Combine all datafiles into one file
-    python data_write.py $Design $g $Population
+    python data_write.py $design $g $population
     
     # Copy Combined file to permanent directory
-    cp generationData.csv /users/PAS0654/ryantdebolt/test_loop_build_directory/Run/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}'_'${g}_generationData.csv
+    cp generationData.csv $RunPath/${runname}'_'${g}_generationData.csv
     
     # Make copies of fitnessScores, generationDNA, and generationData to be used later
     cp generationData.csv ${g}_generationData.csv
@@ -87,9 +95,9 @@ done
 
 #Call plotting scripts
 #Save plots in plot directory with unique names
-python test_plotter.py $Design $Generations $Population 
+python test_plotter.py $design $generations $population 
 
 #move plot to the permanent directory
-mv fitness.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
-mv chisquared.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_chisquared.png
+mv fitness.png $PlotsPath/${runname}_fitness.png
+mv chisquared.png $PlotsPath/${runname}_chisquared.png
 
