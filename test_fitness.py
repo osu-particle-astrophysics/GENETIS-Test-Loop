@@ -28,7 +28,7 @@ def read_data(sections, genes, observed):
             
 def solve_chi_squared(target, observed, sections, genes, chi2):
     # Solve for Chi-squared scores
-    for i in range(0, g.NPop):
+    for i in range(0, g.population):
         tempChi2 = 0
         for j in range(sections):
             for k in range(genes):
