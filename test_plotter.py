@@ -67,7 +67,7 @@ for z in range(0, g.Gen):
     with open(str(z)+"_generationData.csv") as f:
         csv_read = csv.reader(f, delimiter = ',')
         for i, row in enumerate(csv_read):
-            if i>4:
+            if i>3:
                 chi_scores.append(float(row[1]))
                 
     # Calculate mins, maxes, and averages
