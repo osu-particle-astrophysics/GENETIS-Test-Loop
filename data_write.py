@@ -95,7 +95,7 @@ with open('generationDNA.csv') as f4:
 ## Write Data into file
 with open('generationData.csv', "w") as f5:
     # Write out the header
-    f5.write("Generation Data for generation " +g.Gen+ '\n')
+    f5.write("Generation Data for generation " +str(g.Gen)+ '\n')
     f5.write(seed+ '\n')
     f5.write('\n')
     f5.write("Individual, Chi, Fitness, Error, Parent 1, Parent 2, Opperator,")
