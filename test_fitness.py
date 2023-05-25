@@ -18,7 +18,6 @@ def read_data(sections, genes, observed):
                     j=0
                 elif( (i-9)%sections != 0 ):
                     j=(i-9)%sections
-                print(i, individual, j)
                 for k in range(genes):
                     observed[individual][j][k] = float(row[k])
                 if ( j == (i-9)%sections and (i-9)%sections !=0):
