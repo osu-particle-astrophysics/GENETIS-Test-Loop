@@ -28,13 +28,13 @@ do
 	
 	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation 0'
 	
-	#Call GA
+	# Call GA
 	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
 	echo 'GA ran for gen 0'
 
     fi
 
-    #Run GA for non-zero generations
+    # Run GA for non-zero generations
     if [ $g -ne 0 ]
     then
 	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
@@ -45,13 +45,13 @@ do
 
     fi
 
-    #Call script to calculate test loop fitness
+    # Call script to calculate test loop fitness
     python test_fitness.py $Design $g $Population 
     
-    #Check to see if there are duplicate antennas
+    # Check to see if there are duplicate antennas
     python fitness_check.py $Design $g $Population
     
-    #Combine all datafiles into one file
+    # Combine all datafiles into one file
     python data_write.py $Design $g $Population
     
     # Copy Combined file to permanent directory
@@ -63,17 +63,17 @@ do
     cp generationDNA.csv ${g}_generationDNA.csv
     
     
-    #Show Status
+    # Show Status
     echo waiting...
     echo waiting...
     echo waiting...
     echo waiting...
 done
 
-#Call plotting scripts
+# Call plotting scripts
 #Save plots in plot directory with unique names
 python test_plotter.py $Population $Generations 
 
-#move plot to the permanent directory
+# move plot to the permanent directory
 mv fitness.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
 mv chisquared.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
