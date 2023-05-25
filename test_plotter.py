@@ -34,8 +34,8 @@ for z in range(0, g.Gen):
                 fitness_scores.append(float(row[2]))
                 
     # Calculate mins, maxes, and averages
-    max_scores.append(max(fitness_scores))
-    ave_scores.append(mean(fitness_scores))
+    max_fitness.append(max(fitness_scores))
+    ave_fitness.append(mean(fitness_scores))
     
     #populate generation vector for plotting
     generations = [z for f in range(0, g.Npop)]
@@ -54,8 +54,8 @@ for z in range(0, g.Gen):
 
 # plot max and Ave lines
 generations = [f for f in range(0, g.Gen)]
-plt.plot(generations, max_scores, linestyle = '-', color = 'blue', alpha = 0.5)
-plt.plot(generations, ave_scores, linestyle = '--', color = 'red', alpha = 0.5)
+plt.plot(generations, max_fitness, linestyle = '-', color = 'blue', alpha = 0.5)
+plt.plot(generations, ave_fitness, linestyle = '--', color = 'red', alpha = 0.5)
 plt.savefig("fitness.png")
 
 
