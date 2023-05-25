@@ -29,14 +29,14 @@ test=1
 runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_rate}'_'${sigma}'_'${test}
 
 # loop over generations
-for g in `seq 0 ${Generations}`
+for g in `seq 0 ${generations}`
 do
     if [ $g -eq 0 ]
     then
         echo ${runname} 'Generation 0'
         
 	# Call GA
-        ./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
         echo 'GA ran for gen 0'
     fi
     
@@ -45,7 +45,7 @@ do
     then
         echo ${runname} 'Generation' ${g}
 	#Call GA
-        ./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
         echo 'GA ran for gen' ${g}
     fi
     
