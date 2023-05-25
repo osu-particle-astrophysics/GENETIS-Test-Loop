@@ -17,24 +17,24 @@ Count=0
 start=0
 
 # Loop over variables: define them in their ranges in their loops
-for Rank in {2..2..2} 
+for Rank in {30..30..2} 
 do
-    for Roulette in {2..2..2} 
+    for Roulette in {10..10..2} 
     do
-		for Tournament in {6..6..2} 
+		for Tournament in {10..10..2} 
 		do
 	    	Selection=$(( $Rank + $Roulette + $Tournament ))
 	    	if [ $Selection -eq $Population ]
 	    	then  
-				for Reproduction in {0..12..4} 
+				for Reproduction in {2..2..2} 
 				do
-		    		for Crossover in {88..100..4} 
+		    		for Crossover in {46..46..4} 
 		    		do
-						for MutationRate in {15..25..5}
+						for MutationRate in {25..25..5}
 						do
-							for Sigma in {1..1..1} 
+							for Sigma in {7..7..1} 
 							do
-				    			for Test in {1..10..1} 
+				    			for Test in {1..1..1} 
 				   				do
 									# Submit run
 									sbatch test_run.sh ${Design} ${Generations} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma} ${Test}
