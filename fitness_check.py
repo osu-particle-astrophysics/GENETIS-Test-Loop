@@ -37,6 +37,7 @@ def readData(sections, genes, dna, filename):
 parser = argparse.ArgumentParser();
 parser.add_argument("Design", type=str)
 parser.add_argument("Gen", type=int)
+parser.add_argument("NPop", type=int)
 g = parser.parse_args()
 
 # fitness related arrays
