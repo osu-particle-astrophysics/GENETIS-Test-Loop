@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #SBATCH -A PAS1960
-#SBATCH -t 72:00:00
+#SBATCH -t 00:20:00
 #SBATCH -N 1
 #SBATCH -n 8
 ##SBATCH -o ~
