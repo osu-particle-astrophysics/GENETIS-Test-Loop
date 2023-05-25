@@ -9,8 +9,9 @@ from statistics import mean
 
 # Read in arguments
 parser = argparse.ArgumentParser();
-parser.add_argument("Npop", type=int)
+parser.add_argument("Design", type=str)
 parser.add_argument("Gen", type=int)
+parser.add_argument("Npop", type=int)
 g = parser.parse_args()
 
 # Initialize storage vectors
@@ -42,7 +43,7 @@ for z in range(0, g.Gen+1):
     generations = [z for f in range(0, g.Npop)]
     
     # begin plotting
-    plt.title('Non-Linear Bicone Evolution test')
+    plt.title(g.Design + 'Fitness Evolution test')
     plt.plot(generations, fitness_scores, '.', color = 'black', markersize = '5.0', alpha=.5)
     plt.ylabel('Fitness Scores')
     plt.xlabel('Generations')
@@ -80,7 +81,7 @@ for z in range(0, g.Gen+1):
     generations = [z for f in range(0, g.Npop)]
     
     # begin plotting
-    plt.title('Non-Linear Bicone Evolution test')
+    plt.title(g.Design + 'Chi-Squared Evolution test')
     plt.plot(generations, chi_scores, '.', color = 'black', markersize = '5.0', alpha=.5)
     plt.ylabel('Chi-Squared')
     plt.xlabel('Generations')

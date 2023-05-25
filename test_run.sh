@@ -44,7 +44,7 @@ do
 	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation 0'
 	
 	#Call GA
-	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+	./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
 	echo 'GA ran for gen 0'
 
     fi
@@ -55,7 +55,7 @@ do
 	echo ${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma} 'Generation' ${g}
 	
 	#Call GA
-	./GA.exe ${Design) ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
+	./GA.exe ${Design} ${g} ${Population} ${Rank} ${Roulette} ${Tournament} ${Reproduction} ${Crossover} ${MutationRate} ${Sigma}
 	echo 'GA ran for gen' ${g}
 
     fi
@@ -87,9 +87,9 @@ done
 
 #Call plotting scripts
 #Save plots in plot directory with unique names
-python test_plotter.py $Population $Generations 
+python test_plotter.py $Design $Generations $Population 
 
 #move plot to the permanent directory
 mv fitness.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
-mv chisquared.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
+mv chisquared.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_chisquared.png
 

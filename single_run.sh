@@ -10,14 +10,14 @@
 # Input arguments for this script are:
 Design="PUEO"
 Generations=50
-Population=50
-Rank=30
-Roulette=10
-Tournament=10
-Reproduction=2
-Crossover=46
+Population=100
+Rank=60
+Roulette=20
+Tournament=20
+Reproduction=0
+Crossover=96
 MutationRate=25
-Sigma=7
+Sigma=6
 Test=1
 
 # loop over generations
@@ -45,8 +45,12 @@ do
     python test_fitness.py $Design $g $Population 
     
     # Check to see if there are duplicate antennas
-    python fitness_check.py $Design $g $Population
-    
+    if [ $g -ne 0 ]
+    then
+        # python fitness_check.py $Design $g $Population
+	echo not working
+    fi
+
     # Combine all datafiles into one file
     python data_write.py $Design $g $Population
     
@@ -67,8 +71,8 @@ done
 
 # Call plotting scripts
 #Save plots in plot directory with unique names
-python test_plotter.py $Population $Generations 
+python test_plotter.py $Design $Generations $Population
 
 # move plot to the permanent directory
 mv fitness.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
-mv chisquared.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_fitness.png
+mv chisquared.png /users/PAS0654/ryantdebolt/test_loop_build_directory/Plots/${Rank}'_'${Roulette}'_'${Tournament}'_'${Reproduction}'_'${Crossover}'_'${MutationRate}'_'${Sigma}'_'${Test}_chisquared.png

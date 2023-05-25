@@ -1,8 +1,12 @@
-ARA/Results/
-ARA/Run/
+Plots/
+Run/
 generators.csv
+GA/
+Results/
 */*.csv
 *.png
 *.txt
 *.err
 *.out
+*.csv
+*.exe

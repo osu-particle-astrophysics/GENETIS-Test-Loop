@@ -23,6 +23,8 @@ def readData(sections, genes, observed):
                     observed[individual][j][k] = float(row[k])
                 if ( j == (i-9)%sections and (i-9)%sections !=0):
                     individual = individual + 1
+                if ( sections == 1):
+                    individual = individual + 1
     dna.close()
             
 def chiSquared(target, observed, sections, genes, chi2):
@@ -41,9 +43,9 @@ def calcError(fitness, error):
         else:
             error.append(0.1)
             tempFit = fitness[i]
-            tempFit = random.gauss(fitness[i], 0.1)
+            tempFit = random.gauss(fitness[i], 0.0)
             while(tempFit < 0):
-                tempFit = random.gauss(fitness[i], 0.1)
+                tempFit = random.gauss(fitness[i], 0.0)
             fitness[i] = tempFit
         
 def writeFitness(fitness, error):
@@ -86,12 +88,13 @@ g=parser.parse_args()
 
 # Define target gain pattern based on design
 if (g.Design == "ARA"):
-    target = [[0.968807,14.1263,-0.053024,0.8256] , [4.83102,10.4062,0.027465,-0.396757]]
+    target = [[0.968807,14.1263,-0.053024,0.8256], [4.83102,10.4062,0.027465,-0.396757]]
     sections = 2
     genes = 4
   
 elif (g.Design == "AREA"):
-    target = [[3.54491,-0.0317852,-0.00413922,-0.0166417,-0.0334298,0.0129763,-0.0294556,0.00505468,-0.0356591,-0.0360021,0.026303,0.032135,-0.00430533,-2.28384], [-4.31513,1.52493,2.47681,-4.8304,3.92823,-4.21634,2.46806,0.274596,3.44827,-4.5354,-3.64286,2.02234,0.930429,-4.57881]]
+    target = [[2.82456,-0.029512,0.0671632,-0.0681442,0.144533,-0.129438,0.00934594,-0.0111579,-0.143811,0.0307403,0.0279309,0.0676385,0.0305001,-2.22847],
+[-1.46998,2.94396,3.07804,-3.72175,3.40754,-0.529288,4.0295,1.26466,3.03942,-4.53036,-3.74864,-0.543697,1.08282,-3.25018]]
     sections = 2
     genes = 14
 
