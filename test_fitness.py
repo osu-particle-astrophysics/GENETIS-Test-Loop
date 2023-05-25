@@ -14,11 +14,11 @@ def readData(sections, genes, observed):
         individual = 0
         for i, row in enumerate(csv_read):
             if( i > 8):
-                print(individual)
                 if( (i-8)%sections == 0 ):
                     j=0
                 elif( (i-8)%sections != 0 ):
                     j=(i-8)%sections
+                print(i, individual, j)
                 for k in range(genes):
                     observed[individual][j][k] = float(row[k])
                 if ( j == (i-8)%sections):
