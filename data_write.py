@@ -83,13 +83,13 @@ with open('generationDNA.csv') as f4:
     for i, row in enumerate(csv_read):
         if( i > 8):
             individual_no = 0
-            if( (i-8)%sections == 0 ):
+            if( (i-9)%sections == 0 ):
                 j=0
-            if( (i-8)%sections != 0 ):
-                j=(i-8)%sections
+            if( (i-9)%sections != 0 ):
+                j=(i-9)%sections
             for k in range(genes):
                 dna[individual_no][j][k] = float(row[k])
-            if ( j == (i-8)%sections):
+            if ( j == (i-9)%sections and (i-9)%sections != 0):
                 individual_no = individual_no + 1
 
 ## Write Data into file
