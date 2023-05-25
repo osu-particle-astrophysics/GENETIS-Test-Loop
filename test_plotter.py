@@ -24,7 +24,7 @@ ave_chi = []
 
 # Plot each individuals fitness for each generation
 plt.figure(figsize=(16,9))
-for z in range(0, g.Gen):
+for z in range(0, g.Gen+1):
     
     # Read in all scores for current gen
     with open(str(z)+"_generationData.csv") as f:
