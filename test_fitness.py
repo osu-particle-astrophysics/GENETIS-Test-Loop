@@ -32,7 +32,7 @@ def chiSquared(target, observed, sections, genes, chi2):
         for j in range(sections):
             for k in range(genes):
                 tempChi2 = tempChi2 + abs(((observed[i][j][k]-target[j][k])**2)/target[j][k])
-                chi2.append(tempChi2)
+        chi2.append(tempChi2)
   
 def calcError(fitness, error):
     for i in range(0, len(fitness)):
