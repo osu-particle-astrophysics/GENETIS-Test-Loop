@@ -5,7 +5,7 @@
 ## Created for: GENETIS Research group at Ohio State University
 
 # Compile the GA in its directory
-g++ -std=c++11 GA/SourceFiles/GA.cpp GA/SourceFiles/GA.exe
+g++ -std=c++11 GA/SourceFiles/GA.cpp GA/SourceFiles/New_GA.exe
 
 # Set Constants
 Population=100
