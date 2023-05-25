@@ -30,6 +30,8 @@ def read_data(sections, genes, dna, filename):
                     dna[individual][j][k] = float(row[k])
                 if ( j == (i-9)%sections and (i-9)%sections != 0):
                     individual = individual + 1
+                if ( sections== 1):
+                    individual = individual + 1
 
 
 # Read in arguments
