@@ -114,7 +114,7 @@ with open('generationData.csv', "w") as f5:
         f5.write(", " +str(parent2[i]))
         f5.write(", " +str(opperator[i]))
         for j in range(sections):
-            for i in range(genes):
+            for k in range(genes):
                 f5.write(", " +str(dna[i][j][k]))
         f5.write( "\n")
 f5.close()
