@@ -41,11 +41,11 @@ def calc_error(fitness, error):
         if (fitness[i] == 0):
             error.append(0.0)
         else:
-            error.append(0.5)
+            error.append(0.5/sqrt(2))
             tempFit = fitness[i]
-            tempFit = random.gauss(fitness[i], 0.5)
+            tempFit = random.gauss(fitness[i], 0.5/sqrt(2))
             while(tempFit < 0):
-                tempFit = random.gauss(fitness[i], 0.5)
+                tempFit = random.gauss(fitness[i], 0.5/sqrt(2))
             fitness[i] = tempFit
         
 def write_fitness(fitness, error):
