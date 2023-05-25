@@ -41,7 +41,7 @@ elif (g.Design == "PUEO"):
 dna = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
 
 ## read in parent file for seed, individuals, parents, and opperators
-if (g.Gen=0):
+if (g.Gen==0):
     for i in range(g.Pop):
         individual.append(i+1)
         parent1.append("NA")
