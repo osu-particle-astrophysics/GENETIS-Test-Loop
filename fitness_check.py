@@ -21,11 +21,11 @@ if (g.Design == "ARA"):
     sections = 2
     genes = 4
   
-else if (g.Design == "AREA"):
+elif (g.Design == "AREA"):
     sections = 2
     genes = 14
 
-else if (g.Design == "PUEO"):
+elif (g.Design == "PUEO"):
     sections = 1
     genes = 7
 
@@ -95,14 +95,14 @@ def readData(sections, genes, dna, filename):
     # Read in data from generationDNA.csv and put it into the observed list
     with open(filename) as data:
         csv_read = csv.reader(data, delimiter = ',')
+        individual = 0
         for i, row in enumerate(csv_read):
             if( i > 8):
-                individual = 0
-                if( (i-8)%sections == 0 ):
+                if( (i-9)%sections == 0 ):
                     j=0
-                if( (i-8)%sections != 0 ):
-                    j=(i-8)%sections
+                if( (i-9)%sections != 0 ):
+                    j=(i-9)%sections
                 for k in range(genes):
                     dna[individual][j][k] = float(row[k])
-                if ( j == (i-8)%sections):
+                if ( j == (i-9)%sections and (i-9)%sections != 0):
                     individual = individual + 1
