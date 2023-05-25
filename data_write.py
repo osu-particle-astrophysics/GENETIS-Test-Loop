@@ -80,9 +80,9 @@ f3.close()
 ## Read in DNA
 with open('generationDNA.csv') as f4:
     csv_read = csv.reader(f4, delimiter = ',')
+    individual_no = 0
     for i, row in enumerate(csv_read):
         if( i > 8):
-            individual_no = 0
             if( (i-9)%sections == 0 ):
                 j=0
             if( (i-9)%sections != 0 ):
