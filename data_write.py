@@ -47,8 +47,6 @@ if (g.Gen==0):
         parent1.append("NA")
         parent2.append("NA")
         opperator.append("NA")
-        
-    print(type(individual))
 else:
     with open("parents.csv") as f1:
         csv_read = csv.reader(f1, delimiter = ',')
@@ -84,15 +82,15 @@ with open('generationDNA.csv') as f4:
     csv_read = csv.reader(f4, delimiter = ',')
     for i, row in enumerate(csv_read):
         if( i > 8):
-            individual = 0
+            individual_no = 0
             if( (i-8)%sections == 0 ):
                 j=0
             if( (i-8)%sections != 0 ):
                 j=(i-8)%sections
             for k in range(genes):
-                dna[individual][j][k] = float(row[k])
+                dna[individual_no][j][k] = float(row[k])
             if ( j == (i-8)%sections):
-                individual = individual + 1
+                individual_no = individual_no + 1
 
 ## Write Data into file
 with open('generationData.csv', "w") as f5:
