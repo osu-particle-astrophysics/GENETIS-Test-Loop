@@ -9,9 +9,9 @@ import numpy as np
 
 ## Read in arguement
 parser = argparse.ArgumentParser();
-parser.add_argument("Design", type=str)
-parser.add_argument("Gen", type=int)
-parser.add_argument("NPop", type=int)
+parser.add_argument("design", type=str)
+parser.add_argument("generation", type=int)
+parser.add_argument("population", type=int)
 g = parser.parse_args()
 
 ## Data lists and variables
@@ -25,24 +25,24 @@ error = []
 chi = []
 
 # Find DNA vector parameters based on design
-if (g.Design == "ARA"):
+if (g.design == "ARA"):
     sections = 2
     genes = 4
   
-elif (g.Design == "AREA"):
+elif (g.design == "AREA"):
     sections = 2
     genes = 14
 
-elif (g.Design == "PUEO"):
+elif (g.design == "PUEO"):
     sections = 1
     genes = 7
   
 # Define list to hold dna
-dna = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
+dna = [[[0]*genes for i in range(sections)] for j in range(g.population+1)]
 
 ## read in parent file for seed, individuals, parents, and opperators
-if (g.Gen==0):
-    for i in range(g.NPop):
+if (g.generation==0):
+    for i in range(g.population):
         individual.append(i+1)
         parent1.append("NA")
         parent2.append("NA")
@@ -96,7 +96,7 @@ f4.close()
 ## Write Data into file
 with open('generationData.csv', "w") as f5:
     # Write out the header
-    f5.write("Generation Data for generation " +str(g.Gen)+ '\n')
+    f5.write("Generation Data for generation " +str(g.generation)+ '\n')
     f5.write(seed+ '\n')
     f5.write('\n')
     f5.write("Individual, Chi, Fitness, Error, Parent 1, Parent 2, Opperator")
