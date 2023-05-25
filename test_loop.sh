@@ -8,7 +8,7 @@
 g++ -std=c++11 GA/SourceFiles/New_GA.cpp -o GA/SourceFiles/GA.exe
 
 # Set Constants
-Population=100
+Population=50
 Generations=50
 Design="ARA"
 
