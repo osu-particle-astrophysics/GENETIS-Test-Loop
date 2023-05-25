@@ -1,41 +1,48 @@
 # plot the invidviduals at each generation
-# need to adjust this to plot both Chi scores and fitness score
-# need to adjust to read in from generationData.csv instead
 
+# Imports
 import matplotlib.pyplot as plt
 import csv
 import argparse
 import math
 from statistics import mean
 
+# Read in arguments
 parser = argparse.ArgumentParser();
 parser.add_argument("Npop", type=int)
 parser.add_argument("Gen", type=int)
-parser.add_argument("Repro", type=int)
-parser.add_argument("Cross", type=int)
 g = parser.parse_args()
 
-generations=[]
-scores=[]
-max_scores = []
-ave_scores = []
+# Initialize storage vectors
+generations = []
+fitness_scores = []
+max_fitness = []
+ave_fitness = []
+chi_scores = []
+min_chi = []
+ave_chi = []
+
+# Plot each individuals fitness for each generation
 plt.figure(figsize=(16,9))
 for z in range(0, g.Gen):
-    with open(str(z)+"_fitnessScores.csv") as f:
-        txt_read = csv.reader(f, delimiter = ',')
-        for i, row in enumerate(txt_read):
-          #  print(i)
-            if i>1:
-                scores.append(float(row[0]))
-    max_scores.append(max(scores))
-    ave_scores.append(mean(scores))
-
+    
+    # Read in all scores for current gen
+    with open(str(z)+"_generationData.csv") as f:
+        csv_read = csv.reader(f, delimiter = ',')
+        for i, row in enumerate(csv_read):
+            if i>4:
+                fitness_scores.append(float(row[2]))
+                
+    # Calculate mins, maxes, and averages
+    max_scores.append(max(fitness_scores))
+    ave_scores.append(mean(fitness_scores))
+    
+    #populate generation vector for plotting
     generations = [z for f in range(0, g.Npop)]
-    #print( str(len(scores[0:g.Repro])) + "Repro") #sanity check
+    
+    # begin plotting
     plt.title('Non-Linear Bicone Evolution test')
-    plt.plot(generations[g.Cross:g.Npop+1], scores[g.Cross:g.Npop+1], '^', color = 'red', markersize = '3.0', alpha=.5)
-    plt.plot(generations[g.Repro:g.Cross], scores[g.Repro:g.Cross], '.', color = 'green', markersize = '3.0', alpha=.5)
-    plt.plot(generations[0:g.Repro], scores[0:g.Repro], '*', color = 'blue', markersize ='5.0')
+    plt.plot(generations, fitness_scores, '.', color = 'black', markersize = '3.0', alpha=.5)
     plt.ylabel('Fitness Scores')
     plt.xlabel('Generations')
     #plt.axis([0,g.Gen, -0.05, 1.05])
@@ -45,16 +52,57 @@ for z in range(0, g.Gen):
     generations.clear()
     scores.clear()
 
+# plot max and Ave lines
 generations = [f for f in range(0, g.Gen)]
-plt.plot(generations, max_scores, linestyle = '-', color = 'black', alpha = 0.5)
-plt.plot(generations, ave_scores, linestyle = '--', color = 'black', alpha = 0.5)
+plt.plot(generations, max_scores, linestyle = '-', color = 'blue', alpha = 0.5)
+plt.plot(generations, ave_scores, linestyle = '--', color = 'red', alpha = 0.5)
 plt.savefig("fitness.png")
 
 
-scores2=[]
-with open("fitnessScores.csv") as f2:
+# Plot each individuals chi-squared value for each generation
+plt.figure(figsize=(16,9))
+for z in range(0, g.Gen):
+    
+    # Read in all scores for current gen
+    with open(str(z)+"_generationData.csv") as f:
+        csv_read = csv.reader(f, delimiter = ',')
+        for i, row in enumerate(csv_read):
+            if i>4:
+                chi_scores.append(float(row[1]))
+                
+    # Calculate mins, maxes, and averages
+    min_chi.append(min(chi_scores))
+    ave_chi.append(mean(chi_scores))
+    
+    #populate generation vector for plotting
+    generations = [z for f in range(0, g.Npop)]
+    
+    # begin plotting
+    plt.title('Non-Linear Bicone Evolution test')
+    plt.plot(generations, chi_scores, '.', color = 'black', markersize = '3.0', alpha=.5)
+    plt.ylabel('Chi-Squared')
+    plt.xlabel('Generations')
+    #plt.axis([0,g.Gen, -0.05, 1.05])
+    plt.grid(b=True, which='major', color = '#666666', linestyle = '-', linewidth =0.5)
+    plt.minorticks_on()
+    plt.grid(b=True, which = 'minor', color = '#999999', linestyle = '-', linewidth=0.2, alpha = 0.5)
+    generations.clear()
+    scores.clear()
+    
+# plot min and Ave lines
+generations = [f for f in range(0, g.Gen)]
+plt.plot(generations, min_chi, linestyle = '-', color = 'blue', alpha = 0.5)
+plt.plot(generations, ave_chi, linestyle = '--', color = 'red', alpha = 0.5)
+plt.savefig("chisquared.png")
+
+# Display final generation thresholds
+fitness_scores2=[]
+chi_scores2=[]
+with open("generationData.csv") as f2:
     txt_read = csv.reader(f2, delimiter = ',')
     for i, row in enumerate(txt_read):
         if i>1:
-            scores2.append(float(row[0]))
-print(max(scores2)) 
+            chi_scores2.append(float(row[1]))
+            fitness_scores2.append(float(row[2]))
+print("Max Fitness Score: " + str(max(fitness_scores2))) 
+print("Min Chi-Squared value: " + str(min(chi_scores2)))
