@@ -47,6 +47,8 @@ if (g.Gen==0):
         parent1.append("NA")
         parent2.append("NA")
         opperator.append("NA")
+        
+    print(type(individual))
 else:
     with open("parents.csv") as f1:
         csv_read = csv.reader(f1, delimiter = ',')
