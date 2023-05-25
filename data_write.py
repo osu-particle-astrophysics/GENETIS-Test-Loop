@@ -11,6 +11,7 @@ import numpy as np
 parser = argparse.ArgumentParser();
 parser.add_argument("Design", type=str)
 parser.add_argument("Gen", type=int)
+parser.add_argument("Pop", type=int)
 g = parser.parse_args()
 
 ## Data lists and variables
@@ -28,11 +29,11 @@ if (g.Design == "ARA"):
     sections = 2
     genes = 4
   
-else if (g.Design == "AREA"):
+elif (g.Design == "AREA"):
     sections = 2
     genes = 14
 
-else if (g.Design == "PUEO"):
+elif (g.Design == "PUEO"):
     sections = 1
     genes = 7
   
@@ -40,17 +41,24 @@ else if (g.Design == "PUEO"):
 dna = [[[0]*genes for i in range(sections)] for j in range(g.NPop+1)]
 
 ## read in parent file for seed, individuals, parents, and opperators
-with open("parents.csv") as f1:
-    csv_read = csv.reader(f1, delimiter = ',')
-    for i, row in enumerate(csv_read):
-        if i==1:
-            seed = str(row[0])
-        elif i> 4:
-            individual.append(row[0].ljust(2, ' '))
-            parent1.append(row[1].ljust(2, ' '))
-            parent2.append(row[2].ljust(2, ' '))
-            opperator.append(row[3].rjust(13, ' '))
-f1.close()
+if (g.Gen=0):
+    for i in range(g.Pop):
+        individual.append(i+1)
+        parent1.append("NA")
+        parent2.append("NA")
+        opperator.append("NA")
+else:
+    with open("parents.csv") as f1:
+        csv_read = csv.reader(f1, delimiter = ',')
+        for i, row in enumerate(csv_read):
+            if i==1:
+                seed = str(row[0])
+            elif i> 4:
+                individual.append(row[0].ljust(2, ' '))
+                parent1.append(row[1].ljust(2, ' '))
+                parent2.append(row[2].ljust(2, ' '))
+                opperator.append(row[3].rjust(13, ' '))
+    f1.close()
 
 ## Read in Chi score
 with open('chiScores.csv') as f2:
