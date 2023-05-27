@@ -37,6 +37,8 @@ runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_
 
 # Move things to TMPDIR
 cp $GAPath/GA.exe $TMPDIR
+cp fitnessScores.csv $TMPDIR
+cp chiScores.csv $TMPDIR
 cp data_write.py $TMPDIR
 cp test_fitness.py $TMPDIR
 cp test_plotter.py $TMPDIR
@@ -44,7 +46,7 @@ cp fitness_check.py $TMPDIR
 cd $TMPDIR
 
 #loop over generations
-for g in `seq 0 ${Generations}`
+for g in `seq 0 ${generations}`
 do
     if [ $g -eq 0 ]
     then
@@ -70,10 +72,12 @@ do
 
     #Call script to calculate test loop fitness
     python test_fitness.py $design $g $population 
-    
-    #Check to see if there are duplicate antennas
-    python fitness_check.py $design $g $population
-    
+    if [ $g -ne 0 ]
+    then
+	#Check to see if there are duplicate antennas
+	python fitness_check.py $design $g $population
+    fi
+
     #Combine all datafiles into one file
     python data_write.py $design $g $population
     
