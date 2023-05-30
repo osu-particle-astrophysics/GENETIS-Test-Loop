@@ -129,7 +129,6 @@ chi2 = []
 
 # Calculate ChiSquared Scores
 solve_chi_squared(target, observed, sections, genes, chi2)
-print(chi2)
 
 # Translate Chi-Squared into fitness score
 fitness = [(1/(x+1)) for x in chi2]
