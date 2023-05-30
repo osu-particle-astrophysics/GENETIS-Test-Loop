@@ -114,8 +114,8 @@ elif (g.design == "PUEO"):
     genes = 7
 
 # Define list to hold each antennas observed gain pattern
-observed = [[[0]*genes for i in range(sections)]
-            for j in range(g.population+1)]
+observed = ([[[0]*genes for i in range(sections)]
+            for j in range(g.population+1)])
 
 # Populate the observed list from csv
 filename = "generationDNA.csv"
