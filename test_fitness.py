@@ -33,8 +33,9 @@ def solve_chi_squared(target, observed, sections, genes, chi2):
         tempChi2 = 0
         for j in range(sections):
             for k in range(genes):
-                tempChi2 = tempChi2
-                + abs(((observed[i][j][k] - target[j][k])**2) / target[j][k])
+                tempChi2 = (tempChi2
+                            + abs(((observed[i][j][k] - target[j][k])**2)
+                            / target[j][k]))
         chi2.append(tempChi2)
 
 
@@ -128,6 +129,7 @@ chi2 = []
 
 # Calculate ChiSquared Scores
 solve_chi_squared(target, observed, sections, genes, chi2)
+print(chi2)
 
 # Translate Chi-Squared into fitness score
 fitness = [(1/(x+1)) for x in chi2]
