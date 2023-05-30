@@ -1,3 +1,4 @@
+""""Solve for fitness scores of individuals in a generation."""
 # Imports
 import csv
 import argparse
@@ -7,10 +8,10 @@ import math
 # Functions
 
 
-def read_data(sections, genes, observed):
-    # Read in data from generationDNA.csv and put it into the observed list
-    with open('generationDNA.csv') as dna:
-        csv_read = csv.reader(dna, delimiter=',')
+def read_dna(sections, genes, dna, filename):
+    """Read in antenna dna."""
+    with open(filename) as data:
+        csv_read = csv.reader(data, delimiter=',')
         individual = 0
         for i, row in enumerate(csv_read):
             if i > 8:
@@ -19,7 +20,7 @@ def read_data(sections, genes, observed):
                 elif (i-9) % sections != 0:
                     j = (i-9) % sections
                 for k in range(genes):
-                    observed[individual][j][k] = float(row[k])
+                    dna[individual][j][k] = float(row[k])
                 if j == (i-9) % sections and (i-9) % sections != 0:
                     individual = individual + 1
                 if sections == 1:
@@ -27,7 +28,7 @@ def read_data(sections, genes, observed):
 
 
 def solve_chi_squared(target, observed, sections, genes, chi2):
-    # Solve for Chi-squared scores
+    """Solve for Chi-squared scores."""
     for i in range(0, g.population):
         tempChi2 = 0
         for j in range(sections):
@@ -38,7 +39,7 @@ def solve_chi_squared(target, observed, sections, genes, chi2):
 
 
 def calc_error(fitness, error):
-    # Calculate simulated error for the test
+    """Calculate simulated error for the test."""
     for i in range(0, len(fitness)):
         if fitness[i] == 0:
             error.append(0.0)
@@ -46,37 +47,36 @@ def calc_error(fitness, error):
             error.append(0.5/math.sqrt(41.0))
             tempFit = fitness[i]
             tempFit = random.gauss(fitness[i], 0.5/math.sqrt(1.0))
-            while(tempFit < 0):
+            while tempFit < 0:
                 tempFit = random.gauss(fitness[i], 0.5/math.sqrt(1.0))
             fitness[i] = tempFit
 
 
 def write_fitness(fitness, error):
-    # Write fintessScore csv with data for the generation
+    """Write fintessScore csv with data for the generation."""
     with open('fitnessScores.csv', "r") as fs:
         lines = fs.readlines()
     lines2 = []
     with open('fitnessScores.csv', "w") as f2:
         for x in range(0, len(fitness)+2):
             if x <= 1:
-                lines2.append(str(lines[x]))
+                lines2.append(f"{lines[x]}")
             elif x > 1:
-                lines2.append(str(fitness[x-2]) + "," + str(error[x-2]) + '\n')
+                lines2.append(f"{fitness[x-2]}, {error[x-2]}\n")
         f2.writelines(lines2)
-    f2.close
 
 
 def write_chi(chi2):
-    # Write chiScore csv with data for the generation
+    """Write chiScore csv with data for the generation."""
     with open('chiScores.csv', "r") as fc:
         lines = fc.readlines()
     lines3 = []
     with open('chiScores.csv', "w") as f2:
         for x in range(0, len(fitness)+2):
             if x <= 1:
-                lines3.append(str(lines[x]))
+                lines3.append(f"{lines[x]}")
             elif x > 1:
-                lines3.append(str(chi2[x-2]) + '\n')
+                lines3.append(f"{chi2[x-2]}\n")
         f2.writelines(lines3)
 
 
@@ -118,7 +118,8 @@ observed = [[[0]*genes for i in range(sections)]
             for j in range(g.population+1)]
 
 # Populate the observed list from csv
-read_data(sections, genes, observed)
+filename = "generationDNA.csv"
+read_dna(sections, genes, observed, filename)
 
 # Define lists to store scores
 fitness = []
@@ -138,5 +139,5 @@ calc_error(fitness, error)
 write_fitness(fitness, error)
 write_chi(chi2)
 
-print("Max fitness: " + str(max(fitness)))
-print("Min Chi-squared: " + str(min(chi2)))
+print("Max fitness: {max(fitness)}")
+print("Min Chi-squared: {min(chi2)}")
