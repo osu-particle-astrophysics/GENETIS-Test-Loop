@@ -66,6 +66,7 @@ for z in range(0, g.generation+1):
              color='#999999', linestyle='-', linewidth=0.2, alpha=0.5)
     generations.clear()
     fitness_scores.clear()
+    chi_scores.clear()
 
 # plot max and Ave lines
 generations = [f for f in range(0, g.generation+1)]
@@ -103,6 +104,7 @@ for z in range(0, g.generation+1):
              color='#999999', linestyle='-', linewidth=0.2, alpha=0.5)
 
     generations.clear()
+    fitness_scores.clear()
     chi_scores.clear()
 
 # plot min and Ave lines
