@@ -16,7 +16,7 @@ def read_data(chi_scores, fitness_scores, filename):
         for i, row in enumerate(csv_read):
             if i > 3:
                 fitness_scores.append(float(row[2]))
-                chi_scores.append(float[1])
+                chi_scores.append(float(row[1]))
 
 
 # Read in arguments

@@ -139,5 +139,5 @@ calc_error(fitness, error)
 write_fitness(fitness, error)
 write_chi(chi2)
 
-print("Max fitness: {max(fitness)}")
-print("Min Chi-squared: {min(chi2)}")
+print(f"Max fitness: {max(fitness)}")
+print(f"Min Chi-squared: {min(chi2)}")
