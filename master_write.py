@@ -11,7 +11,7 @@ from statistics import mean
 import numpy as np
 
 design = "PUEO"
-population = 50
+population = 100
 error = "0.5"
 
 count = 0
@@ -24,12 +24,12 @@ run_name = []
 bench_mark = 0.5
 bench_mark2 = 0.25
 
-for rank in range(30, 31, 1):
-    for roulette in range(10, 11, 1):
-        for tournament in range(10, 11, 1):
+for rank in range(60, 61, 1):
+    for roulette in range(20, 21, 1):
+        for tournament in range(20, 21, 1):
             if rank + roulette + tournament == population:
-                for reproduction in range(2, 3, 1):
-                    for crossover in range(46, 47, 2):
+                for reproduction in range(4, 5, 1):
+                    for crossover in range(92, 94, 2):
                         for mutation_rate in range(25, 26, 1):
                             for sigma in range(7, 8, 1):
                                 count = count+1
