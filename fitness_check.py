@@ -15,7 +15,6 @@ def read_fitness(fitness, error, filename):
             if i > 1:
                 fitness.append(float(row[0]))
                 error.append(float(row[1]))
-    f1.close()
 
 
 def read_dna(sections, genes, dna, filename):
