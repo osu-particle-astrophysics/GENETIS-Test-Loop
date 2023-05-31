@@ -16,7 +16,7 @@ for rank in range(60, 61, 1):
                             for mutation_rate in range(25, 26, 1):
                                 for sigma in range(6, 7, 1):
                                     for test in range(1, 11, 1):
-                                        run_count = run_count+1
+                                        run_count = run_count + 1
 
 # solve for time
 # assume each generation takes 3 seconds
