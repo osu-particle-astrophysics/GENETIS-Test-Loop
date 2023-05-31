@@ -93,8 +93,8 @@ g = parser.parse_args()
 
 # Define target gain pattern based on design
 if (g.design == "ARA"):
-    target = ([[0.968807, 14.1263, -0.053024, 0.8256],
-              [4.83102, 10.4062, 0.027465, -0.396757]])
+    target = [[0.968807, 14.1263, -0.053024, 0.8256],
+              [4.83102, 10.4062, 0.027465, -0.396757]]
     sections = 2
     genes = 4
 
