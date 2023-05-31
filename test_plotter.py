@@ -80,7 +80,7 @@ plt.figure(figsize=(16, 9))
 for z in range(0, g.generation+1):
 
     # Read in all scores for current gen
-    filename = str(z)+"_generationData.csv"
+    filename = f"{z}_generationData.csv"
     read_data(chi_scores, fitness_scores, filename)
 
     # Calculate min and average of chi
