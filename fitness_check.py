@@ -63,7 +63,7 @@ def write_fitness(fitness, error):
     with open('fitnessScores.csv', "w") as f2:
         for x in range(0, len(fitness)+2):
             if x <= 1:
-                lines2.append(f"{lines[x]}")
+                lines2.append(lines[x])
             elif x > 1:
                 lines2.append(f"{fitness[x-2]}, {error[x-2]}\n")
         f2.writelines(lines2)
