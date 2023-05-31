@@ -1,4 +1,4 @@
-"""plot the invidviduals at each generation"""
+"""Plot the individuals at each generation."""
 
 # Imports
 import matplotlib.pyplot as plt
