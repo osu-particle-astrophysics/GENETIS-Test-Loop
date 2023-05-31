@@ -127,13 +127,8 @@ with open('generationData.csv', "w") as f5:
 
     # Write data
     for i in range(len(individual)):
-        f5.write(f"{individual[i]}")
-        f5.write(f", {chi[i]}")
-        f5.write(f", {fitness[i]}")
-        f5.write(f", {error[i]}")
-        f5.write(f", {parent1[i]}")
-        f5.write(f", {parent2[i]}")
-        f5.write(f", {opperator[i]}")
+        f5.write(f"{individual[i]}, {chi[i]}, {fitness[i]}, {error[i]}, "
+                 f"{parent1[i]}, {parent2[i]}, {opperator[i]}")
         for j in range(sections):
             for k in range(genes):
                 f5.write(f", {dna[i][j][k]}")
