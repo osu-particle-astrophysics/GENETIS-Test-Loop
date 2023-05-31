@@ -75,7 +75,7 @@ def write_chi(chi2):
     with open('chiScores.csv', "w") as f2:
         for x in range(0, len(fitness)+2):
             if x <= 1:
-                lines3.append(f"{lines[x]}")
+                lines3.append(lines[x])
             elif x > 1:
                 lines3.append(f"{chi2[x-2]}\n")
         f2.writelines(lines3)
