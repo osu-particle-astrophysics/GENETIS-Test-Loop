@@ -61,7 +61,7 @@ def write_fitness(fitness, error):
         lines = fs.readlines()
     lines2 = []
     with open('fitnessScores.csv', "w") as f2:
-        for x in range(0, len(fitness)+2):
+        for x in range(len(fitness)+2):
             if x <= 1:
                 lines2.append(lines[x])
             elif x > 1:
