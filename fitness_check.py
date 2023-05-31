@@ -40,8 +40,8 @@ def combine_scores(current_fitness, previous_fitness,
                    current_error, previous_error):
     """Combine scores of identical individuals in the previous generation."""
     matches = 0
-    for i in range(0, len(current_fitness)):
-        for j in range(0, len(previous_fitness)):
+    for i in range(len(current_fitness)):
+        for j in range(len(previous_fitness)):
             if current_dna[i] == previous_dna[j]:
                 matches = matches + 1
                 current_weight = 1.0/(current_error[i]**2.0)
