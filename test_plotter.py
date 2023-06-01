@@ -94,7 +94,7 @@ for z in range(0, g.generation+1):
     plt.title(g.design + ' Chi-Squared Evolution test')
     plt.plot(generations, metric_scores, '.',
              color='black', markersize='5.0', alpha=.5)
-    plt.ylabel('Chi-Squared')
+    plt.ylabel('Metric')
     plt.xlabel('Generations')
     plt.axis([0, g.generation, 0, 1])
     plt.grid(visible=True, which='major',
@@ -111,7 +111,7 @@ for z in range(0, g.generation+1):
 generations = [f for f in range(0, g.generation+1)]
 plt.plot(generations, min_metric, linestyle='-', color='blue', alpha=0.5)
 plt.plot(generations, ave_metric, linestyle='--', color='red', alpha=0.5)
-plt.savefig("chisquared.png")
+plt.savefig("metric.png")
 
 # Display final generation thresholds
 fitness_scores2 = []
