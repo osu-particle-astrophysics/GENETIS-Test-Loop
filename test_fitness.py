@@ -27,15 +27,28 @@ def read_dna(sections, genes, dna, filename):
                     individual = individual + 1
 
 
+def solve_normalized_distance(target, observed, sections, genes, metric):
+    """Solve for normalized euclidean distance."""
+    for i in range(0, g.population):
+        temp_metric = 0
+        for j in range(sections):
+            for k in range(genes):
+                temp_metric = (temp_metric
+                               + ((observed[i][j][k] - target[j][k])**2))
+        temp_metric = math.sqrt(temp_metric / (sections * genes))
+        metric.append(temp_metric)
+
+
 def solve_chi_squared(target, observed, sections, genes, chi2):
     """Solve for Chi-squared scores."""
+    # Legacy function
     for i in range(0, g.population):
         tempChi2 = 0
         for j in range(sections):
             for k in range(genes):
                 tempChi2 = (tempChi2
                             + abs(((observed[i][j][k] - target[j][k])**2)
-                            / target[j][k]))
+                                  / target[j][k]))
         chi2.append(tempChi2)
 
 
@@ -67,17 +80,17 @@ def write_fitness(fitness, error):
         f2.writelines(lines2)
 
 
-def write_chi(chi2):
+def write_metric(metric):
     """Write chiScore csv with data for the generation."""
-    with open('chiScores.csv', "r") as fc:
+    with open('metric.csv', "r") as fc:
         lines = fc.readlines()
     lines3 = []
-    with open('chiScores.csv', "w") as f2:
+    with open('metric.csv', "w") as f2:
         for x in range(len(fitness)+2):
             if x <= 1:
                 lines3.append(lines[x])
             elif x > 1:
-                lines3.append(f"{chi2[x-2]}\n")
+                lines3.append(f"{metric[x-2]}\n")
         f2.writelines(lines3)
 
 
@@ -125,20 +138,20 @@ read_dna(sections, genes, observed, filename)
 # Define lists to store scores
 fitness = []
 error = []
-chi2 = []
+metric = []
 
-# Calculate ChiSquared Scores
-solve_chi_squared(target, observed, sections, genes, chi2)
+# Calculate metric
+solve_normalized_distance(target, observed, sections, genes, metric)
 
-# Translate Chi-Squared into fitness score
-fitness = [(1/(x+1)) for x in chi2]
+# Translate metric into fitness score
+fitness = [(1/(x+1)) for x in metric]
 
 # Introduce error to fitness score
 calc_error(fitness, error)
 
 # Write csv's with data for the generation
 write_fitness(fitness, error)
-write_chi(chi2)
+write_metric(metric)
 
 print(f"Max fitness: {max(fitness)}")
-print(f"Min Chi-squared: {min(chi2)}")
+print(f"Min metric: {min(metric)}")
