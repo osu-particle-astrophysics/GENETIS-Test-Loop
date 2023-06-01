@@ -1,32 +1,31 @@
-# estimate the time it will take the test loop to run
+"""Estimate the time it will take the test loop to run."""
 
-sigma= 5
-runCount=0
+# Establish constants
+run_count = 0
+population = 100
+generations = 50
 
-for a in range(2,3,2):
-    for b in range(2,3,2):
-        for c in range(6,7,2):
-            r = a+b+c
-            if r==10:
-                for d in range(0,21,4):
-                    for e in range(80,101,4):
-                        de=d+e
-                        for f in range(10,21,5):
-                            if f != 0:
-                                sigma=7
-                            if f == 0:
-                                sigma=3
-                            for g in range(3,sigma+1,1):
-                                for h in range(1,10,1):
-                                    runCount=runCount+1
+# loop over variables to find number of runs
+for rank in range(60, 61, 1):
+    for roulette in range(20, 21, 1):
+        for tournament in range(20, 21, 1):
+            if rank + roulette + tournament == population:
+                for reproduction in range(0, 1, 1):
+                    for crossover in range(96, 97, 1):
+                        if reproduction + crossover <= population:
+                            for mutation_rate in range(25, 26, 1):
+                                for sigma in range(6, 7, 1):
+                                    for test in range(1, 11, 1):
+                                        run_count = run_count + 1
 
-batches = runCount/250
-seconds = 60*10*batches
-minutes = int(seconds/60)
-r_sec = seconds - (minutes*60)
-hours = int(minutes/60)
-r_min = minutes - (hours*60)
+# solve for time
+# assume each generation takes 3 seconds
+batches = int(run_count / 250) + 1
+seconds = (3*generations) * batches
+minutes = int(seconds / 60)
+r_sec = seconds - (minutes * 60)
+hours = int(minutes / 60)
+r_min = minutes - (hours * 60)
 
-print("Jobs: "+str(runCount)+" in "+ str(batches)+" Batches") 
-print("Hours:  "+ str(hours) + " Min: "+ str(r_min)+ " Sec: "+ str(r_sec))
-                                
+print(f"Jobs: {run_count} in {batches} Batches")
+print(f"Hours: {hours} Min: {r_min} Sec: {r_sec}")
