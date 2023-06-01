@@ -129,7 +129,7 @@ with open('generationData.csv', "w") as f5:
     # Write data
     for i in range(len(individual)):
         f5.write(f"{individual[i]}, {metric[i]}, {fitness[i]}, {error[i]}, "
-                 f"{parent1[i]}, {parent2[i]}, {opperator[i]}")
+                 f"{parent1[i]}, {parent2[i]}, {opperator[i]}, ")
         dnas = (dna[i][j][k] for j in range(sections) for k in range(genes))
         f5.write(', '.join(map(str, dnas)))
         f5.write("\n")
