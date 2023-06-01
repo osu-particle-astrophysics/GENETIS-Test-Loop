@@ -1,117 +1,125 @@
+"""Solve the weighted average of duplicated individuals."""
+# Imports
 import csv
-import math
 import argparse
-import numpy as np
 
 
-parser = argparse.ArgumentParser();
-parser.add_argument("Gen", type=int)
+# Functions
+
+
+def read_fitness(fitness, error, filename):
+    """Read in fitness scores."""
+    with open(filename) as f1:
+        txt_read = csv.reader(f1, delimiter=',')
+        for i, row in enumerate(txt_read):
+            if i > 1:
+                fitness.append(float(row[0]))
+                error.append(float(row[1]))
+
+
+def read_dna(sections, genes, dna, filename):
+    """Read in antenna dna."""
+    with open(filename) as data:
+        csv_read = csv.reader(data, delimiter=',')
+        individual = 0
+        for i, row in enumerate(csv_read):
+            if i > 8:
+                if (i-9) % sections == 0:
+                    j = 0
+                elif (i-9) % sections != 0:
+                    j = (i-9) % sections
+                for k in range(genes):
+                    dna[individual][j][k] = float(row[k])
+                if j == (i-9) % sections and (i-9) % sections != 0:
+                    individual = individual + 1
+                if sections == 1:
+                    individual = individual + 1
+
+
+def combine_scores(current_fitness, previous_fitness,
+                   current_error, previous_error):
+    """Combine scores of identical individuals in the previous generation."""
+    matches = 0
+    for i in range(len(current_fitness)):
+        for j in range(len(previous_fitness)):
+            if current_dna[i] == previous_dna[j]:
+                matches = matches + 1
+                current_weight = 1.0/(current_error[i]**2.0)
+                previous_weight = 1.0/(previous_error[j]**2.0)
+                current_fitness[i] = ((current_weight * current_fitness[i]
+                                       + previous_weight * previous_fitness[j])
+                                      / (current_weight + previous_weight))
+                current_error[i] = (1.0 /
+                                    ((current_weight + previous_weight)**(0.5))
+                                    )
+    print(matches, "Matches found")
+
+
+def write_fitness(fitness, error):
+    """Write fitnessScore.csv with data for the generation."""
+    with open('fitnessScores.csv', "r") as fs:
+        lines = fs.readlines()
+    lines2 = []
+    with open('fitnessScores.csv', "w") as f2:
+        for x in range(len(fitness)+2):
+            if x <= 1:
+                lines2.append(lines[x])
+            elif x > 1:
+                lines2.append(f"{fitness[x-2]}, {error[x-2]}\n")
+        f2.writelines(lines2)
+
+
+# Read in arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("design", type=str)
+parser.add_argument("generation", type=int)
+parser.add_argument("population", type=int)
 g = parser.parse_args()
 
-## fitness related arrays
-A = [] ## fitness scores for current gen
-B = [] ## fitness scores for previous gen
-Err_A = [] ## error in A
-Err_B = [] ## error in B
+# fitness related arrays
+current_fitness = []
+previous_fitness = []
+current_error = []
+previous_error = []
 
+# Set constants based on design
+if (g.design == "ARA"):
+    sections = 2
+    genes = 4
 
-## DNA related arrays
-Ar1 = []
-Ar2 = []
-Al1 = []
-Al2 = []
-At1 = []
-At2 = []
-Aq1 = []
-Aq2 = []
+elif (g.design == "AREA"):
+    sections = 2
+    genes = 14
 
-Br1 = []
-Br2 = []
-Bl1 = []
-Bl2 = []
-Bt1 = []
-Bt2 = []
-Bq1 = []
-Bq2 = []
+elif (g.design == "PUEO"):
+    sections = 1
+    genes = 7
 
-## gather fitness scores and error from current Gen
-with open(str(g.Gen) + "_fitnessScores.csv") as f1:
-    txt_read = csv.reader(f1, delimiter = ',')
-    for i, row in enumerate(txt_read):
-        if i>1:
-            A.append(float(row[0]))
-            Err_A.append(float(row[1]))
-f1.close()
+# Initialize DNA vectors
+current_dna = [[[0]*genes for i in range(sections)]
+               for j in range(g.population+1)]
+previous_dna = [[[0]*genes for i in range(sections)]
+                for j in range(g.population+1)]
 
-## Gather fitness scores and error from previous Gen
-with open(str(g.Gen-1) + "_fitnessScores.csv") as f2:
-    txt_read = csv.reader(f2, delimiter = ',')
-    for i, row in enumerate(txt_read):
-        if i>1:
-            B.append(float(row[0]))
-            Err_B.append(float(row[1]))
-f2.close()
+# Gather fitness scores and error from current Gen
+filename = "fitnessScores.csv"
+read_fitness(current_fitness, current_error, filename)
 
-## Read in values from current Gen DNA
-with open("generationDNA.csv") as f3:
-    csv_read = csv.reader(f3, delimiter = ',')
-    for i, row in enumerate(csv_read):
-        if i > 8:
-            if( i%2 != 0):
-                Ar1.append(float(row[0]))
-                Al1.append(float(row[1]))
-                At1.append(float(row[2]))
-                Aq1.append(float(row[3]))
-            if( i%2 == 0):
-                Ar2.append(float(row[0]))
-                Al2.append(float(row[1]))
-                At2.append(float(row[2]))
-                Aq2.append(float(row[3]))
-f3.close()
-## Read in values from previous gen DNA
-with open(str(g.Gen-1) + "_generationDNA.csv") as f4:
-    csv_read = csv.reader(f4, delimiter = ',')
-    for i, row in enumerate(csv_read):
-        if i > 8:
-            if( i%2 !=0):
-                Br1.append(float(row[0]))
-                Bl1.append(float(row[1]))
-                Bt1.append(float(row[2]))
-                Bq1.append(float(row[3]))
-            if( i%2 == 0):
-                Br2.append(float(row[0]))
-                Bl2.append(float(row[1]))
-                Bt2.append(float(row[2]))
-                Bq2.append(float(row[3]))
-f4.close()
+# Gather fitness scores and error from previous Gen
+filename = str(g.generation-1) + "_fitnessScores.csv"
+read_fitness(previous_fitness, previous_error, filename)
 
+# Read in values from current Gen DNA
+filename = "generationDNA.csv"
+read_dna(sections, genes, current_dna, filename)
 
-## combine fitness scores of repeated antennas and save them in the A arrays
-matches = 0
+# Read in values from previous gen DNA
+filename = str(g.generation-1) + "_generationDNA.csv"
+read_dna(sections, genes, previous_dna, filename)
 
-for i in range(0, len(A)):
-    for j in range(0, len(B)):
-        if(Ar1[i] == Br1[j] and Ar2[i] == Br2[j] and Al1[i] == Bl1[j] and Al2[i] == Bl2[j] and At1[i] == Bt1[j] and At2[i] == Bt2[j] and Aq1[i] == Bq1[j] and Aq2[i] == Bq2[j]):
-           matches = matches + 1
-           WA = 1.0/(Err_A[i]**2.0)
-           WB = 1.0/(Err_B[j]**2.0)
-           A[i] = ((WA*A[i] + WB*B[j])/(WA+WB))
-           Err_A[i] = (1.0/((WA + WB)**(0.5)))
-#print(matches, "Matches found")
-# write out to file 
+# combine fitness scores of identical individuals in the previous generation
+combine_scores(current_fitness, previous_fitness,
+               current_error, previous_error)
 
-with open('fitnessScores.csv', "r") as f5:
-    lines = f5.readlines()
-f5.close()
-
-lines2 = []
-with open(str(g.Gen)+'_fitnessScores.csv', 'w') as f6:
-    for x in range(0, len(A)+2):
-        if x<=1:
-            lines2.append(str(lines[x]))
-        elif x>1:
-            lines2.append(str(A[x-2]) + "," +str(Err_A[x-2]) + '\n')
-    f6.writelines(lines2)
-f6.close()
-
-    
+# print updated scores into the csv
+write_fitness(current_fitness, current_error)
