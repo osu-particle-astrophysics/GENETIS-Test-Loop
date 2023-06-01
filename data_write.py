@@ -35,13 +35,13 @@ def read_fitness(fitness, error, filename):
                 error.append(float(row[1]))
 
 
-def read_chi(chi, filename):
-    """Read in chi-squared scores."""
+def read_metric(metric, filename):
+    """Read in metric scores."""
     with open(filename) as f1:
         csv_read = csv.reader(f1, delimiter=',')
         for i, row in enumerate(csv_read):
             if i > 1:
-                chi.append(float(row[0]))
+                metric.append(float(row[0]))
 
 
 def read_parents(gen, pop, individual, parent1, parent2, opperator, seed):
@@ -80,7 +80,7 @@ parent2 = []
 opperator = []
 fitness = []
 error = []
-chi = []
+metric = []
 
 # Find DNA vector parameters based on design
 if g.design == "ARA":
@@ -103,8 +103,8 @@ read_parents(g.generation, g.population, individual,
              parent1, parent2, opperator, seed)
 
 # Read in Chi score
-filename = "chiScores.csv"
-read_chi(chi, filename)
+filename = "metric.csv"
+read_metric(metric, filename)
 
 # Read in fitness score and error
 filename = "fitnessScores.csv"
@@ -120,14 +120,15 @@ with open('generationData.csv', "w") as f5:
     f5.write(f"Generation Data for generation {g.generation}\n")
     f5.write(f"{seed}\n")
     f5.write('\n')
-    f5.write("Individual, Chi, Fitness, Error, Parent 1, Parent 2, Opperator")
+    f5.write("Individual, Metric, Fitness, Error, Parent 1, Parent 2,")
+    f5.write(" Opperator")
     for x in range(sections*genes):
         f5.write(f", Gene {x+1}")
     f5.write('\n')
 
     # Write data
     for i in range(len(individual)):
-        f5.write(f"{individual[i]}, {chi[i]}, {fitness[i]}, {error[i]}, "
+        f5.write(f"{individual[i]}, {metric[i]}, {fitness[i]}, {error[i]}, "
                  f"{parent1[i]}, {parent2[i]}, {opperator[i]}")
         dnas = (dna[i][j][k] for j in range(sections) for k in range(genes))
         f5.write(', '.join(map(str, dnas)))

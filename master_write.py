@@ -43,38 +43,38 @@ for rank in range(60, 61, 1):
                                     c = next(color)
                                     ave_fitness = []
                                     max_fitness = []
-                                    ave_chi = []
-                                    min_chi = []
+                                    ave_metric = []
+                                    min_metric = []
                                     gen_num = []
                                     for generation in range(0, 51, 1):
                                         gen_num.append(generation)
                                     for gens in range(0, 51):
                                         runname=f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation_rate}_{sigma}_{test}_{gens}"
                                         fit = []
-                                        chi = []
+                                        metric = []
                                         with open(f"{runname}_generationData.csv") as F1:
                                             txt_read = csv.reader(F1, delimiter=",")
                                             for i, row in enumerate(txt_read):
                                                 if i > 3:
                                                     fit.append(float(row[2]))
-                                                    chi.append(float(row[1]))
+                                                    metric.append(float(row[1]))
                                         ave_fitness.append(mean(fit))
                                         max_fitness.append(max(fit))
-                                        ave_chi.append(mean(chi))
-                                        min_chi.append(min(chi))
+                                        ave_metric.append(mean(metric))
+                                        min_metric.append(min(metric))
 
                                         # Now update temp_earliest
-                                        if min(chi) <= bench_mark and gens < temp_earliest:
+                                        if min(metric) <= bench_mark and gens < temp_earliest:
                                             temp_earliest = gens
-                                        if min(chi) <= bench_mark2 and gens < temp_earliest2:
+                                        if min(metric) <= bench_mark2 and gens < temp_earliest2:
                                             temp_earliest2 = gens
                                     temp_benchmark_gen.append(temp_earliest)
                                     temp_benchmark_gen2.append(temp_earliest2)
 
                                     # Begin Plotting
                                     plt.figure(count, figsize=(16,9))
-                                    plt.plot(gen_num, ave_chi, c=c, linestyle='dotted', label=(f"Run {test} average"))
-                                    plt.plot(gen_num, min_chi, c=c, linestyle='solid', label=(f"Run {test} High"))
+                                    plt.plot(gen_num, ave_metric, c=c, linestyle='dotted', label=(f"Run {test} average"))
+                                    plt.plot(gen_num, min_metric, c=c, linestyle='solid', label=(f"Run {test} High"))
                                     # plt.axis([0,50, 0.00, 1.5])
                                     plt.grid(visible=True, which='major', color='#666666', linestyle='-', linewidth=0.5)
                                     plt.minorticks_on()
