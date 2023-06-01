@@ -1,10 +1,23 @@
-# plot the invidviduals at each generation
+"""Plot the individuals at each generation."""
 
 # Imports
 import matplotlib.pyplot as plt
 import csv
 import argparse
 from statistics import mean
+
+# Functions
+
+
+def read_data(chi_scores, fitness_scores, filename):
+    """Read in all scores for current gen."""
+    with open(filename) as f:
+        csv_read = csv.reader(f, delimiter=',')
+        for i, row in enumerate(csv_read):
+            if i > 3:
+                fitness_scores.append(float(row[2]))
+                chi_scores.append(float(row[1]))
+
 
 # Read in arguments
 parser = argparse.ArgumentParser()
@@ -23,18 +36,16 @@ max_chi = []
 min_chi = []
 ave_chi = []
 
+
 # Plot each individuals fitness for each generation
 plt.figure(figsize=(16, 9))
 for z in range(0, g.generation+1):
 
     # Read in all scores for current gen
-    with open(str(z)+"_generationData.csv") as f:
-        csv_read = csv.reader(f, delimiter=',')
-        for i, row in enumerate(csv_read):
-            if i > 3:
-                fitness_scores.append(float(row[2]))
+    filename = f"{z}_generationData.csv"
+    read_data(chi_scores, fitness_scores, filename)
 
-    # Calculate mins, maxes, and averages
+    # Calculate maxe, and average of fitness
     max_fitness.append(max(fitness_scores))
     ave_fitness.append(mean(fitness_scores))
 
@@ -55,12 +66,12 @@ for z in range(0, g.generation+1):
              color='#999999', linestyle='-', linewidth=0.2, alpha=0.5)
     generations.clear()
     fitness_scores.clear()
+    chi_scores.clear()
 
 # plot max and Ave lines
 generations = [f for f in range(0, g.generation+1)]
 plt.plot(generations, max_fitness, linestyle='-', color='blue', alpha=0.5)
 plt.plot(generations, ave_fitness, linestyle='--', color='red', alpha=0.5)
-plt.legend()
 plt.savefig("fitness.png")
 
 
@@ -69,15 +80,11 @@ plt.figure(figsize=(16, 9))
 for z in range(0, g.generation+1):
 
     # Read in all scores for current gen
-    with open(str(z)+"_generationData.csv") as f:
-        csv_read = csv.reader(f, delimiter=',')
-        for i, row in enumerate(csv_read):
-            if i > 3:
-                chi_scores.append(float(row[1]))
+    filename = f"{z}_generationData.csv"
+    read_data(chi_scores, fitness_scores, filename)
 
-    # Calculate mins, maxes, and averages
+    # Calculate min and average of chi
     min_chi.append(min(chi_scores))
-    max_chi.append(min(chi_scores))
     ave_chi.append(mean(chi_scores))
 
     # populate generation vector for plotting
@@ -95,14 +102,15 @@ for z in range(0, g.generation+1):
     plt.minorticks_on()
     plt.grid(visible=True, which='minor',
              color='#999999', linestyle='-', linewidth=0.2, alpha=0.5)
+
     generations.clear()
+    fitness_scores.clear()
     chi_scores.clear()
 
 # plot min and Ave lines
 generations = [f for f in range(0, g.generation+1)]
 plt.plot(generations, min_chi, linestyle='-', color='blue', alpha=0.5)
 plt.plot(generations, ave_chi, linestyle='--', color='red', alpha=0.5)
-plt.legend()
 plt.savefig("chisquared.png")
 
 # Display final generation thresholds
@@ -114,5 +122,5 @@ with open("generationData.csv") as f2:
         if i > 3:
             chi_scores2.append(float(row[1]))
             fitness_scores2.append(float(row[2]))
-print("Max Fitness Score: ", str(max(fitness_scores2)))
-print("Min Chi-Squared value: ", str(min(chi_scores2)))
+print(f"Max Fitness Score: {max(fitness_scores2)}")
+print(f"Min Chi-Squared value: {min(chi_scores2)}")
