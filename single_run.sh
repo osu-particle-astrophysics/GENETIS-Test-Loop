@@ -19,14 +19,14 @@ population=100
 rank=60
 roulette=20
 tournament=20
-reproduction=0
-crossover=96
-mutation_rate=25
+reproduction=4
+crossover=88
+mutation_no=4
 sigma=6
 test=1
 
 # establish run name
-runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_rate}'_'${sigma}'_'${test}
+runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
 
 # loop over generations
 for g in `seq 0 ${generations}`
@@ -36,7 +36,7 @@ do
         echo ${runname} 'Generation 0'
         
 	# Call GA
-        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
+        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
         echo 'GA ran for gen 0'
     fi
     
@@ -45,7 +45,7 @@ do
     then
         echo ${runname} 'Generation' ${g}
 	#Call GA
-        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
+        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
         echo 'GA ran for gen' ${g}
     fi
     

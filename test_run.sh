@@ -28,12 +28,12 @@ roulette=${5}
 tournament=${6}
 reproduction=${7}
 crossover=${8}
-mutation_rate=${9}
+mutation_no=${9}
 sigma=${10}
 test=${11}
 
 # establish run name
-runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_rate}'_'${sigma}'_'${test}
+runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
 
 # Move things to TMPDIR
 cp $GAPath/GA.exe $TMPDIR
@@ -54,7 +54,7 @@ do
 	echo ${runname} 'Generation 0'
 	
 	#Call GA
-	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
+	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
 	echo 'GA ran for gen 0'
 
     fi
@@ -65,7 +65,7 @@ do
 	echo ${runname} 'Generation' ${g}
 	
 	#Call GA
-	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
+	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
 	echo 'GA ran for gen' ${g}
 
     fi
