@@ -91,7 +91,7 @@ for z in range(0, g.generation+1):
     generations = [z for f in range(0, g.population)]
 
     # begin plotting
-    plt.title(g.design + ' Chi-Squared Evolution test')
+    plt.title(g.design + ' Metric Evolution test')
     plt.plot(generations, metric_scores, '.',
              color='black', markersize='5.0', alpha=.5)
     plt.ylabel('Metric')
