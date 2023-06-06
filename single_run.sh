@@ -22,7 +22,7 @@ tournament=20
 reproduction=10
 crossover=70
 mutation_no=15
-sigma=68
+sigma=10
 test=1
 
 # establish run name
