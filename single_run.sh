@@ -14,7 +14,7 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
 # Input arguments for this script are:
 design="ARA"
-generations=100
+generations=50
 population=100
 rank=60
 roulette=20
@@ -55,8 +55,8 @@ do
     # Check to see if there are duplicate antennas
     if [ $g -ne 0 ]
     then
-        echo no error
-        # python fitness_check.py $design $g $population
+        #echo no error
+        python fitness_check.py $design $g $population
     fi
 
     # Combine all datafiles into one file
