@@ -38,7 +38,7 @@ runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_
 # Move things to TMPDIR
 cp $GAPath/GA.exe $TMPDIR
 cp fitnessScores.csv $TMPDIR
-cp chiScores.csv $TMPDIR
+cp metric.csv $TMPDIR
 cp data_write.py $TMPDIR
 cp test_fitness.py $TMPDIR
 cp test_plotter.py $TMPDIR
