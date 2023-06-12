@@ -10,11 +10,12 @@ for rank in range(60, 61, 1):
     for roulette in range(20, 21, 1):
         for tournament in range(20, 21, 1):
             if rank + roulette + tournament == population:
-                for reproduction in range(0, 1, 1):
-                    for crossover in range(96, 97, 1):
-                        if reproduction + crossover <= population:
-                            for mutation_rate in range(25, 26, 1):
-                                for sigma in range(6, 7, 1):
+                for reproduction in range(0, 17, 4):
+                    for crossover in range(72, 100, 4):
+                        for mutation in range(0, 17, 4):
+                            operators = reproduction + crossover + mutation
+                            if operators <= population:
+                                for sigma in range(5, 16, 5):
                                     for test in range(1, 11, 1):
                                         run_count = run_count + 1
 

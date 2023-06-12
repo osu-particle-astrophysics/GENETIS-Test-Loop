@@ -103,5 +103,4 @@ python test_plotter.py $design $generations $population
 
 #move plot to the permanent directory
 mv fitness.png $PlotsPath/${runname}_fitness.png
-mv metric.png $PlotsPath/${runname}_chisquared.png
-
+mv metric.png $PlotsPath/${runname}_metric.png
