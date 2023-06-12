@@ -35,7 +35,7 @@ do
                 do
                     for crossover in {72..100..4} 
                     do
-                        for mutation in {0..16..4}
+                        for mutation in {4..16..4}
                         do
                             opperators=$(( $reproduction + $crossover + $mutation ))
                             if [ $opperators -le $population ]
