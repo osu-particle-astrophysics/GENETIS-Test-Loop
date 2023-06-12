@@ -35,17 +35,17 @@ do
                 do
                     for crossover in {72..100..4} 
                     do
-                        for mutation_no in {0..16..4}
+                        for mutation in {0..16..4}
                         do
-                            opperators=$(( $reproduction + $crossover + $tournament ))
-                            if [ $opperators -lt $population ]
+                            opperators=$(( $reproduction + $crossover + $mutation ))
+                            if [ $opperators -le $population ]
                             then
                                 for sigma in {5..15..5} 
                                 do
                                     for test in {1..10..1}
                                     do
                                         # Submit run
-                                        sbatch test_run.sh ${design} ${generations} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma} ${test}
+                                        sbatch test_run.sh ${design} ${generations} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation} ${sigma} ${test}
                                         count=$((count+1))
                                         if [ $count -ge 250 ]
                                         then
