@@ -10,7 +10,7 @@ import statistics as stat
 from statistics import mean
 import numpy as np
 
-design = "PUEO"
+design = "ARA"
 population = 100
 error = "0.25"
 
