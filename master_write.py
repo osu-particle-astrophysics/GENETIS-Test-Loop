@@ -27,7 +27,8 @@ bench_mark2 = 0.25
 for rank in range(60, 61, 1):
     for roulette in range(20, 21, 1):
         for tournament in range(20, 21, 1):
-            if rank + roulette + tournament == population:
+            selections = rank + roulette + tournament
+            if selections == population:
                 for reproduction in range(0, 17, 4):
                     for crossover in range(72, 101, 4):
                         for mutation in range(0, 17, 4):
