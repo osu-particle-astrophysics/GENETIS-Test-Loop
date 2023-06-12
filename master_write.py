@@ -31,7 +31,7 @@ for rank in range(60, 61, 1):
             if selections == population:
                 for reproduction in range(0, 17, 4):
                     for crossover in range(72, 101, 4):
-                        for mutation in range(0, 17, 4):
+                        for mutation in range(4, 17, 4):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
                                 for sigma in range(5, 16, 5):
