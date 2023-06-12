@@ -28,12 +28,12 @@ for rank in range(60, 61, 1):
     for roulette in range(20, 21, 1):
         for tournament in range(20, 21, 1):
             if rank + roulette + tournament == population:
-                for reproduction in range(4, 5, 1):
-                    for crossover in range(92, 94, 2):
-                        for mutation in range(25, 26, 1):
+                for reproduction in range(0, 17, 4):
+                    for crossover in range(72, 101, 4):
+                        for mutation in range(0, 17, 4):
                             operators = crossover + reproduction + crossover
                             if operators <= population:
-                                for sigma in range(7, 8, 1):
+                                for sigma in range(5, 16, 5):
                                     count = count+1
                                     color = iter(cm.rainbow(np.linspace(0, 1, 11)))
                                     temp_benchmark_gen = []
