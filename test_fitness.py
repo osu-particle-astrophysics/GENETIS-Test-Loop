@@ -36,7 +36,7 @@ def solve_normalized_distance(target, observed, sections, genes, metric,
             for k in range(genes):
                 temp_metric = (temp_metric
                                + ((observed[i][j][k] - target[j][k])**2))
-        temp_metric = math.sqrt(temp_metric / max_distance)
+        temp_metric = math.sqrt(temp_metric) / max_distance
         metric.append(temp_metric)
 
 
