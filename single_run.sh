@@ -16,12 +16,12 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 design="PUEO"
 generations=100
 population=800
-rank=60
-roulette=20
-tournament=20
+rank=480
+roulette=160
+tournament=160
 reproduction=0
-crossover=84
-mutation_no=16
+crossover=672
+mutation_no=128
 sigma=15
 test=1
 
