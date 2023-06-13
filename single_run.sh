@@ -19,10 +19,10 @@ population=100
 rank=60
 roulette=20
 tournament=20
-reproduction=10
-crossover=70
-mutation_no=15
-sigma=10
+reproduction=0
+crossover=84
+mutation_no=16
+sigma=15
 test=1
 
 # establish run name
