@@ -148,7 +148,7 @@ solve_normalized_distance(target, observed, sections,
                           genes, metric, max_distance)
 
 # Translate metric into fitness score
-fitness = [(1/(x)) for x in metric]
+fitness = [(2/(1+x)) for x in metric]
 
 # Introduce error to fitness score
 calc_error(fitness, error)
