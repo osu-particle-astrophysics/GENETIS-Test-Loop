@@ -27,7 +27,8 @@ def read_dna(sections, genes, dna, filename):
                     individual = individual + 1
 
 
-def solve_normalized_distance(target, observed, sections, genes, metric):
+def solve_normalized_distance(target, observed, sections, genes, metric,
+                              max_distance):
     """Solve for normalized euclidean distance."""
     for i in range(0, g.population):
         temp_metric = 0
@@ -35,7 +36,7 @@ def solve_normalized_distance(target, observed, sections, genes, metric):
             for k in range(genes):
                 temp_metric = (temp_metric
                                + ((observed[i][j][k] - target[j][k])**2))
-        temp_metric = math.sqrt(temp_metric / (sections * genes))
+        temp_metric = math.sqrt(temp_metric / max_distance)
         metric.append(temp_metric)
 
 
@@ -108,6 +109,7 @@ g = parser.parse_args()
 if (g.design == "ARA"):
     target = [[0.968807, 14.1263, -0.053024, 0.8256],
               [4.83102, 10.4062, 0.027465, -0.396757]]
+    max_distance = 180.8651013
     sections = 2
     genes = 4
 
@@ -118,11 +120,13 @@ elif (g.design == "AREA"):
               [-1.46998, 2.94396, 3.07804, -3.72175,
               3.40754, -0.529288, 4.0295, 1.26466,
               3.03942, -4.53036, -3.74864, -0.543697, 1.08282, -3.25018]]
+    max_distance = 1
     sections = 2
     genes = 14
 
 elif (g.design == "PUEO"):
     target = [[18.6258, 101.056, 8.62486, 2.36707, 7.91612, 39.0368, 1.4305]]
+    max_distance = 238.6481303
     sections = 1
     genes = 7
 
@@ -140,10 +144,11 @@ error = []
 metric = []
 
 # Calculate metric
-solve_normalized_distance(target, observed, sections, genes, metric)
+solve_normalized_distance(target, observed, sections,
+                          genes, metric, max_distance)
 
 # Translate metric into fitness score
-fitness = [(1/(x+1)) for x in metric]
+fitness = [(1/(x)) for x in metric]
 
 # Introduce error to fitness score
 calc_error(fitness, error)
