@@ -3,6 +3,7 @@ Run/
 generators.csv
 GA/
 Results/
+.vs/
 */*.csv
 *.png
 *.txt
