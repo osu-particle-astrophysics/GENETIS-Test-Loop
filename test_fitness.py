@@ -31,13 +31,21 @@ def solve_normalized_distance(target, observed, sections, genes, metric,
                               max_distance):
     """Solve for normalized euclidean distance."""
     for i in range(0, g.population):
-        temp_metric = 0
+        sum_u = 0
+        sum_v = 0
+        sum_u_minus_v = 0
+        distance = 0
         for j in range(sections):
             for k in range(genes):
-                temp_metric = (temp_metric
-                               + ((observed[i][j][k] - target[j][k])**2))
-        temp_metric = math.sqrt(temp_metric) / max_distance
-        metric.append(temp_metric)
+                sum_u_minus_v = (sum_u_minus_v
+                                 + ((observed[i][j][k] - target[j][k])**2))
+
+                sum_u = sum_u + (observed[i][j][k])**2
+
+                sum_v = sum_v + (target[i][j][k])**2
+
+        distance = 0.5 * sum_u_minus_v / (sum_u + sum_v)
+        metric.append(distance)
 
 
 def solve_chi_squared(target, observed, sections, genes, chi2):
@@ -109,7 +117,6 @@ g = parser.parse_args()
 if (g.design == "ARA"):
     target = [[0.968807, 14.1263, -0.053024, 0.8256],
               [4.83102, 10.4062, 0.027465, -0.396757]]
-    max_distance = 180.8651013
     sections = 2
     genes = 4
 
@@ -120,13 +127,11 @@ elif (g.design == "AREA"):
               [-1.46998, 2.94396, 3.07804, -3.72175,
               3.40754, -0.529288, 4.0295, 1.26466,
               3.03942, -4.53036, -3.74864, -0.543697, 1.08282, -3.25018]]
-    max_distance = 1
     sections = 2
     genes = 14
 
 elif (g.design == "PUEO"):
     target = [[18.6258, 101.056, 8.62486, 2.36707, 7.91612, 39.0368, 1.4305]]
-    max_distance = 238.6481303
     sections = 1
     genes = 7
 
@@ -144,8 +149,7 @@ error = []
 metric = []
 
 # Calculate metric
-solve_normalized_distance(target, observed, sections,
-                          genes, metric, max_distance)
+solve_normalized_distance(target, observed, sections, genes, metric)
 
 # Translate metric into fitness score
 fitness = [(1-x) for x in metric]
