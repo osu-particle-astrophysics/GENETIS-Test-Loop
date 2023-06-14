@@ -43,7 +43,7 @@ def solve_normalized_distance(target, observed, sections, genes, metric):
 
                 sum_v = sum_v + (target[j][k])**2
 
-        distance = 0.5 * sum_u_minus_v / (sum_u + sum_v)
+        distance = math.sqrt(0.5 * sum_u_minus_v / (sum_u + sum_v))
         metric.append(distance)
 
 
