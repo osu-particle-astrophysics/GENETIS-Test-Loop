@@ -27,8 +27,7 @@ def read_dna(sections, genes, dna, filename):
                     individual = individual + 1
 
 
-def solve_normalized_distance(target, observed, sections, genes, metric,
-                              max_distance):
+def solve_normalized_distance(target, observed, sections, genes, metric):
     """Solve for normalized euclidean distance."""
     for i in range(0, g.population):
         sum_u = 0
