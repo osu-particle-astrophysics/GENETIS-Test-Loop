@@ -13,7 +13,7 @@ RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
 GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
 # Input arguments for this script are:
-design="PEUO"
+design="PUEO"
 generations=50
 population=100
 rank=60
