@@ -57,7 +57,7 @@ def solve_normalized_distance(target, observed, sections, genes, metric):
 
                 sum_v = sum_v + (target[j][k])**2
 
-        distance = math.sqrt(0.5 * sum_u_minus_v / (sum_u + sum_v))
+        distance = (0.5 * sum_u_minus_v / (sum_u + sum_v))
         metric.append(distance)
 
 
@@ -162,10 +162,10 @@ error = []
 metric = []
 
 # Calculate metric
-solve_euclidean_distance(target, observed, sections, genes, metric)
+solve_normalized_distance(target, observed, sections, genes, metric)
 
 # Translate metric into fitness score
-fitness = [(1/(1+x)) for x in metric]
+fitness = [(1-x) for x in metric]
 
 # Introduce error to fitness score
 calc_error(fitness, error)
