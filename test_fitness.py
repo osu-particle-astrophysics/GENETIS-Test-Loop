@@ -30,21 +30,21 @@ def read_dna(sections, genes, dna, filename):
 def solve_normalized_distance(target, observed, sections, genes, metric):
     """Solve for normalized euclidean distance."""
     for i in range(0, g.population):
-        sum_u = 0
-        sum_v = 0
-        sum_u_minus_v = 0
+        point_u = 0
+        point_v = 0
+        point_u_minus_v = 0
         distance = 0
         for j in range(sections):
             for k in range(genes):
-                sum_u_minus_v = (sum_u_minus_v
-                                 + ((observed[i][j][k] - target[j][k])**2))
+                point_u_minus_v = (observed[i][j][k] - target[j][k])**2
 
-                sum_u = sum_u + (observed[i][j][k])**2
+                point_u = (observed[i][j][k])**2
 
-                sum_v = sum_v + (target[j][k])**2
+                point_v = (target[j][k])**2
 
-        distance = math.sqrt(0.5 * sum_u_minus_v / (sum_u + sum_v))
-        metric.append(distance)
+                distance = distance + math.sqrt(0.5 * point_u_minus_v
+                                                / (point_u + point_v))
+        metric.append(distance / (sections * genes))
 
 
 def solve_chi_squared(target, observed, sections, genes, chi2):
