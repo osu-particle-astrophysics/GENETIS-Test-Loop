@@ -10,3 +10,9 @@ Results/
 *.out
 *.csv
 *.exe
+.vs/slnx.sqlite
+.vs/ProjectSettings.json
+.vs/GENETIS-Test-Loop/FileContentIndex/read.lock
+.vs/GENETIS-Test-Loop/FileContentIndex/1a4efb17-a488-43e0-a89e-520fb49e1006.vsidx
+.vs/GENETIS-Test-Loop/FileContentIndex/177db0a6-db2f-4318-9ad1-bd4831353188.vsidx
+.vs/GENETIS-Test-Loop/FileContentIndex/162a2906-0e47-40ab-8820-8fb61b72fed5.vsidx
