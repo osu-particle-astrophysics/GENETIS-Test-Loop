@@ -44,21 +44,17 @@ def solve_euclidean_distance(target, observed, sections, genes, metric):
 def solve_normalized_distance(target, observed, sections, genes, metric):
     """Solve for normalized euclidean distance."""
     for i in range(0, g.population):
-        sum_u = 0
-        sum_v = 0
-        sum_u_minus_v = 0
-        distance = 0
+        sum_distance = 0
         for j in range(sections):
             for k in range(genes):
-                sum_u_minus_v = (sum_u_minus_v +
-                                 (observed[i][j][k] - target[j][k])**2)
+                sum_distance = (sum_distance +
+                                ((observed[i][j][k] - target[j][k])**2
+                                 / (observed[i][j][k]**2 + target[j][k]**2))
+                                )
 
-                sum_u = sum_u + (observed[i][j][k])**2
-
-                sum_v = sum_v + (target[j][k])**2
-
-        distance = (sum_u_minus_v / (sum_u + sum_v))
-        metric.append(distance)
+        normailized_distance = math.sqrt(1.0/(2.0*genes*sections)
+                                         * sum_distance)
+        metric.append(normailized_distance)
 
 
 def solve_chi_squared(target, observed, sections, genes, chi2):
