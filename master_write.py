@@ -22,7 +22,7 @@ sigma_average_gen = []
 sigma_average_gen2 = []
 run_name = []
 bench_mark = 0.1
-bench_mark2 = 0.01
+bench_mark2 = 0.05
 
 for rank in range(60, 61, 1):
     for roulette in range(20, 21, 1):
