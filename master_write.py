@@ -10,7 +10,7 @@ import statistics as stat
 from statistics import mean
 import numpy as np
 
-design = "ARA"
+design = "PUEO"
 population = 100
 error = "0.25"
 
@@ -21,8 +21,8 @@ average_gen2 = []
 sigma_average_gen = []
 sigma_average_gen2 = []
 run_name = []
-bench_mark = 0.5
-bench_mark2 = 0.25
+bench_mark = 0.9
+bench_mark2 = 0.99
 
 for rank in range(60, 61, 1):
     for roulette in range(20, 21, 1):

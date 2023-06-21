@@ -13,7 +13,7 @@ GAPath='GA/SourceFiles'
 g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 
 # Set Constants
-design="ARA"
+design="PUEO"
 generations=50
 population=100
 
@@ -31,7 +31,7 @@ do
             selection=$(( $rank + $roulette + $tournament ))
             if [ $selection -eq $population ]
             then  
-                for reproduction in {0..4..4} 
+                for reproduction in {0..16..4} 
                 do
                     for crossover in {72..100..4} 
                     do
