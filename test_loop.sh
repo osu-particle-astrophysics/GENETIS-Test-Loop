@@ -13,7 +13,7 @@ GAPath='GA/SourceFiles'
 g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 
 # Set Constants
-design="PUEO"
+design="ARA"
 generations=50
 population=100
 
