@@ -43,7 +43,7 @@ for rank in range(60, 61, 1):
                                     for test in range(1, 101):
                                         temp_earliest = 50
                                         temp_earliest2 = 50
-                                        c = next(color)
+                                        c = 'blue' #next(color)
                                         ave_fitness = []
                                         max_fitness = []
                                         ave_metric = []
@@ -76,8 +76,8 @@ for rank in range(60, 61, 1):
 
                                         # Begin Plotting
                                         plt.figure(count, figsize=(16,9))
-                                        plt.plot(gen_num, ave_metric, c=c, linestyle='dotted', label=(f"Run {test} average"))
-                                        plt.plot(gen_num, min_metric, c=c, linestyle='solid', label=(f"Run {test} High"))
+                                        plt.plot(gen_num, ave_metric, c=c, linestyle='dotted', label=(f"Run {test} average"), alpha=0.1)
+                                        plt.plot(gen_num, min_metric, c=c, linestyle='solid', label=(f"Run {test} High"), alpha=0.1)
                                         # plt.axis([0,50, 0.00, 1.5])
                                         plt.grid(visible=True, which='major', color='#666666', linestyle='-', linewidth=0.5)
                                         plt.minorticks_on()
