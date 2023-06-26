@@ -4,70 +4,70 @@
 ## created on 10/23/2020
 ## Created for: GENETIS Research group at Ohio State University
 
+# set directories/paths
+PlotsPath='Plots'
+RunPath='Run'
+GAPath='GA/SourceFiles'
 
-## Algorithm
+# Compile the GA in its directory
+g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 
-# run start for bicone GA
-# run fitness score function
-# run plotting function?
-# run cont for bicone GA
-# repeat for step 2-4 until desired amount of generations is complete
-
-g++ -std=c++11 GA.cpp
-
-pop=100
-arguement=1
+# Set Constants
+design="ARA"
 generations=50
-repro=3
-cross=36
-roul_no=2
-tour_no=2
-rank_no=6
-zero=0
-elite=0
-M_rate=5
-sigma=1
+population=100
 
+# Initialize job submission variables
+count=0
+start=0
 
-for a in {2..2..2} # Roulette
+# Loop over variables: define them in their ranges in their loops
+for rank in {60..60..2} 
 do
-    for b in {2..2..2} # Tournament
+    for roulette in {20..20..2} 
     do
-	for c in {6..6..2} # Rank
-	do
-	    r=$(( $a + $b + $c ))
-	    if [ $r -eq 10 ]
-	    then  
-		for d in {0..0..6} # Reproduction
-		do
-		    for e in {100..100..6} # Crossover Make sure Reprodcution + Crossover < pop
-		    do
-			de=$(( $d +$e ))
-			if [ $de -le $pop ]
-			then
-			    for f in {15..15..5} # M_rate
-			    do
-				if [ $f -ne 0 ]
-				then
-				    sigma=5
-				fi
-				if [ $f -eq 0 ] 
-				then
-				    sigma=1
-				fi
-				for (( g=5; g <= $sigma; g++ )) # sigma
-				do
-				    for h in {1..1..1} # test count
-				    do
-					./test_run.sh ${pop} ${generations} ${d} ${e} ${f} ${g} ${a} ${b} ${c} ${elite} ${h}
-				    done
-				done
-			    done
-			fi
-		   done
-	      done
-	   fi
-	done
+        for tournament in {20..20..2} 
+        do
+            selection=$(( $rank + $roulette + $tournament ))
+            if [ $selection -eq $population ]
+            then  
+                for reproduction in {12..12..4} 
+                do
+                    for crossover in {72..72..4} 
+                    do
+                        for mutation in {4..4..4}
+                        do
+                            opperators=$(( $reproduction + $crossover + $mutation ))
+                            if [ $opperators -le $population ]
+                            then
+                                for sigma in {5..5..5} 
+                                do
+                                    for test in {1..100..1}
+                                    do
+                                        # Submit run
+                                        sbatch test_run.sh ${design} ${generations} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation} ${sigma} ${test}
+                                        count=$((count+1))
+                                        if [ $count -ge 250 ]
+                                        then
+                                            echo batch submitted
+                                            nfiles=$(ls $PlotsPath/ | wc -l)
+                                            while [[ $(((nfiles)%500)) -ne 0 || $nfiles -eq $start ]] 
+                                            do
+                                                nfiles=$(ls $PlotsPath/ | wc -l)
+                                                echo $nfiles
+                                                sleep 10
+                                            done
+                                            start=$nfiles
+                                            count=0
+                                        fi
+                                    done
+                                done
+                            fi
+                        done
+                    done
+                done
+            fi
+        done
     done
 done
 

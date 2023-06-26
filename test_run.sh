@@ -1,73 +1,106 @@
 #!/bin/bash
-# Previously part of test_loop.sh 
-# Transplanted here to run batch jobs in parallel
-# Need to pass in arguements
-# 
-# This code takes in a run code and runs all the generations of a test run
-# This includes the GA, fitness functions, plot making, and file management
 
+#SBATCH -A PAS1960
+#SBATCH -t 00:20:00
+#SBATCH -N 1
+#SBATCH -n 8
+##SBATCH -o ~
+##SBATCH -e ~
+###PBS -o /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/termoutput/
+###PBS -e /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/termoutput/
 
-# Variables (pass these in)
-Population=${1}
-Generations=${2}
-Reproduction=${3}
-Crossover=${4}
-Mutation_Rate=${5}
-Sigma=${6}
-Roulette=${7}
-Tournament=${8}
-Rank=${9}
-Elite=${10}
-Run_Number=${11}
+#############################
+## Created by Ryan Debolt and Bryan Reynolds
+## Created May 2023
+#############################
 
-echo ${Run_Number}
+# set directories/paths
+PlotsPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Plots'
+RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
+GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
-# Start run
-for g in `seq 0 ${Generations}` 
+# Input arguments for this script are:
+design=${1}
+generations=${2}
+population=${3}
+rank=${4}
+roulette=${5}
+tournament=${6}
+reproduction=${7}
+crossover=${8}
+mutation_no=${9}
+sigma=${10}
+test=${11}
+
+# establish run name
+runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
+
+# Move things to TMPDIR
+cp $GAPath/GA.exe $TMPDIR
+cp fitnessScores.csv $TMPDIR
+cp metric.csv $TMPDIR
+cp data_write.py $TMPDIR
+cp test_fitness.py $TMPDIR
+cp test_plotter.py $TMPDIR
+cp fitness_check.py $TMPDIR
+cd $TMPDIR
+
+#loop over generations
+for g in `seq 0 ${generations}`
 do
     if [ $g -eq 0 ]
     then
-	echo ${Reproduction}'_'${Crossover}'_'${Mutation_Rate}'_'${Sigma}'_'${Roulette}'_'${Tournament}'_'${Rank}'_'${Run_Number} 'Generation 0'
-	./a.out start $Population $Reproduction $Crossover $Mutation_Rate $Sigma $Roulette $Tournament $Rank $Elite
-	python3 test_fitness_chi.py $g
-	python3 test_chi.py $g
-	cp ${g}_fitnessScores.csv fitnessScores.csv
-	cp ${g}_chiScores.csv chiScores.csv
-	cp generationDNA.csv ${g}_generationDNA.csv
-	cp parents.csv ${g}_parents.csv
-	python3 data_write.py ${g}
-	mv ${g}_generationData.csv Run/${Reproduction}_${Crossover}_${Mutation_Rate}_${Sigma}_${Roulette}_${Tournament}_${Rank}_${Run_Number}_${g}_generationData.csv
+	
+	echo ${runname} 'Generation 0'
+	
+	#Call GA
+	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
+	echo 'GA ran for gen 0'
+
     fi
 
+    #Run GA for non-zero generations
     if [ $g -ne 0 ]
     then
-        echo ${Reproduction}'_'${Crossover}'_'${Mutation_Rate}'_'${Sigma}'_'${Roulette}'_'${Tournament}'_'${Rank}'_'${Run_Number} 'Generation' ${g}
-        ./a.out cont $Population $Reproduction $Crossover $Mutation_Rate $Sigma $Roulette $Tournament $Rank $Elite
-        python3 test_fitness_chi.py $g
-        python3 test_chi.py $g
-        cp ${g}_fitnessScores.csv fitnessScores.csv
-        cp ${g}_chiScores.csv chiScores.csv
-        cp generationDNA.csv ${g}_generationDNA.csv
-        cp parents.csv ${g}_parents.csv
-        python3 data_write.py ${g}
-        mv ${g}_generationData.csv Run/${Reproduction}_${Crossover}_${Mutation_Rate}_${Sigma}_${Roulette}_${Tournament}_${Rank}_${Run_Number}_${g}_generationData.csv
+	echo ${runname} 'Generation' ${g}
+	
+	#Call GA
+	./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
+	echo 'GA ran for gen' ${g}
+
     fi
 
+    #Call script to calculate test loop fitness
+    python test_fitness.py $design $g $population 
+    if [ $g -ne 0 ]
+    then
+	#Check to see if there are duplicate antennas
+	python fitness_check.py $design $g $population
+    fi
+
+    #Combine all datafiles into one file
+    python data_write.py $design $g $population
+    
+    # Copy Combined file to permanent directory
+    cp generationData.csv $RunPath/${runname}'_'${g}_generationData.csv
+    
+    # Make copies of fitnessScores, generationDNA, and generationData to be used later
+    cp generationData.csv ${g}_generationData.csv
+    cp fitnessScores.csv ${g}_fitnessScores.csv
+    cp generationDNA.csv ${g}_generationDNA.csv
+    
+    
+    #Show Status
     echo waiting...
     echo waiting...
     echo waiting...
     echo waiting...
 done
 
-python3 test_plotter.py $Population $Generations $Reproduction $Crossover
-python3 chi_plotter.py $Population $Generations $Reproduction $Crossover
-mv fitness.png Run/${Reproduction}_${Crossover}_${Mutation_Rate}_${Sigma}_${Roulette}_${Tournament}_${Rank}_${Run_Number}_fitness.png
-mv chi.png Run/${Reproduction}_${Crossover}_${Mutation_Rate}_${Sigma}_${Roulette}_${Tournament}_${Rank}_${Run_Number}_chi.png
+#Call plotting scripts
+#Save plots in plot directory with unique names
+python test_plotter.py $design $generations $population 
 
-for g in `seq 0 ${Generations}`
-do 
-    rm ${g}_fitnessScores.csv
-    rm ${g}_chiScores.csv
-    rm ${g}_generationDNA.csv
-    rm ${g}_parents.csv
-done
+#move plot to the permanent directory
+mv fitness.png $PlotsPath/${runname}_fitness.png
+mv metric.png $PlotsPath/${runname}_metric.png
