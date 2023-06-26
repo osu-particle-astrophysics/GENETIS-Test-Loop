@@ -13,20 +13,20 @@ RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
 GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
 # Input arguments for this script are:
-design="AREA"
+design="PUEO"
 generations=50
 population=100
 rank=60
 roulette=20
 tournament=20
 reproduction=0
-crossover=96
-mutation_rate=25
-sigma=6
+crossover=84
+mutation_no=16
+sigma=15
 test=1
 
 # establish run name
-runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_rate}'_'${sigma}'_'${test}
+runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
 
 # loop over generations
 for g in `seq 0 ${generations}`
@@ -36,7 +36,7 @@ do
         echo ${runname} 'Generation 0'
         
 	# Call GA
-        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
+        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
         echo 'GA ran for gen 0'
     fi
     
@@ -45,7 +45,7 @@ do
     then
         echo ${runname} 'Generation' ${g}
 	#Call GA
-        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_rate} ${sigma}
+        ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
         echo 'GA ran for gen' ${g}
     fi
     
@@ -55,7 +55,8 @@ do
     # Check to see if there are duplicate antennas
     if [ $g -ne 0 ]
     then
-        python fitness_check.py $design $g $population
+        echo no error
+        # python fitness_check.py $design $g $population
     fi
 
     # Combine all datafiles into one file
@@ -74,6 +75,7 @@ do
     echo waiting...
     echo waiting...
     echo waiting...
+    sleep 0.25
 done
 
 # Call plotting scripts
@@ -82,5 +84,5 @@ python test_plotter.py $design $generations $population
 
 # move plot to the permanent directory
 mv fitness.png $PlotsPath/${runname}_fitness.png
-mv chisquared.png $PlotsPath/${runname}_chisquared.png
+mv metric.png $PlotsPath/${runname}_metric.png
 

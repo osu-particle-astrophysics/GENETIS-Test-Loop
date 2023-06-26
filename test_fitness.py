@@ -27,16 +27,34 @@ def read_dna(sections, genes, dna, filename):
                     individual = individual + 1
 
 
+def solve_euclidean_distance(target, observed, sections, genes, metric):
+    """Solve for euclidean distance."""
+    for i in range(0, g.population):
+        sum_u_minus_v = 0
+        distance = 0
+        for j in range(sections):
+            for k in range(genes):
+                sum_u_minus_v = (sum_u_minus_v +
+                                 (observed[i][j][k] - target[j][k])**2)
+
+        distance = math.sqrt(sum_u_minus_v)
+        metric.append(distance)
+
+
 def solve_normalized_distance(target, observed, sections, genes, metric):
     """Solve for normalized euclidean distance."""
     for i in range(0, g.population):
-        temp_metric = 0
+        sum_distance = 0
         for j in range(sections):
             for k in range(genes):
-                temp_metric = (temp_metric
-                               + ((observed[i][j][k] - target[j][k])**2))
-        temp_metric = math.sqrt(temp_metric / (sections * genes))
-        metric.append(temp_metric)
+                sum_distance = (sum_distance +
+                                ((observed[i][j][k] - target[j][k])**2
+                                 / (observed[i][j][k]**2 + target[j][k]**2))
+                                )
+
+        normailized_distance = math.sqrt(1.0/(2.0*genes*sections)
+                                         * sum_distance)
+        metric.append(normailized_distance)
 
 
 def solve_chi_squared(target, observed, sections, genes, chi2):
@@ -58,11 +76,11 @@ def calc_error(fitness, error):
         if fitness[i] == 0:
             error.append(0.0)
         else:
-            error.append(0.0/math.sqrt(1.0))
+            error.append(0.25/math.sqrt(1.0))
             tempFit = fitness[i]
-            tempFit = random.gauss(fitness[i], 0.0/math.sqrt(1.0))
+            tempFit = random.gauss(fitness[i], 0.25/math.sqrt(1.0))
             while tempFit < 0:
-                tempFit = random.gauss(fitness[i], 0.0/math.sqrt(1.0))
+                tempFit = random.gauss(fitness[i], 0.25/math.sqrt(1.0))
             fitness[i] = tempFit
 
 
@@ -122,8 +140,7 @@ elif (g.design == "AREA"):
     genes = 14
 
 elif (g.design == "PUEO"):
-    target = [[33.2056, 38.6897, 23.6239, 14.6074,
-               30.1627, 32.4097, 1.70987]]
+    target = [[18.6258, 101.056, 8.62486, 2.36707, 7.91612, 39.0368, 1.4305]]
     sections = 1
     genes = 7
 
@@ -144,7 +161,7 @@ metric = []
 solve_normalized_distance(target, observed, sections, genes, metric)
 
 # Translate metric into fitness score
-fitness = [(1/(x+1)) for x in metric]
+fitness = [(1-x) for x in metric]
 
 # Introduce error to fitness score
 calc_error(fitness, error)

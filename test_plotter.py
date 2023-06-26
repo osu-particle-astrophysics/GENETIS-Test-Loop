@@ -55,7 +55,7 @@ for z in range(0, g.generation+1):
     # begin plotting
     plt.title(g.design + ' Fitness Evolution test')
     plt.plot(generations, fitness_scores, '.',
-             color='black', markersize='5.0', alpha=.5)
+             color='black', markersize='3.0', alpha=.5)
     plt.ylabel('Fitness Scores')
     plt.xlabel('Generations')
     plt.axis([0, g.generation, 0, 1+.5*max(max_fitness)])
@@ -91,12 +91,12 @@ for z in range(0, g.generation+1):
     generations = [z for f in range(0, g.population)]
 
     # begin plotting
-    plt.title(g.design + ' Chi-Squared Evolution test')
+    plt.title(g.design + ' Metric Evolution test')
     plt.plot(generations, metric_scores, '.',
-             color='black', markersize='5.0', alpha=.5)
+             color='black', markersize='3.0', alpha=.5)
     plt.ylabel('Metric')
     plt.xlabel('Generations')
-    plt.axis([0, g.generation, 0, 1])
+    # plt.axis([0, g.generation, 0, 1])
     plt.grid(visible=True, which='major',
              color='#666666', linestyle='-', linewidth=0.5)
     plt.minorticks_on()
