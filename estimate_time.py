@@ -6,16 +6,16 @@ population = 100
 generations = 50
 
 # loop over variables to find number of runs
-for rank in range(60, 61, 1):
-    for roulette in range(20, 21, 1):
-        for tournament in range(20, 21, 1):
+for rank in range(0, 101, 10):
+    for roulette in range(0, 101, 10):
+        for tournament in range(0, 101, 10):
             if rank + roulette + tournament == population:
                 for reproduction in range(0, 17, 4):
                     for crossover in range(72, 100, 4):
                         for mutation in range(0, 17, 4):
                             operators = reproduction + crossover + mutation
                             if operators <= population:
-                                for sigma in range(5, 16, 5):
+                                for sigma in range(10, 11, 1):
                                     for test in range(1, 11, 1):
                                         run_count = run_count + 1
 
