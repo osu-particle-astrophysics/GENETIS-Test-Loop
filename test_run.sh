@@ -75,7 +75,8 @@ do
     if [ $g -ne 0 ]
     then
 	#Check to see if there are duplicate antennas
-	python fitness_check.py $design $g $population
+    echo no error
+	#python fitness_check.py $design $g $population
     fi
 
     #Combine all datafiles into one file

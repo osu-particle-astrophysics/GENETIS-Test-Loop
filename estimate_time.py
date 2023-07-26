@@ -12,7 +12,7 @@ for rank in range(0, 101, 10):
             if rank + roulette + tournament == population:
                 for reproduction in range(0, 17, 4):
                     for crossover in range(72, 100, 4):
-                        for mutation in range(0, 17, 4):
+                        for mutation in range(4, 17, 4):
                             operators = reproduction + crossover + mutation
                             if operators <= population:
                                 for sigma in range(10, 11, 1):
