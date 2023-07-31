@@ -16,13 +16,13 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 design="PUEO"
 generations=50
 population=100
-rank=60
-roulette=20
-tournament=20
-reproduction=0
+rank=0
+roulette=0
+tournament=100
+reproduction=4
 crossover=84
-mutation_no=16
-sigma=15
+mutation_no=4
+sigma=10
 test=1
 
 # establish run name
