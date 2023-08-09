@@ -31,11 +31,11 @@ do
             selection=$(( $rank + $roulette + $tournament ))
             if [ $selection -eq $population ]
             then  
-                for reproduction in {0..16..4} 
+                for reproduction in {4..16..4} 
                 do
                     for crossover in {72..100..4} 
                     do
-                        for mutation in {4..16..4}
+                        for mutation in {8..20..4}
                         do
                             opperators=$(( $reproduction + $crossover + $mutation ))
                             if [ $opperators -le $population ]
