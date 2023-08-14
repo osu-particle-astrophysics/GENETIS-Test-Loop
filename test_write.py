@@ -13,7 +13,7 @@ def read_data(generation):
         csv_read = csv.reader(file, delimiter=',')
         for i, row in enumerate(csv_read):
             if 3 > 0:
-                data.append(file.realine())
+                data.append(file.readline())
     return data
 
 
