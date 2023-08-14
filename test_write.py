@@ -10,7 +10,7 @@ def read_data(generation):
     """Read and return data from file."""
     data = []
     with open(f'{generation}_generationData.csv', 'r') as file:
-        file_lines = file.readlines()[2:]
+        file_lines = file.readlines()[4:]
 
     for line in file_lines:
         data.append(line)
