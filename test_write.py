@@ -20,9 +20,7 @@ def read_data(generation):
 # Main
 # Read in arguments
 parser = argparse.ArgumentParser()
-parser.add_argument("design", type=int)
 parser.add_argument("generations", type=int)
-parser.add_argument("population", type=int)
 arg = parser.parse_args()
 
 # Read data from generationData.csv into lines array
