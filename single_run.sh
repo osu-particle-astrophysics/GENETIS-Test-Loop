@@ -82,7 +82,7 @@ done
 python test_plotter.py $design $generations $population
 
 # Condense data
-python test_write.py $generations
+python test_write.py $design $generations $population
 
 # move plot to the permanent directory
 mv fitness.png $PlotsPath/${runname}_fitness.png
