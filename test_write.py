@@ -12,9 +12,8 @@ def read_data(generation):
     with open(f'{generation}_generationData.csv', 'r') as file:
         file_lines = file.readlines()
 
-    for line in file_lines:
-        if line > 2:
-            data.append(line)
+    for line in range(3, len(file_lines)):
+        data.append(file_lines(line))
     return data
 
 
