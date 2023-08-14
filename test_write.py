@@ -20,8 +20,23 @@ def read_data(generation):
 # Main
 # Read in arguments
 parser = argparse.ArgumentParser()
+parser.add_argument("design", type=str)
 parser.add_argument("generations", type=int)
+parser.add_argument("population", type=int)
 arg = parser.parse_args()
+
+# Find DNA vector parameters based on design
+if arg.design == "ARA":
+    sections = 2
+    genes = 4
+
+elif arg.design == "AREA":
+    sections = 2
+    genes = 14
+
+elif arg.design == "PUEO":
+    sections = 1
+    genes = 7
 
 # Read data from generationData.csv into lines array
 lines = []
@@ -34,5 +49,9 @@ with open('testData.csv', "w") as file:
     file.write("Test Data for \n")
     file.write("Individual, Metric, Fitness, Error, Parent 1, Parent 2,")
     file.write(" Opperator")
+    for x in range(sections*genes):
+        file.write(f", Gene {x+1}")
+        file.write('\n')
     for gen in range(0, arg.generations+1):
-        file.write(f'{lines[gen]}')
+        for pop in range(0, arg.population):
+            file.write(f'{lines[gen][pop]}')
