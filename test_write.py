@@ -25,7 +25,7 @@ arg = parser.parse_args()
 
 # Read data from generationData.csv into lines array
 lines = []
-for gen in range(0, arg.generation+1):
+for gen in range(0, arg.generations+1):
     lines.append(read_data(gen))
 
 # Print data to file
@@ -34,5 +34,5 @@ with open('testData.csv', "w") as file:
     file.write("Test Data for \n")
     file.write("Individual, Metric, Fitness, Error, Parent 1, Parent 2,")
     file.write(" Opperator")
-    for gen in range(0, arg.generation+1):
+    for gen in range(0, arg.generations+1):
         file.write(lines[gen])
