@@ -21,7 +21,7 @@ roulette=0
 tournament=100
 reproduction=16
 crossover=80
-mutation_no=4
+mutation_no=12
 sigma=10
 test=1
 
