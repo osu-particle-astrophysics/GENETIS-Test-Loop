@@ -11,7 +11,7 @@ def read_data(generation):
     data = []
     with open(f'{generation}_generationData.csv', 'r') as file:
         csv_read = csv.reader(file, delimiter=',')
-        for i, row in enumerate(csv_read):
+        for i in enumerate(csv_read):
             if i > 3:
                 data.append(file.readline())
     return data
