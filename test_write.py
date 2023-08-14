@@ -35,4 +35,4 @@ with open('testData.csv', "w") as file:
     file.write("Individual, Metric, Fitness, Error, Parent 1, Parent 2,")
     file.write(" Opperator")
     for gen in range(0, arg.generations+1):
-        file.write(lines[gen])
+        file.write(f'{lines[gen]}')
