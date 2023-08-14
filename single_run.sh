@@ -79,8 +79,10 @@ do
 done
 
 # Call plotting scripts
-#Save plots in plot directory with unique names
 python test_plotter.py $design $generations $population
+
+# Condense data
+python test_write.py $generation
 
 # move plot to the permanent directory
 mv fitness.png $PlotsPath/${runname}_fitness.png
