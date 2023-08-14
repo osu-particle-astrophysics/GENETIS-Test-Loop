@@ -43,6 +43,9 @@ lines = []
 for gen in range(0, arg.generations+1):
     lines.append(read_data(gen))
 
+print(len(lines))
+print(len(lines[0]))
+
 # Print data to file
 with open('testData.csv', "w") as file:
     # Write out the header
