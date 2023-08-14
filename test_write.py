@@ -13,7 +13,7 @@ def read_data(generation):
         file_lines = file.readlines()
 
     for line in file_lines:
-        if lines > 2:
+        if line > 2:
             data.append(line)
     return data
 
