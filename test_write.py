@@ -50,11 +50,11 @@ print(len(lines[0]))
 with open('testData.csv', "w") as file:
     # Write out the header
     file.write("Test Data for \n")
-    file.write("Individual, Metric, Fitness, Error, Parent 1, Parent 2,")
-    file.write(" Opperator")
+    file.write("Generation, Individual, Metric, Fitness, Error, Parent 1,")
+    file.write(" Parent 2, Opperator")
     for x in range(sections*genes):
         file.write(f", Gene {x+1}")
-        file.write('\n')
+    file.write('\n')
     for gen in range(0, arg.generations+1):
         for pop in range(0, arg.population):
-            file.write(f'{lines[gen][pop]}')
+            file.write(f'{gen}, {lines[gen][pop]}')
