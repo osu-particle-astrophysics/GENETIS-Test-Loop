@@ -10,11 +10,11 @@ def read_data(generation):
     """Read and return data from file."""
     data = []
     with open(f'{generation}_generationData.csv', 'r') as file:
-        csv_read = csv.reader(file, delimiter=',')
-        for i, row in enumerate(csv_read):
-            if i > 2:
-                print("line", file.readline())
-                data.append(file.readline())
+        file_lines = file.readlines()
+
+    for line in file_lines:
+        if lines > 2:
+            data.append(line)
     return data
 
 
