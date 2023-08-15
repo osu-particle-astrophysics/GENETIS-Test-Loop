@@ -56,6 +56,7 @@ do
                                             done
                                             start=$nfiles
                                             count=0
+                                        fi
                                     done
                                 done
                             fi
