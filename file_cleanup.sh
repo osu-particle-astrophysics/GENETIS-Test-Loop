@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ## Created by Ryan T Debolt
-## created on 10/23/2020
+## created on 8/14/2023
 ## Created for: GENETIS Research group at Ohio State University
 
 # set directories/paths
@@ -17,9 +17,8 @@ design="ARA"
 generations=50
 population=100
 
-# Initialize job submission variables
-count=0
-start=0
+# Move to coprrect directory
+mv $RunPath
 
 # Loop over variables: define them in their ranges in their loops
 for rank in {20..100..10} 
@@ -45,21 +44,8 @@ do
                                     for test in {1..10..1}
                                     do
                                         # Submit run
-                                        sbatch test_run.sh ${design} ${generations} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation} ${sigma} ${test}
-                                        count=$((count+1))
-                                        if [ $count -ge 250 ]
-                                        then
-                                            echo batch submitted
-                                            nfiles=$(ls $PlotsPath/ | wc -l)
-                                            while [[ $(((nfiles)%500)) -ne 0 || $nfiles -eq $start ]] 
-                                            do
-                                                nfiles=$(ls $PlotsPath/ | wc -l)
-                                                echo $nfiles
-                                                sleep 10
-                                            done
-                                            start=$nfiles
-                                            count=0
-                                        fi
+                                        runname='${rank}_${roulette}_${tournament}_${reproduction}_${crossover}_${mutation}_${sigma}_${test}'
+                                        python test_write.py $design $generations $population $runname
                                     done
                                 done
                             fi

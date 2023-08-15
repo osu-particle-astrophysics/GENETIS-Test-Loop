@@ -63,7 +63,7 @@ do
     python data_write.py $design $g $population
     
     # Copy Combined file to permanent directory
-    cp generationData.csv $RunPath/${runname}'_'${g}_generationData.csv
+    cp generationData.csv ${runname}'_'${g}_generationData.csv
     
     # Make copies of fitnessScores, generationDNA, and generationData to be used later
     cp generationData.csv ${g}_generationData.csv
@@ -82,7 +82,7 @@ done
 python test_plotter.py $design $generations $population
 
 # Condense data
-python test_write.py $design $generations $population $test
+python test_write.py $design $generations $population ${runname}
 
 # move plot to the permanent directory
 mv fitness.png $PlotsPath/${runname}_fitness.png
