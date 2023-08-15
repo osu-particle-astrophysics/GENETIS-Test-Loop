@@ -43,9 +43,12 @@ do
                                 do
                                     for test in {1..10..1}
                                     do
-                                        # Submit run
+                                        # Condense test files
                                         runname='${rank}_${roulette}_${tournament}_${reproduction}_${crossover}_${mutation}_${sigma}_${test}'
                                         python test_write.py $design $generations $population $runname
+
+                                        # Remove corresponding files
+                                        rm $runname_*_generationData.csv
                                     done
                                 done
                             fi
