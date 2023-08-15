@@ -18,6 +18,7 @@ def read_data(generation):
 
 
 # Main
+print("Writting testData")
 # Read in arguments
 parser = argparse.ArgumentParser()
 parser.add_argument("design", type=str)
@@ -43,8 +44,6 @@ lines = []
 for gen in range(0, arg.generations+1):
     lines.append(read_data(gen))
 
-print(len(lines))
-print(len(lines[0]))
 
 # Print data to file
 with open('testData.csv', "w") as file:
@@ -58,3 +57,5 @@ with open('testData.csv', "w") as file:
     for gen in range(0, arg.generations+1):
         for pop in range(0, arg.population):
             file.write(f'{gen}, {lines[gen][pop]}')
+
+print("testData Written")
