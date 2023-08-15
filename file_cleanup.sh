@@ -34,6 +34,7 @@ test=${11}
 
 # Establish run name
 runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
+echo $runname
 
 # Move files to correct directory
 cp test_write.py $TMPDIR

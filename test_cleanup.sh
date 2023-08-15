@@ -19,7 +19,7 @@ generations=50
 population=100
 
 # Loop over variables: define them in their ranges in their loops
-for rank in {0..100..10} 
+for rank in {10..100..10} 
 do
     for roulette in {0..100..10} 
     do
