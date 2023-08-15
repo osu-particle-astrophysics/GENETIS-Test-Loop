@@ -43,6 +43,7 @@ cp data_write.py $TMPDIR
 cp test_fitness.py $TMPDIR
 cp test_plotter.py $TMPDIR
 cp fitness_check.py $TMPDIR
+cp test_write.py $TMPDIR
 cd $TMPDIR
 
 #loop over generations
@@ -100,7 +101,7 @@ done
 python test_plotter.py $design $generations $population 
 
 # Condense data
-python test_write.py $design $generations $population
+python test_write.py $design $generations $population $runname
 
 # Move files to the permanent directory
 mv testData.csv $RunPath/${runname}_testData.csv
