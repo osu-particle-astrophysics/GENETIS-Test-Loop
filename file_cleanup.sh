@@ -1,64 +1,53 @@
 #!/bin/bash
 
-## Created by Ryan T Debolt
-## created on 8/14/2023
-## Created for: GENETIS Research group at Ohio State University
+#SBATCH -A PAS1960
+#SBATCH -t 00:20:00
+#SBATCH -N 1
+#SBATCH -n 8
+##SBATCH -o ~
+##SBATCH -e ~
+###PBS -o /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/termoutput/
+###PBS -e /users/PAS1960/breynolds/work/GENETIS-Test-Loop/AREA/termoutput/
+
+#############################
+## Created by Ryan Debolt and Bryan Reynolds
+## Created May 2023
+#############################
 
 # set directories/paths
-PlotsPath='Plots'
-RunPath='Run'
-GAPath='GA/SourceFiles'
+FlagPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Flags'
+RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
+GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
-# Compile the GA in its directory
-g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
+# Input arguments for this script are:
+design=${1}
+generations=${2}
+population=${3}
+rank=${4}
+roulette=${5}
+tournament=${6}
+reproduction=${7}
+crossover=${8}
+mutation_no=${9}
+sigma=${10}
+test=${11}
 
-# Set Constants
-design="ARA"
-generations=50
-population=100
+# Establish run name
+runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
 
-# Move to coprrect directory
-cp test_write.py $RunPath
-cd $RunPath
+# Move files to correct directory
+cp test_write.py $TMPDIR
+mv ${RunPath}/${runname}_*_generationData.csv $TMPDIR
+cd $TMPDIR
 
+# Condense test files
+python test_write.py $design $generations $population $runname
 
-# Loop over variables: define them in their ranges in their loops
-for rank in {0..100..10} 
-do
-    for roulette in {0..100..10} 
-    do
-        for tournament in {0..100..10} 
-        do
-            selection=$(( $rank + $roulette + $tournament ))
-            if [ $selection -eq $population ]
-            then  
-                for reproduction in {4..16..4} 
-                do
-                    for crossover in {72..100..4} 
-                    do
-                        for mutation in {8..20..4}
-                        do
-                            opperators=$(( $reproduction + $crossover + $mutation ))
-                            if [ $opperators -le $population ]
-                            then
-                                for sigma in {10..10..5} 
-                                do
-                                    for test in {1..10..1}
-                                    do
-                                        # Condense test files
-                                        runname="${rank}_${roulette}_${tournament}_${reproduction}_${crossover}_${mutation}_${sigma}_${test}"
-                                        python test_write.py $design $generations $population $runname
+# Remove corresponding files
+rm ${runname}_*_generationData.csv
 
-                                        # Remove corresponding files
-                                        rm ${runname}_*_generationData.csv
-                                    done
-                                done
-                            fi
-                        done
-                    done
-                done
-            fi
-        done
-    done
-done
+# Move file to permanent directory
+mv ${runname}_testData.csv ${RunPath}
 
+# Make Flag
+cp test_write.py ${FlagPath}/${runname}_test_write.py
