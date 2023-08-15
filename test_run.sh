@@ -82,9 +82,6 @@ do
     #Combine all datafiles into one file
     python data_write.py $design $g $population
     
-    # Copy Combined file to permanent directory
-    cp generationData.csv $RunPath/${runname}'_'${g}_generationData.csv
-    
     # Make copies of fitnessScores, generationDNA, and generationData to be used later
     cp generationData.csv ${g}_generationData.csv
     cp fitnessScores.csv ${g}_fitnessScores.csv
@@ -102,6 +99,10 @@ done
 #Save plots in plot directory with unique names
 python test_plotter.py $design $generations $population 
 
-#move plot to the permanent directory
+# Condense data
+python test_write.py $design $generations $population
+
+# Move files to the permanent directory
+mv testData.csv $RunPath/${runname}_testData.csv
 mv fitness.png $PlotsPath/${runname}_fitness.png
 mv metric.png $PlotsPath/${runname}_metric.png
