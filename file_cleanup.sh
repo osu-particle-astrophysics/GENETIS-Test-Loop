@@ -18,7 +18,7 @@ generations=50
 population=100
 
 # Move to coprrect directory
-mv $RunPath
+cd $RunPath
 
 # Loop over variables: define them in their ranges in their loops
 for rank in {20..100..10} 
