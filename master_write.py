@@ -17,7 +17,7 @@ earliest_gen = []
 average_gen = []
 sigma_average_gen = []
 runtype = []
-benchmark = 0.1
+benchmark = 0.006
 
 
 def read_data(runname):
