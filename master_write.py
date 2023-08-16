@@ -39,7 +39,7 @@ def read_data(runname):
                 if (len(subgen) == population):
                     gen.append(subgen)
                     subgen.clear()
-                    metric.appens(submetric)
+                    metric.append(submetric)
                     submetric.clear()
     return gen, metric
 
