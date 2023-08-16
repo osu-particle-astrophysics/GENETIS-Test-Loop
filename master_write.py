@@ -50,17 +50,17 @@ print("Starting")
 
 print("Gathering Run Names")
 # Make list of runnames
-for rank in range(60, 61, 1):
-    for roulette in range(20, 21, 1):
-        for tournament in range(20, 21, 1):
+for rank in range(0, 101, 10):
+    for roulette in range(0, 101, 10):
+        for tournament in range(10, 101, 10):
             selections = rank + roulette + tournament
             if selections == population:
-                for reproduction in range(12, 13, 4):
-                    for crossover in range(72, 73, 4):
-                        for mutation in range(4, 5, 4):
+                for reproduction in range(4, 17, 4):
+                    for crossover in range(72, 101, 4):
+                        for mutation in range(8, 21, 4):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
-                                for sigma in range(5, 6, 5):
+                                for sigma in range(10, 11, 1):
                                     runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
 
 print("Analyzing Data")
