@@ -105,6 +105,6 @@ python test_plotter.py $design $generations $population
 python test_write.py $design $generations $population $runname
 
 # Move files to the permanent directory
-mv testData.csv $RunPath/${runname}_testData.csv
+mv ${runname}_testData.csv $RunPath
 mv fitness.png $PlotsPath/${runname}_fitness.png
 mv metric.png $PlotsPath/${runname}_metric.png
