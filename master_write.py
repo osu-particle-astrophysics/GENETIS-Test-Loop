@@ -63,9 +63,9 @@ for rank in range(0, 101, 10):
                                 for sigma in range(10, 11, 1):
                                     runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
 
-print("Analyzing Data")
 # For each runtype, test gather information
 for run in range(len(runtype)):
+    print(f"Analyzing: {runtype[run]}")
     min_metric = 1.0
     earliest = []
     for test in range(1, 11):
