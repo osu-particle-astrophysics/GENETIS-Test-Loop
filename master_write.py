@@ -37,9 +37,9 @@ def read_data(runname):
                     subgen.append(float(row[0]))
                     submetric.append(float(row[2]))
                 if (len(subgen) == population):
-                    gen.append(subgen)
+                    gen.append(subgen.copy())
                     subgen.clear()
-                    metric.append(submetric)
+                    metric.append(submetric.copy())
                     submetric.clear()
     return gen, metric
 
@@ -79,9 +79,9 @@ for run in range(len(runtype)):
                 min_metric = min(metric[g])
             if (min(metric[g]) <= benchmark and g <= min_gen):
                 earliest.append(g)
-    earliest_gen.append(min(earliest))
-    average_gen.append(mean(earliest))
-    sigma_average_gen.append(stat.pstdev(earliest))
+    earliest_gen.append(min(earliest.copy()))
+    average_gen.append(mean(earliest.copy()))
+    sigma_average_gen.append(stat.pstdev(earliest.copy()))
     earliest.clear()
 
 print("Creating Master File")
