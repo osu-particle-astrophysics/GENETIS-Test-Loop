@@ -85,6 +85,7 @@ do
     
     # Make copies of fitnessScores, generationDNA, and generationData to be used later
     cp generationData.csv ${g}_generationData.csv
+    cp generationData.csv ${runname}_${g}_generationData.csv
     cp fitnessScores.csv ${g}_fitnessScores.csv
     cp generationDNA.csv ${g}_generationDNA.csv
     
