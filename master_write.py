@@ -86,7 +86,7 @@ print("Creating Master File")
 # Print data into master file
 with open("Master_gen.csv", 'w') as f:
     f.write("Run Name, Earliest Generation, Average Generations, Standard Deviation , Minimum Metric \n")
-    for x in range(0, len(runname)):
+    for x in range(0, len(runtype)):
         f.write(f"{runtype[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {min_metric[x]} \n")
 
 f.close()
