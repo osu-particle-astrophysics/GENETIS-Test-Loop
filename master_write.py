@@ -17,7 +17,7 @@ earliest_gen = []
 average_gen = []
 sigma_average_gen = []
 runtype = []
-benchmark = 0.006
+benchmark = 0.06
 
 
 def read_data(runname):
@@ -77,6 +77,7 @@ for run in range(len(runtype)):
                 min_metric = min(metric[g])
             if (min(metric[g]) <= benchmark and g <= min_gen):
                 earliest[test-1] = g
+                min_gen = g
     run_min_metric.append(min_metric)
     earliest_gen.append(min(earliest.copy()))
     average_gen.append(mean(earliest.copy()))
