@@ -67,7 +67,7 @@ for rank in range(0, 101, 10):
 for run in range(len(runtype)):
     print(f"Analyzing: {runtype[run]}")
     min_metric = 1.0
-    earliest = []
+    earliest = [50]*10
     for test in range(1, 11):
         runname = f"{runtype[run]}_{test}"
         min_gen = 50
@@ -76,7 +76,7 @@ for run in range(len(runtype)):
             if (min(metric[g]) < min_metric):
                 min_metric = min(metric[g])
             if (min(metric[g]) <= benchmark and g <= min_gen):
-                earliest.append(g)
+                earliest[test-1] = g
     run_min_metric.append(min_metric)
     earliest_gen.append(min(earliest.copy()))
     average_gen.append(mean(earliest.copy()))
