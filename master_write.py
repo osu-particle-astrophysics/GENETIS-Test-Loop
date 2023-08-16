@@ -77,6 +77,7 @@ for run in range(len(runtype)):
                 min_metric = min(metric[g])
             if (min(metric[g]) <= benchmark and g <= min_gen):
                 earliest.append(g)
+    run_min_metric.append(min_metric)
     earliest_gen.append(min(earliest.copy()))
     average_gen.append(mean(earliest.copy()))
     sigma_average_gen.append(stat.pstdev(earliest.copy()))
@@ -87,7 +88,7 @@ print("Creating Master File")
 with open("Master_gen.csv", 'w') as f:
     f.write("Run Name, Earliest Generation, Average Generations, Standard Deviation , Minimum Metric \n")
     for x in range(0, len(runtype)):
-        f.write(f"{runtype[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {min_metric[x]} \n")
+        f.write(f"{runtype[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {run_min_metric[x]} \n")
 
 f.close()
 print("Master_gen.csv written")
