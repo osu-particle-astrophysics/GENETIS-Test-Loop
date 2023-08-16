@@ -72,8 +72,6 @@ for run in range(len(runtype)):
         runname = f"{runtype[run]}_{test}"
         min_gen = 50
         gen, metric = read_data(runname)
-        print(len(metric))
-        print(len(metric[0]))
         for g in range(0, generations+1):
             if (min(metric[g]) < min_metric):
                 min_metric = min(metric[g])
