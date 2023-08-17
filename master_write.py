@@ -17,6 +17,8 @@ earliest_gen = []
 average_gen = []
 sigma_average_gen = []
 runtype = []
+runtype_name = []
+runtype_list = []
 benchmark = 0.06
 
 
@@ -60,8 +62,11 @@ for rank in range(0, 101, 10):
                         for mutation in range(8, 21, 4):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
+                                injection = population - operators
                                 for sigma in range(10, 11, 1):
                                     runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
+                                    runtype_name.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{injection}")
+                                    runtype_list.append(f"{rank}, {roulette}, {tournament}, {reproduction}, {crossover}, {mutation}, {injection}")
 
 # For each runtype, test gather information
 for run in range(len(runtype)):
@@ -87,9 +92,9 @@ for run in range(len(runtype)):
 print("Creating Master File")
 # Print data into master file
 with open("Master_gen.csv", 'w') as f:
-    f.write("Run Name, Earliest Generation, Average Generations, Standard Deviation , Minimum Metric \n")
+    f.write("Run Type, Rank, Roulette, Tournament, Reproduction, Crossover, Mutation, Injection, Earliest Generation, Average Generations, Standard Deviation , Minimum Metric \n")
     for x in range(0, len(runtype)):
-        f.write(f"{runtype[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {run_min_metric[x]} \n")
+        f.write(f"{runtype_name[x]}, {runtype_list[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {run_min_metric[x]} \n")
 
 f.close()
 print("Master_gen.csv written")
