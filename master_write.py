@@ -54,7 +54,7 @@ print("Gathering Run Names")
 # Make list of runnames
 for rank in range(0, 101, 10):
     for roulette in range(0, 101, 10):
-        for tournament in range(10, 101, 10):
+        for tournament in range(0, 101, 10):
             selections = rank + roulette + tournament
             if selections == population:
                 for reproduction in range(4, 17, 4):
