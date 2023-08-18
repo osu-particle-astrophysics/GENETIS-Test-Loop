@@ -19,9 +19,9 @@ population=100
 rank=0
 roulette=100
 tournament=0
-reproduction=100
+reproduction=0
 crossover=0
-mutation_no=0
+mutation_no=100
 sigma=10
 test=1
 
