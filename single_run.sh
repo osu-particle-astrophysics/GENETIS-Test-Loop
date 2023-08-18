@@ -17,11 +17,11 @@ design="PUEO"
 generations=50
 population=100
 rank=0
-roulette=0
-tournament=100
-reproduction=8
-crossover=80
-mutation_no=12
+roulette=100
+tournament=0
+reproduction=0
+crossover=100
+mutation_no=0
 sigma=10
 test=1
 
