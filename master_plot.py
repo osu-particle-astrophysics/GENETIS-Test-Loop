@@ -1,6 +1,8 @@
 """Create a plot of runtype."""
 
+# Imports
 import csv
+import argparse
 import matplotlib.pyplot as plt
 from matplotlib.pyplot import cm
 import matplotlib.colors as mcolors
@@ -8,96 +10,127 @@ from cycler import cycler
 import statistics as stat
 from statistics import mean
 import numpy as np
+import pandas as pd
 
-design = "ARA"
-population = 100
-error = "0.25"
+# Parse arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("params", type=str)
+parser.add_argument("num_runs", type=int)
+parser.add_argument("num_gens", type=int)
+parser.add_argument("npop", type=int)
+parser.add_argument("input_dir", type=str)
+g = parser.parse_args()
 
-count = 0
-earliest_gen = []
-average_gen = []
-average_gen2 = []
-sigma_average_gen = []
-sigma_average_gen2 = []
-run_name = []
-bench_mark = 0.1
-bench_mark2 = 0.05
+# Define function to read in data and 
+# create secondary csv with avg and min metric and fitness for each generation and run
+def parse_data(param_string, num_runs, gens, npop, input_dir):
+    '''Read in data from each run with given parameters 
+    and create a csv with avg and min metric/fitness for each gen and run.'''
 
-for rank in range(60, 61, 1):
-    for roulette in range(20, 21, 1):
-        for tournament in range(20, 21, 1):
-            selections = rank + roulette + tournament
-            if selections == population:
-                for reproduction in range(12, 13, 4):
-                    for crossover in range(72, 73, 4):
-                        for mutation in range(4, 5, 4):
-                            operators = crossover + reproduction + mutation
-                            if operators <= population:
-                                for sigma in range(5, 6, 5):
-                                    count = count+1
-                                    color = iter(cm.rainbow(np.linspace(0, 1, 11)))
-                                    temp_benchmark_gen = []
-                                    temp_benchmark_gen2 = []
-                                    run_name.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
-                                    for test in range(1, 101):
-                                        temp_earliest = 50
-                                        temp_earliest2 = 50
-                                        c = 'blue' #next(color)
-                                        ave_fitness = []
-                                        max_fitness = []
-                                        ave_metric = []
-                                        min_metric = []
-                                        gen_num = []
-                                        for generation in range(0, 51, 1):
-                                            gen_num.append(generation)
-                                        for gens in range(0, 51):
-                                            runname = f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}_{test}_{gens}"
-                                            fit = []
-                                            metric = []
-                                            with open(f"{runname}_generationData.csv") as F1:
-                                                txt_read = csv.reader(F1, delimiter=",")
-                                                for i, row in enumerate(txt_read):
-                                                    if i > 3:
-                                                        fit.append(float(row[2]))
-                                                        metric.append(float(row[1]))
-                                            ave_fitness.append(mean(fit))
-                                            max_fitness.append(max(fit))
-                                            ave_metric.append(mean(metric))
-                                            min_metric.append(min(metric))
+    # create data frame to hold data
+    # stores run_num, gen, avg_metric, min_metric, avg_fitness, min_fitness
+    df = pd.DataFrame(columns=['run_num', 'gen', 'avg_metric', 'min_metric', 'avg_fitness', 'min_fitness'])
+    
+    # Access data from each run
+    for i_run in range(1, num_runs+1):
 
-                                            # Now update temp_earliest
-                                            if min(metric) <= bench_mark and gens < temp_earliest:
-                                                temp_earliest = gens
-                                            if min(metric) <= bench_mark2 and gens < temp_earliest2:
-                                                temp_earliest2 = gens
-                                        temp_benchmark_gen.append(temp_earliest)
-                                        temp_benchmark_gen2.append(temp_earliest2)
+        # Read in data from a run
+        # Skip first row because it is a text header
+        df_run = pd.read_csv(f"{input_dir}/{param_string}_{i_run}_testData.csv", skiprows=1)
 
-                                        # Begin Plotting
-                                        plt.figure(count, figsize=(16,9))
-                                        plt.plot(gen_num, ave_metric, c=c, linestyle='dotted', label=(f"Run {test} average"), alpha=0.1)
-                                        plt.plot(gen_num, min_metric, c=c, linestyle='solid', label=(f"Run {test} High"), alpha=0.1)
-                                        # plt.axis([0,50, 0.00, 1.5])
-                                        plt.grid(visible=True, which='major', color='#666666', linestyle='-', linewidth=0.5)
-                                        plt.minorticks_on()
-                                        plt.grid(visible=True, which='minor', color='#999999', linestyle='-', linewidth=0.2, alpha=0.5)
-                                        plt.ylabel('Fitness Score')
-                                        plt.xlabel('Generations')
-                                        plt.suptitle(f"{design} Population: {population} Error: {error}")
-                                        plt.savefig(f"plot_{design}_{error}_{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}.png")
-                                    plt.close()
-                                    print(f"plot_{design}_{error}_{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}.png written")
-                                    earliest_gen.append(min(temp_benchmark_gen))
-                                    average_gen.append(mean(temp_benchmark_gen))
-                                    average_gen2.append(mean(temp_benchmark_gen2))
-                                    sigma_average_gen.append(stat.pstdev(temp_benchmark_gen))
-                                    sigma_average_gen2.append(stat.pstdev(temp_benchmark_gen2))
+        #print(df_run.head())
 
+        # Drop columns that are non-numeric (Parent 1, Parent 2, Opperator)
+        df_run = df_run.drop([' Parent 1', ' Parent 2', ' Opperator'], axis=1)
 
-with open("Master_gen.csv", 'w') as f:
-    f.write("Run Name, \t Earliest, \t Average (.5), \t Standard Deviation (.5), \t Average (.25), \t Standard Deviation (.25) \n")
-    for x in range(0, len(run_name)):
-        f.write(f"{run_name[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {average_gen2[x]}, {sigma_average_gen2[x]}\n")
+        # group data by generation and calculate avg and min metric and fitness
+        df_avg = df_run.groupby('Generation').mean()
+        df_min = df_run.groupby('Generation').min()
 
-f.close()
-print("Master_gen.csv written")
+        # Concat data to data frame for each generation
+        for i_gen in range(0, gens+1):
+
+            df.loc[len(df.index)] = [int(i_run), int(i_gen), df_avg[' Metric'][i_gen], df_min[' Metric'][i_gen], df_avg[' Fitness'][i_gen], df_min[' Fitness'][i_gen]]
+
+            #df_temp = {'run_num': i_run, 
+            #                'gen': i_gen, 
+            #                'avg_metric': df_avg[' Metric'][i_gen], 
+            #                'min_metric': df_min[' Metric'][i_gen], 
+            #                'avg_fitness': df_avg[' Fitness'][i_gen], 
+            #                'min_fitness': df_min[' Fitness'][i_gen]}
+            #pd.concat([df, df_temp])
+
+    # Return data frame
+    return df
+
+# Define function to populate 2-D list of avg and min metric for each run
+def process_data(df_runs):
+    '''Read in data frame of per generation avg, min metrics for each run.
+    Returns list of lists containing avg and min scores, separated by run.'''
+
+    # Initialize storage lists
+    avg_metric = []
+    min_metric = []
+
+    # Get runs in dataset
+    runs = df_runs['run_num'].unique()
+
+    # Loop over runs
+    for run in runs:
+    
+        # Get data for current run
+        df_run = df_runs.loc[df_runs['run_num'] == run]
+
+        # Get avg and min metric for current run as lists
+        # and append to storage lists
+        avg_metric.append(df_run['avg_metric'].tolist())
+        min_metric.append(df_run['min_metric'].tolist())
+
+    # Return lists
+    return avg_metric, min_metric
+
+# Define function to plot data
+def plot_data(avg_metric, min_metric):
+    '''Plot data from avg and min metric lists.'''
+
+    # Define colors (need 10 for now) and line styles (solid for min, dashed for avg)
+    colors = ['blue', 'red', 'green', 'orange', 'purple', 'pink', 'olive', 'cyan', 'brown', 'gray']
+    line_style_min = 'solid'
+    line_style_avg = 'dashed'
+
+    # Begin plotting
+    plt.figure(figsize=(16, 9))
+
+    for i_run in range(0, len(avg_metric)):
+
+        plt.plot(avg_metric[i_run], linestyle=line_style_avg, color=colors[i_run], alpha=0.6, label=f"Run {i_run+1}")
+        plt.plot(min_metric[i_run], linestyle=line_style_min, color=colors[i_run], alpha=0.6, label=f"Run {i_run+1}")
+
+    plt.title(g.params + ' Metric Versus Generation', fontsize=32)
+    plt.ylabel('Metric', fontsize=32)
+    plt.xlabel('Generation', fontsize=32)
+    plt.axis([0, g.num_gens, 0, 1])
+    plt.grid(visible=True, which='major', color='#666666', linestyle='-', linewidth=0.5)
+    plt.minorticks_on()
+    plt.tick_params(axis='both', which='major', labelsize=24)
+    plt.grid(visible=True, which='minor', color='#999999', linestyle='-', linewidth=0.2, alpha=0.5)
+
+    plt.savefig(f"{g.params}_fitness.png")
+
+# Parse data
+data = parse_data(g.params, g.num_runs, g.num_gens, g.npop, g.input_dir)
+
+# Process data
+avg_metric, min_metric = process_data(data)
+
+# Plot data
+plot_data(avg_metric, min_metric)
+
+#print(data.head())
+#print(avg_metric)
+#print(len(avg_metric))
+
+print("Plotting complete!")
+
+# Write to csv for testing
+data.to_csv('test_for_plotter.csv', index=False)
