@@ -53,6 +53,8 @@ for gen in range(0, arg.generations+1):
     file_data, seed = read_data(gen, arg.runname)
     lines.append(file_data.copy)
     test_seeds.append(seed)
+    print(type(lines))
+    print(type(test_seeds))
     file_data.clear()
 
 

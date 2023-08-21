@@ -14,7 +14,7 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
 # Input arguments for this script are:
 design="PUEO"
-generations=50
+generations=2
 population=100
 rank=0
 roulette=100
