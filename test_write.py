@@ -50,10 +50,10 @@ elif arg.design == "PUEO":
 lines = []
 test_seeds = []
 for gen in range(0, arg.generations+1):
-    data, seed = read_data(gen, arg.runname)
-    lines.append(data.copy)
+    file_data, seed = read_data(gen, arg.runname)
+    lines.append(file_data.copy)
     test_seeds.append(seed)
-    data.clear()
+    file_data.clear()
 
 
 # Print data to file
