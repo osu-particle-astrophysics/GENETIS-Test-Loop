@@ -44,7 +44,7 @@ def read_metric(metric, filename):
                 metric.append(float(row[0]))
 
 
-def read_parents(gen, pop, individual, parent1, parent2, opperator, seed):
+def read_parents(gen, pop, individual, parent1, parent2, opperator):
     """Read in parents, seed, and opperators."""
     if gen == 0:
         for i in range(pop):
@@ -74,7 +74,6 @@ parser.add_argument("population", type=int)
 g = parser.parse_args()
 
 # Data lists and variables
-seed = ''
 individual = []
 parent1 = []
 parent2 = []
@@ -101,7 +100,7 @@ dna = [[[0]*genes for i in range(sections)] for j in range(g.population+1)]
 
 # read in parents
 seed = read_parents(g.generation, g.population, individual,
-                    parent1, parent2, opperator, seed)
+                    parent1, parent2, opperator)
 
 # Read in Chi score
 filename = "metric.csv"
