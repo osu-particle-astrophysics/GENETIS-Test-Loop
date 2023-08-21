@@ -68,7 +68,7 @@ with open(f'{arg.runname}_testData.csv', "w") as file:
         file.write(f", Gene {x+1}")
     file.write('\n')
     for gen in range(0, arg.generations+1):
-        for pop in range(0, arg.population):
-            file.write(f'{gen}, {test_seeds[gen]}, {lines[gen][pop]}')
+        for npop in range(0, arg.population):
+            file.write(f'{gen}, {test_seeds[gen]}, {lines[gen][npop]}')
 
 print("testData Written")
