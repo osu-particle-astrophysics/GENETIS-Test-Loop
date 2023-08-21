@@ -13,6 +13,7 @@ def read_data(generation, runname):
         file_lines = file.readlines()[4:]
         csv_read = csv.reader(file, delimiter=':')
         for i, row in enumerate(csv_read):
+            print(i)
             if i == 1:
                 seed = str(row[1])
                 print("look here!")
