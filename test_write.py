@@ -51,9 +51,8 @@ lines = []
 test_seeds = []
 for gen in range(0, arg.generations+1):
     file_data, seed = read_data(gen, arg.runname)
-    lines.append(file_data.copy)
+    lines.append(file_data.copy())
     test_seeds.append(seed)
-    file_data.clear()
 
 
 # Print data to file
@@ -67,6 +66,6 @@ with open(f'{arg.runname}_testData.csv', "w") as file:
     file.write('\n')
     for gen in range(0, arg.generations+1):
         for npop in range(0, arg.population):
-            file.write(f'{gen}, {lines[gen][npop]}')
+            file.write(f'{gen}, {test_seeds[gen]}, {lines[gen][npop]}')
 
 print("testData Written")
