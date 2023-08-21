@@ -52,7 +52,7 @@ test_seeds = []
 for gen in range(0, arg.generations+1):
     data, seed = read_data(gen, arg.runname)
     lines.append(data.copy)
-    seeds.append(seed)
+    test_seeds.append(seed)
     data.clear()
 
 
