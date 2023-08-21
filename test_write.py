@@ -11,6 +11,8 @@ def read_data(generation, runname):
     data = []
     with open(f'{runname}_{generation}_generationData.csv', 'r') as file:
         file_lines = file.readlines()[4:]
+
+    with open(f'{runname}_{generation}_generationData.csv', 'r') as file:
         csv_read = csv.reader(file, delimiter=':')
         for i, row in enumerate(csv_read):
             print(i)
