@@ -15,7 +15,7 @@ g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 # Set Constants
 design="ARA"
 generations=50
-population=100
+population=200
 
 # Initialize job submission variables
 count=0
