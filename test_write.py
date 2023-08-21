@@ -15,10 +15,8 @@ def read_data(generation, runname):
     with open(f'{runname}_{generation}_generationData.csv', 'r') as file:
         csv_read = csv.reader(file, delimiter=':')
         for i, row in enumerate(csv_read):
-            print(i)
             if i == 1:
                 seed = str(row[1])
-                print("look here!")
 
     for line in file_lines:
         data.append(line)
@@ -50,7 +48,7 @@ elif arg.design == "PUEO":
 
 # Read data from generationData.csv into lines array
 lines = []
-seeds = []
+test_seeds = []
 for gen in range(0, arg.generations+1):
     data, seed = read_data(gen, arg.runname)
     lines.append(data.copy)
@@ -69,6 +67,6 @@ with open(f'{arg.runname}_testData.csv', "w") as file:
     file.write('\n')
     for gen in range(0, arg.generations+1):
         for pop in range(0, arg.population):
-            file.write(f'{gen}, {seeds[gen]}, {lines[gen][pop]}')
+            file.write(f'{gen}, {test_seeds[gen]}, {lines[gen][pop]}')
 
 print("testData Written")
