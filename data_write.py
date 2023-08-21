@@ -63,6 +63,7 @@ def read_parents(gen, pop, individual, parent1, parent2, opperator, seed):
                     parent1.append(row[1])
                     parent2.append(row[2])
                     opperator.append(row[3])
+    return seed
 
 
 # Read in arguement
@@ -99,8 +100,8 @@ elif g.design == "PUEO":
 dna = [[[0]*genes for i in range(sections)] for j in range(g.population+1)]
 
 # read in parents
-read_parents(g.generation, g.population, individual,
-             parent1, parent2, opperator, seed)
+seed = read_parents(g.generation, g.population, individual,
+                    parent1, parent2, opperator, seed)
 
 # Read in Chi score
 filename = "metric.csv"
