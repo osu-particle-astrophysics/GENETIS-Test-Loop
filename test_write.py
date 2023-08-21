@@ -11,7 +11,10 @@ def read_data(generation, runname):
     data = []
     with open(f'{runname}_{generation}_generationData.csv', 'r') as file:
         file_lines = file.readlines()[4:]
-        seed = file.readlines()[1]
+        csv_read = csv.reader(file, delimiter=',')
+        for i, row in enumerate(csv_read):
+            if i == 1:
+                seed = str(row[0])
 
     for line in file_lines:
         data.append(line)
