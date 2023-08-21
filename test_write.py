@@ -15,6 +15,7 @@ def read_data(generation, runname):
         for i, row in enumerate(csv_read):
             if i == 1:
                 seed = str(row[1])
+                print("look here!")
 
     for line in file_lines:
         data.append(line)
