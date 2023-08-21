@@ -47,6 +47,11 @@ def read_metric(metric, filename):
 def read_parents(gen, pop, individual, parent1, parent2, opperator):
     """Read in parents, seed, and opperators."""
     if gen == 0:
+        with open("parents.csv") as f1:
+            csv_read = csv.reader(f1, delimiter=',')
+            for i, row in enumerate(csv_read):
+                if i == 1:
+                    seed = str(row[0])
         for i in range(pop):
             individual.append(i+1)
             parent1.append("NA")
