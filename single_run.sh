@@ -13,17 +13,17 @@ RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
 GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
 # Input arguments for this script are:
-design="PUEO"
-generations=2
+design="ARA"
+generations=50
 population=100
-rank=0
-roulette=100
-tournament=0
-reproduction=0
-crossover=0
-mutation_no=0
+rank=10
+roulette=70
+tournament=20
+reproduction=8
+crossover=80
+mutation_no=10
 sigma=10
-test=1
+test=5
 
 # establish run name
 runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
