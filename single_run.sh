@@ -23,7 +23,7 @@ reproduction=4
 crossover=72
 mutation_no=16
 sigma=10
-test=5
+test=8
 
 # establish run name
 runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
