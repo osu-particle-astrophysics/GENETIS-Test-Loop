@@ -16,14 +16,14 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 design="ARA"
 generations=50
 population=100
-rank=50
-roulette=20
-tournament=30
+rank=40
+roulette=40
+tournament=10
 reproduction=4
-crossover=72
-mutation_no=12
+crossover=76
+mutation_no=20
 sigma=10
-test=3
+test=6
 
 # establish run name
 runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
@@ -84,7 +84,7 @@ python test_plotter.py $design $generations $population
 # Condense data
 python test_write.py $design $generations $population ${runname}
 
-# move plot to the permanent directory
+# move to the permanent directory
 mv fitness.png $PlotsPath/${runname}_fitness.png
 mv metric.png $PlotsPath/${runname}_metric.png
 
