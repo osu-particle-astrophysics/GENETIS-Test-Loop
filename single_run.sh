@@ -16,14 +16,14 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 design="ARA"
 generations=50
 population=100
-rank=90
-roulette=10
+rank=100
+roulette=0
 tournament=0
-reproduction=8
+reproduction=16
 crossover=72
-mutation_no=8
+mutation_no=12
 sigma=10
-test=6
+test=10
 
 # establish run name
 runname=${rank}'_'${roulette}'_'${tournament}'_'${reproduction}'_'${crossover}'_'${mutation_no}'_'${sigma}'_'${test}
