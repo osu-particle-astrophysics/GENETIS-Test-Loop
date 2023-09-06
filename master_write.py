@@ -37,7 +37,7 @@ def read_data(runname):
             if i > 1:
                 if (len(subgen) < population):
                     subgen.append(float(row[0]))
-                    submetric.append(float(row[2]))
+                    submetric.append(float(row[3]))
                 if (len(subgen) == population):
                     gen.append(subgen.copy())
                     subgen.clear()
