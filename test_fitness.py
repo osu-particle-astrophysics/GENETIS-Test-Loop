@@ -76,11 +76,11 @@ def calc_error(fitness, error):
         if fitness[i] == 0:
             error.append(0.0)
         else:
-            error.append(0.1/math.sqrt(2.0))
+            error.append(0.25/math.sqrt(1.0))
             tempFit = fitness[i]
-            tempFit = random.gauss(fitness[i], 0.1/math.sqrt(2.0))
+            tempFit = random.gauss(fitness[i], 0.25/math.sqrt(1.0))
             while tempFit < 0:
-                tempFit = random.gauss(fitness[i], 0.1/math.sqrt(2.0))
+                tempFit = random.gauss(fitness[i], 0.25/math.sqrt(1.0))
             fitness[i] = tempFit
 
 
