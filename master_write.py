@@ -7,7 +7,7 @@ from statistics import mean
 import numpy as np
 
 design = "ARA"
-population = 200
+population = 400
 generations = 50
 error = "0.0"
 
@@ -52,14 +52,14 @@ print("Starting")
 
 print("Gathering Run Names")
 # Make list of runnames
-for rank in range(180, 181, 10):
+for rank in range(360, 361, 10):
     for roulette in range(0, 1, 10):
-        for tournament in range(20, 21, 10):
+        for tournament in range(40, 41, 10):
             selections = rank + roulette + tournament
             if selections == population:
-                for reproduction in range(8, 9, 4):
-                    for crossover in range(160, 161, 4):
-                        for mutation in range(32, 33, 4):
+                for reproduction in range(16, 17, 4):
+                    for crossover in range(320, 321, 4):
+                        for mutation in range(64, 65, 4):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
                                 injection = population - operators
