@@ -7,7 +7,7 @@ from statistics import mean
 import numpy as np
 
 design = "ARA"
-population = 400
+population = 50
 generations = 50
 error = "0.0"
 
