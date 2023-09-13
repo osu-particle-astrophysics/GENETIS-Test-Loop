@@ -15,27 +15,27 @@ g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 # Set Constants
 design="ARA"
 generations=50
-population=400
+population=50
 
 # Initialize job submission variables
 count=0
 start=0
 
 # Loop over variables: define them in their ranges in their loops
-for rank in {360..360..10} 
+for rank in {45..45..10} 
 do
     for roulette in {0..0..10} 
     do
-        for tournament in {40..40..10} 
+        for tournament in {5..5..10} 
         do
             selection=$(( $rank + $roulette + $tournament ))
             if [ $selection -eq $population ]
             then  
-                for reproduction in {16..16..4} 
+                for reproduction in {2..2..4} 
                 do
-                    for crossover in {320..320..4} 
+                    for crossover in {40..40..4} 
                     do
-                        for mutation in {64..64..4}
+                        for mutation in {8..8..4}
                         do
                             opperators=$(( $reproduction + $crossover + $mutation ))
                             if [ $opperators -le $population ]
