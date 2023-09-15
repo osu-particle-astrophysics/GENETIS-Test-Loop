@@ -71,6 +71,14 @@ do
 
     fi
 
+    # If the GA failed, exit program
+    if [ -f "failure.txt" ];
+    then
+        echo "GA Failed Ending Evolution."
+        mv failure.txt ${PlotsPath}/${runname}_failure.txt
+        exit 1
+    fi
+
     #Call script to calculate test loop fitness
     python test_fitness.py $design $g $population 
     if [ $g -ne 0 ]
@@ -107,4 +115,4 @@ python test_write.py $design $generations $population $runname
 # Move files to the permanent directory
 mv ${runname}_testData.csv $RunPath
 mv fitness.png $PlotsPath/${runname}_fitness.png
-mv metric.png $PlotsPath/${runname}_metric.png
+#mv metric.png $PlotsPath/${runname}_metric.png

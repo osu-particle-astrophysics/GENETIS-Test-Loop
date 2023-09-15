@@ -14,7 +14,7 @@ g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe
 
 # Set Constants
 design="ARA"
-generations=50
+generations=100
 population=50
 
 # Initialize job submission variables
@@ -22,27 +22,27 @@ count=0
 start=0
 
 # Loop over variables: define them in their ranges in their loops
-for rank in {45..45..10} 
+for rank in {0..50..5} 
 do
-    for roulette in {0..0..10} 
+    for roulette in {0..50..5} 
     do
-        for tournament in {5..5..10} 
+        for tournament in {0..50..5} 
         do
             selection=$(( $rank + $roulette + $tournament ))
             if [ $selection -eq $population ]
             then  
-                for reproduction in {2..2..4} 
+                for reproduction in {2..8..2} 
                 do
-                    for crossover in {40..40..4} 
+                    for crossover in {36..45..2} 
                     do
-                        for mutation in {8..8..4}
+                        for mutation in {4..10..2}
                         do
                             opperators=$(( $reproduction + $crossover + $mutation ))
                             if [ $opperators -le $population ]
                             then
                                 for sigma in {10..10..5} 
                                 do
-                                    for test in {1..100..1}
+                                    for test in {1..10..1}
                                     do
                                         # Submit run
                                         sbatch test_run.sh ${design} ${generations} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation} ${sigma} ${test}
@@ -51,7 +51,7 @@ do
                                         then
                                             echo batch submitted
                                             nfiles=$(ls $PlotsPath/ | wc -l)
-                                            while [[ $(((nfiles)%500)) -ne 0 || $nfiles -eq $start ]] 
+                                            while [[ $(((nfiles)%250)) -ne 0 || $nfiles -eq $start ]] 
                                             do
                                                 nfiles=$(ls $PlotsPath/ | wc -l)
                                                 echo $nfiles
