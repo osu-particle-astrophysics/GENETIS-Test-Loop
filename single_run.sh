@@ -16,12 +16,12 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 design="ARA"
 generations=50
 population=100
-rank=90
+rank=0
 roulette=0
-tournament=10
+tournament=100
 reproduction=4
-crossover=80
-mutation_no=16
+crossover=88
+mutation_no=8
 sigma=10
 test=10
 
