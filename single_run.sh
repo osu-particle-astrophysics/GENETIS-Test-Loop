@@ -48,6 +48,14 @@ do
         ./GA.exe ${design} ${g} ${population} ${rank} ${roulette} ${tournament} ${reproduction} ${crossover} ${mutation_no} ${sigma}
         echo 'GA ran for gen' ${g}
     fi
+
+    # If the GA failed, exit program
+    if [ -f "failure.txt" ];
+    then
+        echo "GA Failed Ending Evolution."
+        mv failure.txt ${PlotsPath}/${runname}_failure.txt
+        exit 1
+    fi
     
     # Call script to calculate test loop fitness
     python test_fitness.py $design $g $population 
