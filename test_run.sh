@@ -76,6 +76,10 @@ do
     then
         echo "GA Failed Ending Evolution."
         mv failure.txt ${PlotsPath}/${runname}_failure.txt
+        
+        # Condense data
+        python test_write.py $design ${g-1} $population $runname
+        mv ${runname}_testData.csv $RunPath
         exit 1
     fi
 
