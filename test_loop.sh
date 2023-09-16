@@ -7,7 +7,7 @@
 # set directories/paths
 PlotsPath='Plots'
 RunPath='Run'
-GAPath='GA/SourceFiles'
+GAPath='/users/PAS0654/ryantdebolt/Shared-Code/GA/SourceFiles'
 
 # Compile the GA in its directory
 g++ -std=c++11 $GAPath/New_GA.cpp -o $GAPath/GA.exe

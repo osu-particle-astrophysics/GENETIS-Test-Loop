@@ -17,7 +17,7 @@
 # set directories/paths
 PlotsPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Plots'
 RunPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/Run'
-GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
+GAPath='/users/PAS0654/ryantdebolt/Shared-Code/GA/SourceFiles'
 
 # Input arguments for this script are:
 design=${1}
