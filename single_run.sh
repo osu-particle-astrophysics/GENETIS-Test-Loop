@@ -20,8 +20,8 @@ rank=0
 roulette=0
 tournament=50
 reproduction=6
-crossover=44
-mutation_no=0
+crossover=40
+mutation_no=4
 sigma=10
 test=10
 
