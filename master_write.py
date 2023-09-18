@@ -8,7 +8,7 @@ import numpy as np
 
 design = "ARA"
 population = 50
-generations = 50
+generations = 100
 error = "0.0"
 
 count = 0
@@ -52,14 +52,14 @@ print("Starting")
 
 print("Gathering Run Names")
 # Make list of runnames
-for rank in range(45, 46, 10):
-    for roulette in range(0, 1, 10):
-        for tournament in range(5, 6, 10):
+for rank in range(0, 51, 5):
+    for roulette in range(0, 51, 5):
+        for tournament in range(0, 51, 5):
             selections = rank + roulette + tournament
             if selections == population:
-                for reproduction in range(2, 3, 4):
-                    for crossover in range(40, 41, 4):
-                        for mutation in range(8, 9, 4):
+                for reproduction in range(2, 9, 2):
+                    for crossover in range(36, 45, 4):
+                        for mutation in range(4, 21, 2):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
                                 injection = population - operators
@@ -72,8 +72,8 @@ for rank in range(45, 46, 10):
 for run in range(len(runtype)):
     print(f"Analyzing: {runtype[run]}")
     min_metric = 1.0
-    earliest = [50]*101
-    for test in range(1, 101):
+    earliest = [50]*11
+    for test in range(1, 11):
         runname = f"{runtype[run]}_{test}"
         min_gen = 50
         gen, metric = read_data(runname)
