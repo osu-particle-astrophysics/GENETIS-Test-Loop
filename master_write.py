@@ -19,7 +19,7 @@ sigma_average_gen = []
 runtype = []
 runtype_name = []
 runtype_list = []
-benchmark = 0.06
+benchmark = 0.05
 
 
 def read_data(runname):
