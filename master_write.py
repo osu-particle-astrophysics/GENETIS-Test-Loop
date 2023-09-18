@@ -59,7 +59,7 @@ for rank in range(0, 51, 5):
             if selections == population:
                 for reproduction in range(2, 9, 2):
                     for crossover in range(36, 45, 4):
-                        for mutation in range(4, 21, 2):
+                        for mutation in range(4, 11, 2):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
                                 injection = population - operators
