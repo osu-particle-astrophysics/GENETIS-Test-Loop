@@ -64,37 +64,34 @@ for rank in range(0, 51, 5):
                             if operators <= population:
                                 injection = population - operators
                                 for sigma in range(10, 11, 1):
-                                    runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
-                                    runtype_name.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{injection}")
-                                    runtype_list.append(f"{rank}, {roulette}, {tournament}, {reproduction}, {crossover}, {mutation}, {injection}")
+                                    for test in range(1, 11):
+                                        runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}_{test}")
+                                        runtype_name.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{injection}_{test}")
+                                        runtype_list.append(f"{rank}, {roulette}, {tournament}, {reproduction}, {crossover}, {mutation}, {injection}, {test}")
 
 # For each runtype, test gather information
 for run in range(len(runtype)):
     print(f"Analyzing: {runtype[run]}")
     min_metric = 1.0
-    earliest = [100]*11
-    for test in range(1, 11):
-        runname = f"{runtype[run]}_{test}"
-        min_gen = 100
-        gen, metric = read_data(runname)
-        for g in range(0, generations+1):
-            if (min(metric[g]) < min_metric):
-                min_metric = min(metric[g])
-            if (min(metric[g]) <= benchmark and g <= min_gen):
-                earliest[test-1] = g
-                min_gen = g
+    earliest = 100
+    runname = f"{runtype[run]}"
+    min_gen = 100
+    gen, metric = read_data(runname)
+    for g in range(0, generations+1):
+        if (min(metric[g]) < min_metric):
+            min_metric = min(metric[g])
+        if (min(metric[g]) <= benchmark and g <= min_gen):
+            earliest = g
+            min_gen = g
     run_min_metric.append(min_metric)
-    earliest_gen.append(min(earliest.copy()))
-    average_gen.append(mean(earliest.copy()))
-    sigma_average_gen.append(stat.pstdev(earliest.copy()))
-    earliest.clear()
+    earliest_gen.append(earliest)
 
 print("Creating Master Files")
 # Print data into master file
-with open("Master_gen.csv", 'w') as f:
+with open("Master_full.csv", 'w') as f:
     f.write("Run Type, Rank, Roulette, Tournament, Reproduction, Crossover, Mutation, Injection, Earliest Generation, Average Generations, Standard Deviation , Minimum Metric \n")
     for x in range(0, len(runtype)):
-        f.write(f"{runtype_name[x]}, {runtype_list[x]}, {earliest_gen[x]}, {average_gen[x]}, {sigma_average_gen[x]}, {run_min_metric[x]} \n")
+        f.write(f"{runtype_name[x]}, {runtype_list[x]}, {earliest_gen[x]}, {run_min_metric[x]} \n")
 
 f.close()
 print("Master_gen.csv written")
