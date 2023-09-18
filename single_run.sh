@@ -14,7 +14,7 @@ GAPath='/users/PAS0654/ryantdebolt/test_loop_build_directory/GA/SourceFiles'
 
 # Input arguments for this script are:
 design="ARA"
-generations=1
+generations=50
 population=50
 rank=0
 roulette=0
