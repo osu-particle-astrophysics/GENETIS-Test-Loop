@@ -72,10 +72,10 @@ for rank in range(0, 51, 5):
 for run in range(len(runtype)):
     print(f"Analyzing: {runtype[run]}")
     min_metric = 1.0
-    earliest = [50]*11
+    earliest = [100]*11
     for test in range(1, 11):
         runname = f"{runtype[run]}_{test}"
-        min_gen = 50
+        min_gen = 100
         gen, metric = read_data(runname)
         for g in range(0, generations+1):
             if (min(metric[g]) < min_metric):
