@@ -71,6 +71,8 @@ def process_data(df_runs):
     # Initialize storage lists
     avg_metric = []
     min_metric = []
+    avg_fitness = []
+    min_fitness = []
 
     # Get runs in dataset
     runs = df_runs['run_num'].unique()
@@ -85,13 +87,15 @@ def process_data(df_runs):
         # and append to storage lists
         avg_metric.append(df_run['avg_metric'].tolist())
         min_metric.append(df_run['min_metric'].tolist())
+        avg_fitness.append(df_run['avg_fitness'].tolist())
+        min_fitness.append(df_run['min_fitness'].tolist())
 
     # Return lists
-    return avg_metric, min_metric
+    return avg_metric, min_metric, avg_fitness, min_fitness
 
 # Define function to plot data
-def plot_data(avg_metric, min_metric):
-    '''Plot data from avg and min metric lists.'''
+def plot_data(avg, minimum, variable):
+    '''Plot data from avg and min metric/fitness lists.'''
 
     # Define colors (need 10 for now) and line styles (solid for min, dashed for avg)
     colors = ['blue', 'red', 'green', 'orange', 'purple', 'pink', 'olive', 'cyan', 'brown', 'gray']
@@ -103,11 +107,11 @@ def plot_data(avg_metric, min_metric):
 
     for i_run in range(0, len(avg_metric)):
 
-        plt.plot(avg_metric[i_run], linestyle=line_style_avg, color=colors[i_run], alpha=0.6, label=f"Run {i_run+1}")
-        plt.plot(min_metric[i_run], linestyle=line_style_min, color=colors[i_run], alpha=0.6, label=f"Run {i_run+1}")
+        plt.plot(avg[i_run], linestyle=line_style_avg, color=colors[i_run], alpha=0.6, label=f"Run {i_run+1}")
+        plt.plot(minimum[i_run], linestyle=line_style_min, color=colors[i_run], alpha=0.6, label=f"Run {i_run+1}")
 
-    plt.title(g.params + ' Metric Versus Generation', fontsize=32)
-    plt.ylabel('Metric', fontsize=32)
+    plt.title(g.params + ' ' + str(variable) + ' Versus Generation', fontsize=32)
+    plt.ylabel(str(variable), fontsize=32)
     plt.xlabel('Generation', fontsize=32)
     plt.axis([0, g.num_gens, 0, 1])
     plt.grid(visible=True, which='major', color='#666666', linestyle='-', linewidth=0.5)
@@ -121,10 +125,10 @@ def plot_data(avg_metric, min_metric):
 data = parse_data(g.params, g.num_runs, g.num_gens, g.npop, g.input_dir)
 
 # Process data
-avg_metric, min_metric = process_data(data)
+avg_metric, min_metric, avg_fitness, min_fitness = process_data(data)
 
 # Plot data
-plot_data(avg_metric, min_metric)
+plot_data(avg_fitness, min_fitness, 'Fitness')
 
 #print(data.head())
 #print(avg_metric)
