@@ -28,8 +28,8 @@ def parse_data(param_string, num_runs, gens, npop, input_dir):
     and create a csv with avg and min metric/fitness for each gen and run.'''
 
     # create data frame to hold data
-    # stores run_num, gen, avg_metric, min_metric, avg_fitness, min_fitness
-    df = pd.DataFrame(columns=['run_num', 'gen', 'avg_metric', 'min_metric', 'avg_fitness', 'min_fitness'])
+    # stores run_num, gen, avg_metric, min_metric, avg_fitness, max_fitness
+    df = pd.DataFrame(columns=['run_num', 'gen', 'avg_metric', 'min_metric', 'avg_fitness', 'max_fitness'])
     
     # Access data from each run
     for i_run in range(1, num_runs+1):
@@ -46,18 +46,19 @@ def parse_data(param_string, num_runs, gens, npop, input_dir):
         # group data by generation and calculate avg and min metric and fitness
         df_avg = df_run.groupby('Generation').mean()
         df_min = df_run.groupby('Generation').min()
+        df_max = df_run.groupby('Generation').max()
 
         # Concat data to data frame for each generation
         for i_gen in range(0, gens+1):
 
-            df.loc[len(df.index)] = [int(i_run), int(i_gen), df_avg[' Metric'][i_gen], df_min[' Metric'][i_gen], df_avg[' Fitness'][i_gen], df_min[' Fitness'][i_gen]]
+            df.loc[len(df.index)] = [int(i_run), int(i_gen), df_avg[' Metric'][i_gen], df_min[' Metric'][i_gen], df_avg[' Fitness'][i_gen], df_max[' Fitness'][i_gen]]
 
             #df_temp = {'run_num': i_run, 
             #                'gen': i_gen, 
             #                'avg_metric': df_avg[' Metric'][i_gen], 
             #                'min_metric': df_min[' Metric'][i_gen], 
             #                'avg_fitness': df_avg[' Fitness'][i_gen], 
-            #                'min_fitness': df_min[' Fitness'][i_gen]}
+            #                'max_fitness': df_min[' Fitness'][i_gen]}
             #pd.concat([df, df_temp])
 
     # Return data frame
@@ -72,7 +73,7 @@ def process_data(df_runs):
     avg_metric = []
     min_metric = []
     avg_fitness = []
-    min_fitness = []
+    max_fitness = []
 
     # Get runs in dataset
     runs = df_runs['run_num'].unique()
@@ -88,10 +89,10 @@ def process_data(df_runs):
         avg_metric.append(df_run['avg_metric'].tolist())
         min_metric.append(df_run['min_metric'].tolist())
         avg_fitness.append(df_run['avg_fitness'].tolist())
-        min_fitness.append(df_run['min_fitness'].tolist())
+        max_fitness.append(df_run['max_fitness'].tolist())
 
     # Return lists
-    return avg_metric, min_metric, avg_fitness, min_fitness
+    return avg_metric, min_metric, avg_fitness, max_fitness
 
 # Define function to plot data
 def plot_data(avg, minimum, variable):
@@ -125,10 +126,10 @@ def plot_data(avg, minimum, variable):
 data = parse_data(g.params, g.num_runs, g.num_gens, g.npop, g.input_dir)
 
 # Process data
-avg_metric, min_metric, avg_fitness, min_fitness = process_data(data)
+avg_metric, min_metric, avg_fitness, max_fitness = process_data(data)
 
 # Plot data
-plot_data(avg_fitness, min_fitness, 'Fitness')
+plot_data(avg_fitness, max_fitness, 'Fitness')
 
 #print(data.head())
 #print(avg_metric)
