@@ -63,7 +63,7 @@ for rank in range(0, 51, 5):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
                                 injection = population - operators
-                                for sigma in range(10, 101, 1):
+                                for sigma in range(10, 11, 1):
                                     runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
                                     runtype_name.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{injection}")
                                     runtype_list.append(f"{rank}, {roulette}, {tournament}, {reproduction}, {crossover}, {mutation}, {injection}")
