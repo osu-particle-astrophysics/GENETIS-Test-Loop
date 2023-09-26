@@ -57,7 +57,7 @@ for rank in range(0, 51, 5):
         for tournament in range(30, 31, 5):
             selections = rank + roulette + tournament
             if selections == population:
-                for reproduction in range(6, 6, 2):
+                for reproduction in range(6, 7, 2):
                     for crossover in range(36, 37, 4):
                         for mutation in range(4, 5, 2):
                             operators = crossover + reproduction + mutation
