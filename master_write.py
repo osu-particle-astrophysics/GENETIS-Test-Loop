@@ -53,17 +53,17 @@ print("Starting")
 print("Gathering Run Names")
 # Make list of runnames
 for rank in range(0, 51, 5):
-    for roulette in range(0, 51, 5):
-        for tournament in range(0, 51, 5):
+    for roulette in range(0, 1, 5):
+        for tournament in range(30, 31, 5):
             selections = rank + roulette + tournament
             if selections == population:
-                for reproduction in range(2, 9, 2):
-                    for crossover in range(36, 45, 4):
-                        for mutation in range(4, 11, 2):
+                for reproduction in range(6, 6, 2):
+                    for crossover in range(36, 37, 4):
+                        for mutation in range(4, 5, 2):
                             operators = crossover + reproduction + mutation
                             if operators <= population:
                                 injection = population - operators
-                                for sigma in range(10, 11, 1):
+                                for sigma in range(10, 101, 1):
                                     runtype.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{sigma}")
                                     runtype_name.append(f"{rank}_{roulette}_{tournament}_{reproduction}_{crossover}_{mutation}_{injection}")
                                     runtype_list.append(f"{rank}, {roulette}, {tournament}, {reproduction}, {crossover}, {mutation}, {injection}")
@@ -72,8 +72,8 @@ for rank in range(0, 51, 5):
 for run in range(len(runtype)):
     print(f"Analyzing: {runtype[run]}")
     min_metric = 1.0
-    earliest = [100]*11
-    for test in range(1, 11):
+    earliest = [100]*101
+    for test in range(1, 101):
         runname = f"{runtype[run]}_{test}"
         min_gen = 100
         gen, metric = read_data(runname)
